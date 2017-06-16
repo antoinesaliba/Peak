@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -55,52 +56,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" directionalLockEnabled="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSh-Tj-AT6">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BaT-XS-uQ8">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="QGu-bx-sug">
-                                        <rect key="frame" x="67" y="48" width="240" height="662"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsu-1B-pn3" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K96-FD-5Ng">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aCj-kF-m5v">
+                                                <rect key="frame" x="8" y="8" width="359" height="718"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xy5-1w-828">
-                                                <rect key="frame" x="0.0" y="178" width="240" height="128"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Byo-iF-8g1">
-                                                <rect key="frame" x="0.0" y="356" width="240" height="128"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXz-WT-PSe">
-                                                <rect key="frame" x="0.0" y="534" width="240" height="128"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
+                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Byo-iF-8g1" firstAttribute="top" secondItem="QGu-bx-sug" secondAttribute="top" constant="356" id="7Q2-Ov-tdA"/>
-                                            <constraint firstAttribute="height" constant="662" id="SST-xB-SSC"/>
-                                            <constraint firstItem="Xy5-1w-828" firstAttribute="top" secondItem="QGu-bx-sug" secondAttribute="top" constant="178" id="qAD-H3-oJT"/>
-                                            <constraint firstItem="hXz-WT-PSe" firstAttribute="top" secondItem="QGu-bx-sug" secondAttribute="top" constant="534" id="rIB-lv-zgz"/>
+                                            <constraint firstItem="aCj-kF-m5v" firstAttribute="leading" secondItem="Qsu-1B-pn3" secondAttribute="leadingMargin" id="WQ2-3e-80p"/>
+                                            <constraint firstItem="aCj-kF-m5v" firstAttribute="top" secondItem="Qsu-1B-pn3" secondAttribute="topMargin" id="a10-zr-f0q"/>
+                                            <constraint firstItem="aCj-kF-m5v" firstAttribute="trailing" secondItem="Qsu-1B-pn3" secondAttribute="trailingMargin" id="cWG-6j-Dkm"/>
+                                            <constraint firstItem="aCj-kF-m5v" firstAttribute="bottom" secondItem="Qsu-1B-pn3" secondAttribute="bottomMargin" id="nLs-Q3-uQP"/>
                                         </constraints>
-                                    </stackView>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="QGu-bx-sug" firstAttribute="leading" secondItem="kSh-Tj-AT6" secondAttribute="leading" constant="67" id="6Lg-MH-9az"/>
-                                    <constraint firstAttribute="trailing" secondItem="QGu-bx-sug" secondAttribute="trailing" constant="68" id="8E3-sp-mJr"/>
-                                    <constraint firstItem="QGu-bx-sug" firstAttribute="top" secondItem="kSh-Tj-AT6" secondAttribute="top" constant="48" id="Pwb-zn-Zar"/>
-                                    <constraint firstItem="QGu-bx-sug" firstAttribute="centerX" secondItem="kSh-Tj-AT6" secondAttribute="centerX" id="ZI3-FQ-FmR"/>
-                                    <constraint firstAttribute="bottom" secondItem="QGu-bx-sug" secondAttribute="bottom" constant="-63" id="bmZ-WD-YST"/>
+                                    <constraint firstItem="Qsu-1B-pn3" firstAttribute="leading" secondItem="BaT-XS-uQ8" secondAttribute="leading" id="N4Q-ib-O5s"/>
+                                    <constraint firstItem="Qsu-1B-pn3" firstAttribute="top" secondItem="BaT-XS-uQ8" secondAttribute="top" id="NjH-Lg-OFG"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qsu-1B-pn3" secondAttribute="bottom" id="SG5-GU-YJF"/>
+                                    <constraint firstItem="Qsu-1B-pn3" firstAttribute="width" secondItem="BaT-XS-uQ8" secondAttribute="width" id="XJl-Kk-9CC"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qsu-1B-pn3" secondAttribute="trailing" id="vuv-C2-0dz"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="kSh-Tj-AT6" firstAttribute="top" secondItem="DoK-4B-9Q4" secondAttribute="bottom" id="7HJ-3c-Msl"/>
-                            <constraint firstItem="kSh-Tj-AT6" firstAttribute="bottom" secondItem="6hb-49-GAU" secondAttribute="top" id="C6R-0M-yAB"/>
-                            <constraint firstItem="kSh-Tj-AT6" firstAttribute="leading" secondItem="77i-AB-FBZ" secondAttribute="leading" id="Nvt-6a-86h"/>
-                            <constraint firstAttribute="trailing" secondItem="kSh-Tj-AT6" secondAttribute="trailing" id="Soc-D1-vbg"/>
+                            <constraint firstItem="BaT-XS-uQ8" firstAttribute="top" secondItem="DoK-4B-9Q4" secondAttribute="bottom" id="LH6-X2-tfQ"/>
+                            <constraint firstAttribute="trailing" secondItem="BaT-XS-uQ8" secondAttribute="trailing" id="WH7-4b-LVS"/>
+                            <constraint firstItem="6hb-49-GAU" firstAttribute="top" secondItem="BaT-XS-uQ8" secondAttribute="bottom" id="dgr-vc-AtZ"/>
+                            <constraint firstItem="BaT-XS-uQ8" firstAttribute="leading" secondItem="77i-AB-FBZ" secondAttribute="leading" id="ssI-EH-kdS"/>
                         </constraints>
                     </view>
                 </viewController>
