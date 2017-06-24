@@ -9,6 +9,24 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    //MARK: Properties
+    let colorDictionary = [
+        "Red":UIColor(
+            red: 1.0,
+            green: 0.0,
+            blue: 0.0,
+            alpha: 1.0),
+        "Green":UIColor(
+            red: 0.0,
+            green: 1.0,
+            blue: 0.0, alpha: 1.0),
+        "Blue":UIColor(
+            red: 0.0,
+            green: 0.0,
+            blue: 1.0,
+            alpha: 1.0),
+        ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
