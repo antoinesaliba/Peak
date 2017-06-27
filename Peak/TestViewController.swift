@@ -12,10 +12,21 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
     
     var workouts = ["Curls","Dips","Pull-Ups","Sit-Ups","Rows","Bench Press","Flyes","Squats"]
     
+    @IBOutlet var newWorkoutView: UIView!
     @IBOutlet var workoutsTable: UITableView!
     
     @IBAction func editWorkouts(_ sender: Any) {
         workoutsTable.isEditing = !workoutsTable.isEditing
+    }
+    
+    @IBAction func addWorkout(_ sender: Any) {
+        self.view.addSubview(newWorkoutView)
+        newWorkoutView.center = self.view.center
+        newWorkoutView.alpha = 1
+    }
+    
+    @IBAction func submitWorkout(_ sender: Any) {
+        self.newWorkoutView.removeFromSuperview()
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
