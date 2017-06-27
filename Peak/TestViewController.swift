@@ -10,7 +10,13 @@ import UIKit
 
 class TestViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
     
-    let workouts = ["Curls","Dips","Pull-Ups"]
+    var workouts = ["Curls","Dips","Pull-Ups","Sit-Ups","Rows","Bench Press","Flyes","Squats"]
+    
+    @IBOutlet var workoutsTable: UITableView!
+    
+    @IBAction func editWorkouts(_ sender: Any) {
+        workoutsTable.isEditing = !workoutsTable.isEditing
+    }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -21,15 +27,33 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewWorkoutCell
         cell.workoutName.text = workouts[indexPath.row]
-        cell.layer.cornerRadius = 30.0
+        cell.workoutContainer.layer.cornerRadius = 30.0
         
         return (cell)
+    }
+    
+    public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let item = workouts[sourceIndexPath.row]
+        workouts.remove(at: sourceIndexPath.row)
+        workouts.insert(item, at: destinationIndexPath.row)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            workouts.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

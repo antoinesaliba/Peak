@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,35 +44,55 @@
             </objects>
             <point key="canvasLocation" x="1471" y="36"/>
         </scene>
-        <!--Test View Controller-->
+        <!--Peak-->
         <scene sceneID="VnB-ON-tQ6">
             <objects>
                 <tableViewController id="3u2-El-hjH" customClass="TestViewController" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" id="9VJ-fI-lmC">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" id="9VJ-fI-lmC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.75302922729999999" green="0.72657406329999996" blue="0.86734050510000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" red="0.75302922729999999" green="0.72657406329999996" blue="0.86734050510000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="130" id="ssC-zb-kzs" customClass="TableViewWorkoutCell" customModule="Peak" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="130" id="ssC-zb-kzs" customClass="TableViewWorkoutCell" customModule="Peak" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ssC-zb-kzs" id="0ng-TK-IsD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORH-mk-9RN">
-                                            <rect key="frame" x="16" y="43" width="343" height="42"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYQ-EU-LfB">
+                                            <rect key="frame" x="15" y="5" width="345" height="120"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORH-mk-9RN">
+                                                    <rect key="frame" x="8" y="38" width="343" height="42"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="ORH-mk-9RN" secondAttribute="height" multiplier="49:6" id="IBh-TP-fla"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="leading" secondItem="NYQ-EU-LfB" secondAttribute="leading" constant="8" id="8by-uh-vDd"/>
+                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="top" secondItem="NYQ-EU-LfB" secondAttribute="top" constant="38" id="Q3R-7k-HFk"/>
+                                                <constraint firstAttribute="trailing" secondItem="ORH-mk-9RN" secondAttribute="trailing" constant="-6" id="hf8-N8-D8m"/>
+                                                <constraint firstAttribute="bottom" secondItem="ORH-mk-9RN" secondAttribute="bottom" constant="40" id="mVY-zz-HLO"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="NYQ-EU-LfB" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leading" constant="15" id="1hw-cD-pwN"/>
+                                        <constraint firstAttribute="bottom" secondItem="NYQ-EU-LfB" secondAttribute="bottom" constant="5" id="CZW-uC-joh"/>
+                                        <constraint firstItem="NYQ-EU-LfB" firstAttribute="top" secondItem="0ng-TK-IsD" secondAttribute="top" constant="5" id="ROO-Xg-eja"/>
+                                        <constraint firstAttribute="trailing" secondItem="NYQ-EU-LfB" secondAttribute="trailing" constant="15" id="j0e-qN-4cV"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.75302922729999999" green="0.72657406329999996" blue="0.86734050510000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
+                                    <outlet property="workoutContainer" destination="NYQ-EU-LfB" id="eof-rW-3MC"/>
                                     <outlet property="workoutName" destination="ORH-mk-9RN" id="mb8-50-jpA"/>
                                 </connections>
                             </tableViewCell>
@@ -82,7 +103,16 @@
                             <outlet property="delegate" destination="3u2-El-hjH" id="9hA-TA-rl6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="3bs-tX-VjZ"/>
+                    <navigationItem key="navigationItem" title="Peak" id="3bs-tX-VjZ">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="Qq9-Fg-KID">
+                            <connections>
+                                <action selector="editWorkouts:" destination="3u2-El-hjH" id="DOE-kV-L3i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="workoutsTable" destination="9VJ-fI-lmC" id="AO2-Sc-KNZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6q-Hi-qEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -175,7 +205,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fta-2R-h0Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="0Gr-1R-4Ml">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0Gr-1R-4Ml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.7530292272567749" green="0.72657406330108643" blue="0.86734050512313843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
