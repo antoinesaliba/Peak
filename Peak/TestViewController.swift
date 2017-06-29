@@ -12,20 +12,22 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
     
     var workouts = ["Curls","Dips","Pull-Ups","Sit-Ups","Rows","Bench Press","Flyes","Squats"]
     
-    @IBOutlet var newWorkoutView: UIView!
     @IBOutlet var workoutsTable: UITableView!
+    @IBOutlet var newWorkoutView: UIView!
+    @IBOutlet weak var newWorkoutName: UITextField!
     
     @IBAction func editWorkouts(_ sender: Any) {
         workoutsTable.isEditing = !workoutsTable.isEditing
     }
     
     @IBAction func addWorkout(_ sender: Any) {
-        self.view.addSubview(newWorkoutView)
-        newWorkoutView.center = self.view.center
-        newWorkoutView.alpha = 1
+        newWorkoutView.center = workoutsTable.center
+        workoutsTable.addSubview(newWorkoutView)
     }
     
     @IBAction func submitWorkout(_ sender: Any) {
+        workouts.append(newWorkoutName.text!)
+        self.workoutsTable.reloadData()
         self.newWorkoutView.removeFromSuperview()
     }
 

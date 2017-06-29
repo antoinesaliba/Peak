@@ -116,6 +116,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="newWorkoutName" destination="oTn-Ye-7aW" id="7yb-IA-Nhf"/>
                         <outlet property="newWorkoutView" destination="oBL-VT-iua" id="3UW-3d-4KT"/>
                         <outlet property="workoutsTable" destination="9VJ-fI-lmC" id="AO2-Sc-KNZ"/>
                     </connections>
