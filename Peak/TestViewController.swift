@@ -24,11 +24,11 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
         newWorkoutView.center = workoutsTable.center
         workoutsTable.addSubview(newWorkoutView)
     }
-    
-    @IBAction func submitWorkout(_ sender: Any) {
-        workouts.append(newWorkoutName.text!)
-        self.workoutsTable.reloadData()
-        self.newWorkoutView.removeFromSuperview()
+
+    public func submitWorkout(newWorkoutName: String) {
+        workouts.append(newWorkoutName)
+        print(workouts.count)
+        //self.workoutsTable.reloadData()
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
