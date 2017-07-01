@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,9 +66,6 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORH-mk-9RN">
                                                     <rect key="frame" x="8" y="38" width="343" height="42"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="ORH-mk-9RN" secondAttribute="height" multiplier="49:6" id="IBh-TP-fla"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -77,18 +73,18 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="leading" secondItem="NYQ-EU-LfB" secondAttribute="leading" constant="8" id="8by-uh-vDd"/>
-                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="top" secondItem="NYQ-EU-LfB" secondAttribute="top" constant="38" id="Q3R-7k-HFk"/>
-                                                <constraint firstAttribute="trailing" secondItem="ORH-mk-9RN" secondAttribute="trailing" constant="-6" id="hf8-N8-D8m"/>
-                                                <constraint firstAttribute="bottom" secondItem="ORH-mk-9RN" secondAttribute="bottom" constant="40" id="mVY-zz-HLO"/>
+                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="top" secondItem="NYQ-EU-LfB" secondAttribute="top" constant="38" id="1Lg-Oe-KwR"/>
+                                                <constraint firstAttribute="trailing" secondItem="ORH-mk-9RN" secondAttribute="trailing" constant="-6" id="7b7-AZ-tzV"/>
+                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="leading" secondItem="NYQ-EU-LfB" secondAttribute="leadingMargin" id="Y99-KB-g1X"/>
+                                                <constraint firstAttribute="bottom" secondItem="ORH-mk-9RN" secondAttribute="bottom" constant="40" id="YIJ-bC-ExD"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="NYQ-EU-LfB" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leading" constant="15" id="1hw-cD-pwN"/>
-                                        <constraint firstAttribute="bottom" secondItem="NYQ-EU-LfB" secondAttribute="bottom" constant="5" id="CZW-uC-joh"/>
-                                        <constraint firstItem="NYQ-EU-LfB" firstAttribute="top" secondItem="0ng-TK-IsD" secondAttribute="top" constant="5" id="ROO-Xg-eja"/>
-                                        <constraint firstAttribute="trailing" secondItem="NYQ-EU-LfB" secondAttribute="trailing" constant="15" id="j0e-qN-4cV"/>
+                                        <constraint firstItem="NYQ-EU-LfB" firstAttribute="centerX" secondItem="0ng-TK-IsD" secondAttribute="centerX" id="KVq-rE-gCL"/>
+                                        <constraint firstItem="NYQ-EU-LfB" firstAttribute="centerY" secondItem="0ng-TK-IsD" secondAttribute="centerY" id="Xvl-1t-SWE"/>
+                                        <constraint firstItem="NYQ-EU-LfB" firstAttribute="top" secondItem="0ng-TK-IsD" secondAttribute="topMargin" constant="-3" id="oJG-hX-Zq3"/>
+                                        <constraint firstItem="NYQ-EU-LfB" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leadingMargin" constant="7" id="w7N-RV-ALC"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.75302922729999999" green="0.72657406329999996" blue="0.86734050510000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -117,6 +113,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="Qq9-Fg-KID" id="fm7-j7-qWs"/>
                         <outlet property="workoutsTable" destination="9VJ-fI-lmC" id="AO2-Sc-KNZ"/>
                     </connections>
                 </tableViewController>

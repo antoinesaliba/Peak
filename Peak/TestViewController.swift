@@ -13,35 +13,45 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
     var workouts = ["Curls","Dips","Pull-Ups","Sit-Ups","Rows","Bench Press","Flyes","Squats"]
     
     @IBOutlet var workoutsTable: UITableView!
-    @IBOutlet var newWorkoutView: UIView!
-    @IBOutlet weak var newWorkoutName: UITextField!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
+    //move and delete specific workouts in main workouts table
     @IBAction func editWorkouts(_ sender: Any) {
         workoutsTable.isEditing = !workoutsTable.isEditing
+        editButton.title = (workoutsTable.isEditing) ? "Done" : "Edit"
     }
     
+    //opens the new workout popup
     @IBAction func addWorkout(_ sender: Any) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
-        // 2. Set self as a value to delegate
-        secondViewController.newWorkoutProtocol = self
-        
-        // 3. Push SecondViewController
-        self.present(secondViewController, animated: true, completion: nil)
+        let popup = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
+        popup.newWorkoutProtocol = self
+
+        self.present(popup, animated: true, completion: nil)
+    }
+    
+    //adds user inputed workout in popup to the workouts array and updates the main workouts table
+    //if the workout name entered is already in the table it will not add it again
+    func createNewWorkout(name: String){
+        if !workouts.contains(name) {
+            workouts.append(name)
+            workoutsTable.reloadData()
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 
-    public func submitWorkout(newWorkoutName: String) {
-        workouts.append(newWorkoutName)
-        print(workouts.count)
-        //self.workoutsTable.reloadData()
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
-
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (workouts.count)
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
+    //code to set custom properties for all table cells
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewWorkoutCell
         cell.workoutName.text = workouts[indexPath.row]
         cell.workoutContainer.layer.cornerRadius = 30.0
@@ -49,8 +59,7 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
         return (cell)
     }
     
-    public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool
-    {
+    public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
@@ -68,20 +77,5 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
         }
     }
 
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func createNewWorkout(name: String){
-        workouts.append(name)
-        workoutsTable.reloadData()
-    }
-    
 
 }
