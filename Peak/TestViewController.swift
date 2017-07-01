@@ -13,7 +13,6 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
     var workouts = ["Curls","Dips","Pull-Ups","Sit-Ups","Rows","Bench Press","Flyes","Squats"]
     
     @IBOutlet var workoutsTable: UITableView!
-    @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     //move and delete specific workouts in main workouts table
@@ -42,6 +41,7 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.workoutsTable.contentInset = UIEdgeInsetsMake(15,0,0,0); //adds space between navigation bar and main workouts table
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Atami", size: 25)!] //set font and size of navigation bar title
 
     }
 

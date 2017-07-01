@@ -18,6 +18,7 @@
 		209051B41EEC7A94000AEFCA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209051B31EEC7A94000AEFCA /* MainViewController.swift */; };
 		20E15BB61EFED73E00920F52 /* TableViewWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BB51EFED73E00920F52 /* TableViewWorkoutCell.swift */; };
 		20E15BB91F05FD8D00920F52 /* NewWorkoutPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */; };
+		20E15BC41F08484800920F52 /* Atami-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20E15BC31F08484800920F52 /* Atami-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		209051B31EEC7A94000AEFCA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		20E15BB51EFED73E00920F52 /* TableViewWorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewWorkoutCell.swift; sourceTree = "<group>"; };
 		20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWorkoutPopup.swift; sourceTree = "<group>"; };
+		20E15BC31F08484800920F52 /* Atami-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Atami-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		208BFD551EEB699300B1E881 /* Peak */ = {
 			isa = PBXGroup;
 			children = (
+				20E15BBA1F0841D400920F52 /* Fonts */,
 				208BFD561EEB699300B1E881 /* AppDelegate.swift */,
 				208BFD581EEB699300B1E881 /* ViewController.swift */,
 				208BFD5A1EEB699300B1E881 /* Main.storyboard */,
@@ -126,6 +129,14 @@
 				208BFD801EEB6BCB00B1E881 /* ChartsTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		20E15BBA1F0841D400920F52 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				20E15BC31F08484800920F52 /* Atami-Regular.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +225,7 @@
 			files = (
 				208BFD611EEB699300B1E881 /* LaunchScreen.storyboard in Resources */,
 				208BFD5E1EEB699300B1E881 /* Assets.xcassets in Resources */,
+				20E15BC41F08484800920F52 /* Atami-Regular.otf in Resources */,
 				208BFD5C1EEB699300B1E881 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
