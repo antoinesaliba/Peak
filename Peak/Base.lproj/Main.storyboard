@@ -113,7 +113,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="40S-c3-VqB">
                             <connections>
                                 <action selector="addWorkout:" destination="3u2-El-hjH" id="gON-JO-7TG"/>
-                                <segue destination="3EQ-yg-2XZ" kind="presentation" id="H6K-wn-m95"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -128,7 +127,7 @@
         <!--New Workout Popup-->
         <scene sceneID="dk1-wo-D8a">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="3EQ-yg-2XZ" customClass="NewWorkoutPopup" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewWorkoutPopup" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="3EQ-yg-2XZ" customClass="NewWorkoutPopup" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c7r-gk-TWX"/>
                         <viewControllerLayoutGuide type="bottom" id="Xx0-ka-nYI"/>

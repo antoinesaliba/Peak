@@ -8,24 +8,24 @@
 
 import UIKit
 
+protocol NewWorkoutProtocol {
+    func createNewWorkout(name: String)
+}
+
 class NewWorkoutPopup: UIViewController {
     
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var newWorkoutName: UITextField!
     
+    var newWorkoutProtocol:NewWorkoutProtocol?
+    
     @IBAction func submitAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    @IBAction func cancelAction(_ sender: Any) {
+        newWorkoutProtocol?.createNewWorkout(name: newWorkoutName.text!)
         dismiss(animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigation = segue.destination as! UINavigationController
-        let mainViewController = navigation.viewControllers.first as! TestViewController
-        
-        mainViewController.workouts.append(newWorkoutName.text!)
-        print(mainViewController.workouts.count)
+    @IBAction func cancelAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {

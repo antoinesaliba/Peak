@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TestViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
+class TestViewController: UIViewController, UITableViewDataSource,UITableViewDelegate, NewWorkoutProtocol {
     
     var workouts = ["Curls","Dips","Pull-Ups","Sit-Ups","Rows","Bench Press","Flyes","Squats"]
     
@@ -21,8 +21,12 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
     }
     
     @IBAction func addWorkout(_ sender: Any) {
-        newWorkoutView.center = workoutsTable.center
-        workoutsTable.addSubview(newWorkoutView)
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
+        // 2. Set self as a value to delegate
+        secondViewController.newWorkoutProtocol = self
+        
+        // 3. Push SecondViewController
+        self.present(secondViewController, animated: true, completion: nil)
     }
 
     public func submitWorkout(newWorkoutName: String) {
@@ -74,15 +78,10 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func createNewWorkout(name: String){
+        workouts.append(name)
+        workoutsTable.reloadData()
     }
-    */
+    
 
 }
