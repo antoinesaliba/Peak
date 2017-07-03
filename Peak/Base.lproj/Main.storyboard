@@ -123,6 +123,7 @@
                     <connections>
                         <outlet property="editButton" destination="Qq9-Fg-KID" id="fm7-j7-qWs"/>
                         <outlet property="workoutsTable" destination="9VJ-fI-lmC" id="AO2-Sc-KNZ"/>
+                        <segue destination="3HD-M4-quB" kind="show" identifier="WorkoutInfoSegue" id="48m-jd-s9J"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6q-Hi-qEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -192,7 +193,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arB-Oy-fKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2069.5999999999999" y="-1273.313343328336"/>
+            <point key="canvasLocation" x="1330" y="-2016"/>
+        </scene>
+        <!--Workout Details-->
+        <scene sceneID="4Zd-bZ-1bl">
+            <objects>
+                <viewController title="Workout Details" id="3HD-M4-quB" customClass="WorkoutInfoViewController" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tlh-si-rtt"/>
+                        <viewControllerLayoutGuide type="bottom" id="HgW-7q-LGS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cFy-qY-iv7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kei-tk-W02">
+                                <rect key="frame" x="16" y="110" width="343" height="81"/>
+                                <fontDescription key="fontDescription" name="Atami-Regular" family="Atami" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kei-tk-W02" firstAttribute="trailing" secondItem="cFy-qY-iv7" secondAttribute="trailingMargin" id="9FO-XO-rhB"/>
+                            <constraint firstItem="kei-tk-W02" firstAttribute="leading" secondItem="cFy-qY-iv7" secondAttribute="leadingMargin" id="PDr-Ku-fdT"/>
+                            <constraint firstItem="HgW-7q-LGS" firstAttribute="top" secondItem="kei-tk-W02" secondAttribute="bottom" constant="476" id="avC-bT-TX6"/>
+                            <constraint firstItem="kei-tk-W02" firstAttribute="top" secondItem="tlh-si-rtt" secondAttribute="bottom" constant="46" id="uZM-ET-fl0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="name" destination="kei-tk-W02" id="0UD-jy-6bs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8j2-th-VnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2144.8000000000002" y="-1273.313343328336"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="HQK-tG-6tg">

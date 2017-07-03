@@ -40,6 +40,8 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        workoutsTable.delegate = self
+        workoutsTable.dataSource = self
         self.workoutsTable.contentInset = UIEdgeInsetsMake(15,0,0,0); //adds space between navigation bar and main workouts table
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Atami", size: 25)!] //set font and size of navigation bar title
 
@@ -79,6 +81,15 @@ class TestViewController: UIViewController, UITableViewDataSource,UITableViewDel
             tableView.reloadData()
         }
     }
-
+    
+    //two functions below set up links for each workout cell to open workout detail page for specific workout
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "WorkoutInfoSegue", sender: workouts[indexPath.row])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let infoview = segue.destination as! WorkoutInfoViewController
+        infoview.workoutName = sender as! String
+    }
 
 }

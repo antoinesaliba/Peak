@@ -19,6 +19,7 @@
 		20E15BB61EFED73E00920F52 /* TableViewWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BB51EFED73E00920F52 /* TableViewWorkoutCell.swift */; };
 		20E15BB91F05FD8D00920F52 /* NewWorkoutPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */; };
 		20E15BC41F08484800920F52 /* Atami-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20E15BC31F08484800920F52 /* Atami-Regular.otf */; };
+		20E15BCA1F09FFDB00920F52 /* WorkoutInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BC91F09FFDB00920F52 /* WorkoutInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		20E15BB51EFED73E00920F52 /* TableViewWorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewWorkoutCell.swift; sourceTree = "<group>"; };
 		20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWorkoutPopup.swift; sourceTree = "<group>"; };
 		20E15BC31F08484800920F52 /* Atami-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Atami-Regular.otf"; sourceTree = "<group>"; };
+		20E15BC91F09FFDB00920F52 /* WorkoutInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				20E15BB51EFED73E00920F52 /* TableViewWorkoutCell.swift */,
 				201518351EFE29A3001D30AD /* TestViewController.swift */,
 				209051B31EEC7A94000AEFCA /* MainViewController.swift */,
+				20E15BC91F09FFDB00920F52 /* WorkoutInfoViewController.swift */,
 				208BFD5D1EEB699300B1E881 /* Assets.xcassets */,
 				208BFD5F1EEB699300B1E881 /* LaunchScreen.storyboard */,
 				208BFD621EEB699300B1E881 /* Info.plist */,
@@ -241,6 +244,7 @@
 				20E15BB61EFED73E00920F52 /* TableViewWorkoutCell.swift in Sources */,
 				208BFD591EEB699300B1E881 /* ViewController.swift in Sources */,
 				20E15BB91F05FD8D00920F52 /* NewWorkoutPopup.swift in Sources */,
+				20E15BCA1F09FFDB00920F52 /* WorkoutInfoViewController.swift in Sources */,
 				201518361EFE29A3001D30AD /* TestViewController.swift in Sources */,
 				208BFD571EEB699300B1E881 /* AppDelegate.swift in Sources */,
 			);
