@@ -53,7 +53,8 @@
         <!--Peak-->
         <scene sceneID="VnB-ON-tQ6">
             <objects>
-                <tableViewController modalTransitionStyle="crossDissolve" id="3u2-El-hjH" customClass="TestViewController" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S6q-Hi-qEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController modalTransitionStyle="crossDissolve" id="3u2-El-hjH" customClass="MainViewController" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" id="9VJ-fI-lmC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,7 +127,6 @@
                         <segue destination="3HD-M4-quB" kind="show" identifier="WorkoutInfoSegue" id="48m-jd-s9J"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S6q-Hi-qEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1330.4000000000001" y="-1273.313343328336"/>
         </scene>
@@ -230,10 +230,10 @@
             </objects>
             <point key="canvasLocation" x="2144.8000000000002" y="-1273.313343328336"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Graph View Controller-->
         <scene sceneID="HQK-tG-6tg">
             <objects>
-                <viewController id="byy-ii-HC6" customClass="MainViewController" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="byy-ii-HC6" customClass="GraphViewController" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DoK-4B-9Q4"/>
                         <viewControllerLayoutGuide type="bottom" id="6hb-49-GAU"/>
