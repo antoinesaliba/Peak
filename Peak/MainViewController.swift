@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class MainViewController: UITableViewController, NewWorkoutProtocol {
     
-    var workouts = ["Curls","Dips","Pull-Ups","Sit-Ups","Rows","Bench Press","Flyes","Squats"]
+    var workouts:[NSManagedObject] = []
     
     @IBOutlet var workoutsTable: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -32,18 +33,44 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
     //adds user inputed workout in popup to the workouts array and updates the main workouts table
     //if the workout name entered is already in the table it will not add it again
     func createNewWorkout(name: String){
-        if !workouts.contains(name) {
-            workouts.append(name)
-            workoutsTable.reloadData()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let newWorkout = NSEntityDescription.insertNewObject(forEntityName: "WorkoutsDatabase", into: context)
+        
+        newWorkout.setValue(name, forKey: "workoutname")
+        
+        do{
+            try context.save()
+            if !workouts.contains(newWorkout) {
+                workouts.append(newWorkout)
+                workoutsTable.reloadData()
+            }
+        }catch{
+            print ("Error!")
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         workoutsTable.delegate = self
         workoutsTable.dataSource = self
         self.workoutsTable.contentInset = UIEdgeInsetsMake(15,0,0,0); //adds space between navigation bar and main workouts table
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Atami", size: 25)!] //set font and size of navigation bar title
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WorkoutsDatabase")
+        request.returnsObjectsAsFaults = false
+        
+        do{
+            let results = try context.fetch(request)
+            workouts = results as! [NSManagedObject]
+        }catch{
+            print ("Error!!!")
+        }
 
     }
 
@@ -58,7 +85,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
     //code to set custom properties for all table cells
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewWorkoutCell
-        cell.workoutName.text = workouts[indexPath.row]
+        cell.workoutName.text = workouts[indexPath.row].value(forKey: "workoutname") as? String
         cell.workoutContainer.layer.cornerRadius = 30.0
         
         return (cell)
@@ -77,6 +104,15 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            context.delete(workouts[indexPath.row])
+            do{
+                try context.save()
+            }catch{
+                print("Failed")
+            }
+
             workouts.remove(at: indexPath.row)
             tableView.reloadData()
         }

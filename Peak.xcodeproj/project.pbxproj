@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		201518361EFE29A3001D30AD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201518351EFE29A3001D30AD /* MainViewController.swift */; };
+		203877881F0B4F08008321C2 /* WorkoutsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 203877861F0B4F08008321C2 /* WorkoutsData.xcdatamodeld */; };
 		208BFD571EEB699300B1E881 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208BFD561EEB699300B1E881 /* AppDelegate.swift */; };
 		208BFD591EEB699300B1E881 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208BFD581EEB699300B1E881 /* ViewController.swift */; };
 		208BFD5C1EEB699300B1E881 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208BFD5A1EEB699300B1E881 /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		201518351EFE29A3001D30AD /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		203877871F0B4F08008321C2 /* WorkoutsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorkoutsData.xcdatamodel; sourceTree = "<group>"; };
 		208BFD531EEB699300B1E881 /* Peak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		208BFD561EEB699300B1E881 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		208BFD581EEB699300B1E881 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				201518351EFE29A3001D30AD /* MainViewController.swift */,
 				209051B31EEC7A94000AEFCA /* GraphViewController.swift */,
 				20E15BC91F09FFDB00920F52 /* WorkoutInfoViewController.swift */,
+				203877861F0B4F08008321C2 /* WorkoutsData.xcdatamodeld */,
 				208BFD5D1EEB699300B1E881 /* Assets.xcassets */,
 				208BFD5F1EEB699300B1E881 /* LaunchScreen.storyboard */,
 				208BFD621EEB699300B1E881 /* Info.plist */,
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				209051B41EEC7A94000AEFCA /* GraphViewController.swift in Sources */,
+				203877881F0B4F08008321C2 /* WorkoutsData.xcdatamodeld in Sources */,
 				20E15BB61EFED73E00920F52 /* TableViewWorkoutCell.swift in Sources */,
 				208BFD591EEB699300B1E881 /* ViewController.swift in Sources */,
 				20E15BB91F05FD8D00920F52 /* NewWorkoutPopup.swift in Sources */,
@@ -423,6 +427,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		203877861F0B4F08008321C2 /* WorkoutsData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				203877871F0B4F08008321C2 /* WorkoutsData.xcdatamodel */,
+			);
+			currentVersion = 203877871F0B4F08008321C2 /* WorkoutsData.xcdatamodel */;
+			path = WorkoutsData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 208BFD4B1EEB699300B1E881 /* Project object */;
 }
