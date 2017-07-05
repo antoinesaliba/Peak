@@ -12,6 +12,7 @@ import CoreData
 class MainViewController: UITableViewController, NewWorkoutProtocol {
     
     var workouts:[NSManagedObject] = []
+    var databaseContext:NSManagedObjectContext! //initialize database context so it can be reused throughout file
     
     @IBOutlet var workoutsTable: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -33,23 +34,28 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
     //adds user inputed workout in popup to the workouts array and updates the main workouts table
     //if the workout name entered is already in the table it will not add it again
     func createNewWorkout(name: String){
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if noDuplicateWorkout(newWorkout: name) {
+            let newWorkout = NSEntityDescription.insertNewObject(forEntityName: "Workout", into: databaseContext)
         
-        let context = appDelegate.persistentContainer.viewContext
+            newWorkout.setValue(name, forKey: "workoutname")
         
-        let newWorkout = NSEntityDescription.insertNewObject(forEntityName: "WorkoutsDatabase", into: context)
-        
-        newWorkout.setValue(name, forKey: "workoutname")
-        
-        do{
-            try context.save()
-            if !workouts.contains(newWorkout) {
+            do{
+                try databaseContext.save()
                 workouts.append(newWorkout)
                 workoutsTable.reloadData()
+            }catch{
+                print ("Error!")
             }
-        }catch{
-            print ("Error!")
         }
+    }
+    
+    func noDuplicateWorkout(newWorkout: String) -> Bool{
+        for workout in workouts{
+            if workout.value(forKey: "workoutname") as! String == newWorkout{
+                return false
+            }
+        }
+        return true
     }
     
     override func viewDidLoad() {
@@ -60,13 +66,12 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
         self.workoutsTable.contentInset = UIEdgeInsetsMake(15,0,0,0); //adds space between navigation bar and main workouts table
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Atami", size: 25)!] //set font and size of navigation bar title
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WorkoutsDatabase")
+        databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Workout")
         request.returnsObjectsAsFaults = false
         
         do{
-            let results = try context.fetch(request)
+            let results = try databaseContext.fetch(request)
             workouts = results as! [NSManagedObject]
         }catch{
             print ("Error!!!")
@@ -104,11 +109,9 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            context.delete(workouts[indexPath.row])
+            databaseContext.delete(workouts[indexPath.row])
             do{
-                try context.save()
+                try databaseContext.save()
             }catch{
                 print("Failed")
             }
