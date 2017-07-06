@@ -11,7 +11,7 @@ import CoreData
 
 class MainViewController: UITableViewController, NewWorkoutProtocol {
     
-    var workouts:[NSManagedObject] = []
+    var workouts:[Workout] = []
     var databaseContext:NSManagedObjectContext! //initialize database context so it can be reused throughout file
     
     @IBOutlet var workoutsTable: UITableView!
@@ -35,23 +35,22 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
     //if the workout name entered is already in the table it will not add it again
     func createNewWorkout(name: String){
         if noDuplicateWorkout(newWorkout: name) {
-            let newWorkout = NSEntityDescription.insertNewObject(forEntityName: "Workout", into: databaseContext)
-        
-            newWorkout.setValue(name, forKey: "workoutname")
+            let newWorkout = Workout(context: databaseContext)
+            newWorkout.workoutname = name
         
             do{
                 try databaseContext.save()
                 workouts.append(newWorkout)
                 workoutsTable.reloadData()
             }catch{
-                print ("Error!")
+                print ("Error saving new workout to database.")
             }
         }
     }
     
     func noDuplicateWorkout(newWorkout: String) -> Bool{
         for workout in workouts{
-            if workout.value(forKey: "workoutname") as! String == newWorkout{
+            if workout.value(forKey: "workoutname") as! String == newWorkout {
                 return false
             }
         }
@@ -72,9 +71,9 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
         
         do{
             let results = try databaseContext.fetch(request)
-            workouts = results as! [NSManagedObject]
+            workouts = results as! [Workout]
         }catch{
-            print ("Error!!!")
+            print ("Error loading workouts from database.")
         }
 
     }
@@ -113,7 +112,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
             do{
                 try databaseContext.save()
             }catch{
-                print("Failed")
+                print("Failed to save deleted workout to database.")
             }
 
             workouts.remove(at: indexPath.row)
