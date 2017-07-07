@@ -13,6 +13,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
     
     var workouts:[Workout] = []
     var databaseContext:NSManagedObjectContext! //initialize database context so it can be reused throughout file
+    var testAr:[Int] = []
     
     @IBOutlet var workoutsTable: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -37,6 +38,9 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
         if noDuplicateWorkout(newWorkout: name) {
             let newWorkout = Workout(context: databaseContext)
             newWorkout.workoutname = name
+            let testArray = [12,43,45,21,56]
+            let data = NSKeyedArchiver.archivedData(withRootObject: testArray)
+            newWorkout.setValue(data, forKey: "data")
         
             do{
                 try databaseContext.save()
@@ -46,6 +50,26 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
                 print ("Error saving new workout to database.")
             }
         }
+        let pa = NSKeyedArchiver.archivedData(withRootObject: [10])
+        findWorkoutElement(name: "Test").setValue(pa, forKey: "data")
+        do {
+            try databaseContext.save()
+        }catch{
+            print ("Error!!")
+        }
+        let datar = findWorkoutElement(name: "Test").value(forKey: "data") as! NSData
+        let unarchiveObject = NSKeyedUnarchiver.unarchiveObject(with: datar as Data)
+        let arrayObject = unarchiveObject as AnyObject! as! [Int]
+        testAr = arrayObject
+        for element in testAr{
+            print (element)
+        }
+
+    }
+    
+    func findWorkoutElement(name: String) -> Workout {
+        let i = workouts.index(where: { $0.workoutname == name })
+        return workouts[i!]
     }
     
     func noDuplicateWorkout(newWorkout: String) -> Bool{
@@ -72,6 +96,15 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
         do{
             let results = try databaseContext.fetch(request)
             workouts = results as! [Workout]
+            if workouts[0].data != nil{
+                let datar = workouts[0].value(forKey: "data") as! NSData
+                let unarchiveObject = NSKeyedUnarchiver.unarchiveObject(with: datar as Data)
+                let arrayObject = unarchiveObject as AnyObject! as! [Int]
+                testAr = arrayObject
+                for element in testAr{
+                    print (element)
+                }
+            }
         }catch{
             print ("Error loading workouts from database.")
         }
@@ -122,7 +155,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
     
     //two functions below set up links for each workout cell to open workout detail page for specific workout
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "WorkoutInfoSegue", sender: workouts[indexPath.row])
+        performSegue(withIdentifier: "WorkoutInfoSegue", sender: workouts[indexPath.row].workoutname)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
