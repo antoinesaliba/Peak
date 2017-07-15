@@ -13,7 +13,6 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
     
     var workouts:[Workout] = []
     var databaseContext:NSManagedObjectContext! //initialize database context so it can be reused throughout file
-    var testAr:[Int] = []
     
     @IBOutlet var workoutsTable: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -38,7 +37,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
         if noDuplicateWorkout(newWorkout: name) {
             let newWorkout = Workout(context: databaseContext)
             newWorkout.workoutname = name
-            archiveData(workout: newWorkout, plainData: [])
+            saveData(workout: newWorkout, plainData: [10,12,15])
             workouts.append(newWorkout)
             workoutsTable.reloadData()
         }
@@ -51,16 +50,16 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
     
     func addWorkoutData(name: String, newData: Int) {
         let workout = findWorkoutElement(name: name)
-        var workoutData = unarchiveData(binaryData: findWorkoutElement(name: "Test").data!)
+        var workoutData = getData(binaryData: findWorkoutElement(name: "Test").data!)
         workoutData.append(newData)
-        archiveData(workout: workout, plainData: workoutData)
+        saveData(workout: workout, plainData: workoutData)
     }
     
-    func unarchiveData(binaryData: NSData) -> [Int] {
+    func getData(binaryData: NSData) -> [Int] {
         return NSKeyedUnarchiver.unarchiveObject(with: binaryData as Data) as! [Int]
     }
     
-    func archiveData(workout: Workout, plainData: [Int]){
+    func saveData(workout: Workout, plainData: [Int]) {
         let binaryData = NSKeyedArchiver.archivedData(withRootObject: plainData)
         workout.setValue(binaryData, forKey: "data")
         do {
@@ -144,12 +143,20 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
     
     //two functions below set up links for each workout cell to open workout detail page for specific workout
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "WorkoutInfoSegue", sender: workouts[indexPath.row].workoutname)
+        performSegue(withIdentifier: "WorkoutInfoSegue", sender: workouts[indexPath.row])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let infoview = segue.destination as! WorkoutInfoViewController
-        infoview.workoutName = sender as! String
+        let selectedWorkout = sender as! Workout
+        let selectedWorkoutData = getData(binaryData: selectedWorkout.data!)
+        infoview.workoutName = selectedWorkout.workoutname!
+        if selectedWorkoutData.count > 0 {
+            let stringArray = selectedWorkoutData.map
+            {
+                String($0)
+            }
+            infoview.workoutData = stringArray.joined(separator: " ")
+        }
     }
-
 }
