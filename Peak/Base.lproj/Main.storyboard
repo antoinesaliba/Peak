@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,19 +72,16 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORH-mk-9RN">
                                                     <rect key="frame" x="8" y="38" width="343" height="42"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="ORH-mk-9RN" secondAttribute="height" multiplier="49:6" id="IBh-TP-fla"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Atami-Regular" family="Atami" pointSize="40"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="leading" secondItem="NYQ-EU-LfB" secondAttribute="leading" constant="8" id="8by-uh-vDd"/>
-                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="top" secondItem="NYQ-EU-LfB" secondAttribute="top" constant="38" id="Q3R-7k-HFk"/>
-                                                <constraint firstAttribute="trailing" secondItem="ORH-mk-9RN" secondAttribute="trailing" constant="-6" id="hf8-N8-D8m"/>
-                                                <constraint firstAttribute="bottom" secondItem="ORH-mk-9RN" secondAttribute="bottom" constant="40" id="mVY-zz-HLO"/>
+                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="top" secondItem="NYQ-EU-LfB" secondAttribute="top" constant="38" id="2jq-Pd-M6h"/>
+                                                <constraint firstAttribute="trailing" secondItem="ORH-mk-9RN" secondAttribute="trailing" constant="-6" id="3Js-fz-WmX"/>
+                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="leading" secondItem="NYQ-EU-LfB" secondAttribute="leadingMargin" id="oSr-6b-xOz"/>
+                                                <constraint firstAttribute="bottom" secondItem="ORH-mk-9RN" secondAttribute="bottom" constant="40" id="qIJ-Ps-rpn"/>
                                             </constraints>
                                         </view>
                                     </subviews>

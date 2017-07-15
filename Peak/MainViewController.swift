@@ -38,38 +38,36 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
         if noDuplicateWorkout(newWorkout: name) {
             let newWorkout = Workout(context: databaseContext)
             newWorkout.workoutname = name
-            let testArray = [12,43,45,21,56]
-            let data = NSKeyedArchiver.archivedData(withRootObject: testArray)
-            newWorkout.setValue(data, forKey: "data")
-        
-            do{
-                try databaseContext.save()
-                workouts.append(newWorkout)
-                workoutsTable.reloadData()
-            }catch{
-                print ("Error saving new workout to database.")
-            }
+            archiveData(workout: newWorkout, plainData: [])
+            workouts.append(newWorkout)
+            workoutsTable.reloadData()
         }
-        let pa = NSKeyedArchiver.archivedData(withRootObject: [10])
-        findWorkoutElement(name: "Test").setValue(pa, forKey: "data")
-        do {
-            try databaseContext.save()
-        }catch{
-            print ("Error!!")
-        }
-        let datar = findWorkoutElement(name: "Test").value(forKey: "data") as! NSData
-        let unarchiveObject = NSKeyedUnarchiver.unarchiveObject(with: datar as Data)
-        let arrayObject = unarchiveObject as AnyObject! as! [Int]
-        testAr = arrayObject
-        for element in testAr{
-            print (element)
-        }
-
     }
     
     func findWorkoutElement(name: String) -> Workout {
         let i = workouts.index(where: { $0.workoutname == name })
         return workouts[i!]
+    }
+    
+    func addWorkoutData(name: String, newData: Int) {
+        let workout = findWorkoutElement(name: name)
+        var workoutData = unarchiveData(binaryData: findWorkoutElement(name: "Test").data!)
+        workoutData.append(newData)
+        archiveData(workout: workout, plainData: workoutData)
+    }
+    
+    func unarchiveData(binaryData: NSData) -> [Int] {
+        return NSKeyedUnarchiver.unarchiveObject(with: binaryData as Data) as! [Int]
+    }
+    
+    func archiveData(workout: Workout, plainData: [Int]){
+        let binaryData = NSKeyedArchiver.archivedData(withRootObject: plainData)
+        workout.setValue(binaryData, forKey: "data")
+        do {
+            try databaseContext.save()
+        }catch{
+            print ("Error saving new workout data to database.")
+        }
     }
     
     func noDuplicateWorkout(newWorkout: String) -> Bool{
@@ -96,15 +94,6 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
         do{
             let results = try databaseContext.fetch(request)
             workouts = results as! [Workout]
-            if workouts[0].data != nil{
-                let datar = workouts[0].value(forKey: "data") as! NSData
-                let unarchiveObject = NSKeyedUnarchiver.unarchiveObject(with: datar as Data)
-                let arrayObject = unarchiveObject as AnyObject! as! [Int]
-                testAr = arrayObject
-                for element in testAr{
-                    print (element)
-                }
-            }
         }catch{
             print ("Error loading workouts from database.")
         }
