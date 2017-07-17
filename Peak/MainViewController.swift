@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MainViewController: UITableViewController, NewWorkoutProtocol {
+class MainViewController: UITableViewController, NewWorkoutProtocol, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     var workouts:[Workout] = []
     var databaseContext:NSManagedObjectContext! //initialize database context so it can be reused throughout file
@@ -78,11 +78,22 @@ class MainViewController: UITableViewController, NewWorkoutProtocol {
         return true
     }
     
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Welcome"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
+        
         workoutsTable.delegate = self
         workoutsTable.dataSource = self
+        
         self.workoutsTable.contentInset = UIEdgeInsetsMake(15,0,0,0); //adds space between navigation bar and main workouts table
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Atami", size: 25)!] //set font and size of navigation bar title
         

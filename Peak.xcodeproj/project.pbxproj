@@ -21,6 +21,7 @@
 		20E15BB91F05FD8D00920F52 /* NewWorkoutPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */; };
 		20E15BC41F08484800920F52 /* Atami-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20E15BC31F08484800920F52 /* Atami-Regular.otf */; };
 		20E15BCA1F09FFDB00920F52 /* WorkoutInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BC91F09FFDB00920F52 /* WorkoutInfoViewController.swift */; };
+		20FEB36F1F1C3E6600E29BCE /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FEB36E1F1C3E6600E29BCE /* UIScrollView+EmptyDataSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,9 @@
 		20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWorkoutPopup.swift; sourceTree = "<group>"; };
 		20E15BC31F08484800920F52 /* Atami-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Atami-Regular.otf"; sourceTree = "<group>"; };
 		20E15BC91F09FFDB00920F52 /* WorkoutInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInfoViewController.swift; sourceTree = "<group>"; };
+		20FEB36B1F1C3E6600E29BCE /* Peak-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Peak-Bridging-Header.h"; sourceTree = "<group>"; };
+		20FEB36D1F1C3E6600E29BCE /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
+		20FEB36E1F1C3E6600E29BCE /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,9 @@
 				208BFD551EEB699300B1E881 /* Peak */,
 				208BFD541EEB699300B1E881 /* Products */,
 				208BFD681EEB69B600B1E881 /* Charts.xcodeproj */,
+				20FEB36B1F1C3E6600E29BCE /* Peak-Bridging-Header.h */,
+				20FEB36D1F1C3E6600E29BCE /* UIScrollView+EmptyDataSet.h */,
+				20FEB36E1F1C3E6600E29BCE /* UIScrollView+EmptyDataSet.m */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,6 +186,7 @@
 				TargetAttributes = {
 					208BFD521EEB699300B1E881 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -250,6 +258,7 @@
 				20E15BB91F05FD8D00920F52 /* NewWorkoutPopup.swift in Sources */,
 				20E15BCA1F09FFDB00920F52 /* WorkoutInfoViewController.swift in Sources */,
 				201518361EFE29A3001D30AD /* MainViewController.swift in Sources */,
+				20FEB36F1F1C3E6600E29BCE /* UIScrollView+EmptyDataSet.m in Sources */,
 				208BFD571EEB699300B1E881 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,10 +393,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Peak/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.antoinesaliba.Peak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Peak-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -397,10 +409,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Peak/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.antoinesaliba.Peak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Peak-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

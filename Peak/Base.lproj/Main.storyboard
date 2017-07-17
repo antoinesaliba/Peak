@@ -142,7 +142,7 @@
                                 <rect key="frame" x="16" y="229" width="343" height="208"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Workout Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="byP-Br-KO8">
-                                        <rect key="frame" x="73" y="35" width="196" height="30"/>
+                                        <rect key="frame" x="73" y="13" width="196" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -169,8 +169,8 @@
                                     <constraint firstItem="byP-Br-KO8" firstAttribute="leading" secondItem="odz-9G-VIf" secondAttribute="leading" constant="73" id="7Sc-x2-xGZ"/>
                                     <constraint firstItem="byP-Br-KO8" firstAttribute="centerX" secondItem="odz-9G-VIf" secondAttribute="centerX" id="Dy0-pP-c3L"/>
                                     <constraint firstItem="K85-UE-Jk0" firstAttribute="leading" secondItem="odz-9G-VIf" secondAttribute="leading" constant="72" id="YXe-dc-25s"/>
-                                    <constraint firstItem="byP-Br-KO8" firstAttribute="top" secondItem="odz-9G-VIf" secondAttribute="top" constant="35" id="bs6-QO-M03"/>
-                                    <constraint firstItem="K85-UE-Jk0" firstAttribute="top" secondItem="byP-Br-KO8" secondAttribute="bottom" constant="57" id="ius-ke-HEd"/>
+                                    <constraint firstItem="byP-Br-KO8" firstAttribute="top" secondItem="odz-9G-VIf" secondAttribute="top" constant="13" id="bs6-QO-M03"/>
+                                    <constraint firstItem="K85-UE-Jk0" firstAttribute="top" secondItem="byP-Br-KO8" secondAttribute="bottom" constant="79" id="ius-ke-HEd"/>
                                 </constraints>
                             </view>
                         </subviews>
