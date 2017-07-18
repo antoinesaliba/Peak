@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import DZNEmptyDataSet
 
 class MainViewController: UITableViewController, NewWorkoutProtocol, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     

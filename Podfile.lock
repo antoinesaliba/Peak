@@ -1,12 +1,17 @@
 PODS:
+  - Charts (3.0.2):
+    - Charts/Core (= 3.0.2)
+  - Charts/Core (3.0.2)
   - DZNEmptyDataSet (1.8.1)
 
 DEPENDENCIES:
+  - Charts
   - DZNEmptyDataSet
 
 SPEC CHECKSUMS:
+  Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
 
-PODFILE CHECKSUM: de889b7e5e63725c6174d59c84626af463bbc544
+PODFILE CHECKSUM: d89b6a66b7bfd7fbb5e78af2d825967b1fa26ed9
 
 COCOAPODS: 1.2.1
