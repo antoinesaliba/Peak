@@ -110,7 +110,8 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, DZNEmptyDat
         
         let date = NSDate()
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-yyyy-hh-mm-ss"
+        //MM-dd-yyyy-hh-mm-ss also available
+        formatter.dateFormat = "yyyyMMddhhmmss"
         let result = formatter.string(from: date as Date)
         print(result)
         
