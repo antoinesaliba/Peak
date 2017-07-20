@@ -108,6 +108,13 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, DZNEmptyDat
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Workout")
         request.returnsObjectsAsFaults = false
         
+        let date = NSDate()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy-hh-mm-ss"
+        let result = formatter.string(from: date as Date)
+        print(result)
+        
+        
         do{
             let results = try databaseContext.fetch(request)
             workouts = results as! [Workout]
