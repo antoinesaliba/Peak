@@ -15,6 +15,7 @@
 		208BFD5E1EEB699300B1E881 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 208BFD5D1EEB699300B1E881 /* Assets.xcassets */; };
 		208BFD611EEB699300B1E881 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208BFD5F1EEB699300B1E881 /* LaunchScreen.storyboard */; };
 		209051B41EEC7A94000AEFCA /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209051B31EEC7A94000AEFCA /* GraphViewController.swift */; };
+		20ACE7271F22B44500A1A227 /* NewDataPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ACE7261F22B44500A1A227 /* NewDataPopup.swift */; };
 		20E15BB61EFED73E00920F52 /* TableViewWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BB51EFED73E00920F52 /* TableViewWorkoutCell.swift */; };
 		20E15BB91F05FD8D00920F52 /* NewWorkoutPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */; };
 		20E15BC41F08484800920F52 /* Atami-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20E15BC31F08484800920F52 /* Atami-Regular.otf */; };
@@ -46,6 +47,7 @@
 		208BFD601EEB699300B1E881 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		208BFD621EEB699300B1E881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		209051B31EEC7A94000AEFCA /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		20ACE7261F22B44500A1A227 /* NewDataPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDataPopup.swift; sourceTree = "<group>"; };
 		20E15BB51EFED73E00920F52 /* TableViewWorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewWorkoutCell.swift; sourceTree = "<group>"; };
 		20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWorkoutPopup.swift; sourceTree = "<group>"; };
 		20E15BC31F08484800920F52 /* Atami-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Atami-Regular.otf"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				208BFD561EEB699300B1E881 /* AppDelegate.swift */,
 				20128CCB1F1DA8E80035EEF1 /* ViewController.swift */,
 				208BFD5A1EEB699300B1E881 /* Main.storyboard */,
+				20ACE7261F22B44500A1A227 /* NewDataPopup.swift */,
 				20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */,
 				20E15BB51EFED73E00920F52 /* TableViewWorkoutCell.swift */,
 				201518351EFE29A3001D30AD /* MainViewController.swift */,
@@ -264,6 +267,7 @@
 				20E15BCA1F09FFDB00920F52 /* WorkoutInfoViewController.swift in Sources */,
 				201518361EFE29A3001D30AD /* MainViewController.swift in Sources */,
 				20128CCC1F1DA8E80035EEF1 /* ViewController.swift in Sources */,
+				20ACE7271F22B44500A1A227 /* NewDataPopup.swift in Sources */,
 				208BFD571EEB699300B1E881 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

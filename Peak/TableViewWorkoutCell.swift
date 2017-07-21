@@ -12,6 +12,7 @@ class TableViewWorkoutCell: UITableViewCell {
 
     @IBOutlet weak var workoutName: UILabel!
     @IBOutlet weak var workoutContainer: UIView!
+    @IBOutlet weak var newDataButton: UIButton!
     override func awakeFromNib() {
         
         super.awakeFromNib()

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import DZNEmptyDataSet
 
-class MainViewController: UITableViewController, NewWorkoutProtocol, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProtocol, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     var workouts:[Workout] = []
     var databaseContext:NSManagedObjectContext! //initialize database context so it can be reused throughout file
@@ -18,6 +18,13 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, DZNEmptyDat
     @IBOutlet var workoutsTable: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
+    @IBAction func addWorkoutData(_ sender: UIButton) {
+        let popup = self.storyboard?.instantiateViewController(withIdentifier: "NewDataPopup") as! NewDataPopup
+        popup.newDataProtocol = self
+        popup.workoutName = workouts[sender.tag].workoutname!
+        
+        self.present(popup, animated: true, completion: nil)
+    }
     //move and delete specific workouts in main workouts table
     @IBAction func editWorkouts(_ sender: Any) {
         workoutsTable.isEditing = !workoutsTable.isEditing
@@ -49,10 +56,12 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, DZNEmptyDat
         return workouts[i!]
     }
     
-    func addWorkoutData(name: String, newData: Int) {
+    func addData(name: String, newData: String) {
+        print("HELLO")
         let workout = findWorkoutElement(name: name)
-        var workoutData = getData(binaryData: findWorkoutElement(name: "Test").data!)
-        workoutData.append(newData)
+        var workoutData = getData(binaryData: workout.data!)
+        let input = Int(newData)
+        workoutData.append(input!)
         saveData(workout: workout, plainData: workoutData)
     }
     
@@ -138,6 +147,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, DZNEmptyDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewWorkoutCell
         cell.workoutName.text = workouts[indexPath.row].value(forKey: "workoutname") as? String
         cell.workoutContainer.layer.cornerRadius = 30.0
+        cell.newDataButton.tag = indexPath.row
         
         return (cell)
     }
@@ -185,4 +195,5 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, DZNEmptyDat
             infoview.workoutData = stringArray.joined(separator: " ")
         }
     }
+    
 }

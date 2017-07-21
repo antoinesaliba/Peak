@@ -52,7 +52,6 @@
         <!--Peak-->
         <scene sceneID="VnB-ON-tQ6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S6q-Hi-qEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController modalTransitionStyle="crossDissolve" id="3u2-El-hjH" customClass="MainViewController" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" id="9VJ-fI-lmC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -75,6 +74,15 @@
                                                     <fontDescription key="fontDescription" name="Atami-Regular" family="Atami" pointSize="40"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoD-TR-dPm">
+                                                    <rect key="frame" x="307" y="45" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                    <state key="normal" title="+"/>
+                                                    <connections>
+                                                        <action selector="addWorkoutData:" destination="3u2-El-hjH" eventType="touchUpInside" id="aae-RV-n9u"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -94,6 +102,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.75302922729999999" green="0.72657406329999996" blue="0.86734050510000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
+                                    <outlet property="newDataButton" destination="OoD-TR-dPm" id="Wnb-4V-eBt"/>
                                     <outlet property="workoutContainer" destination="NYQ-EU-LfB" id="eof-rW-3MC"/>
                                     <outlet property="workoutName" destination="ORH-mk-9RN" id="mb8-50-jpA"/>
                                 </connections>
@@ -123,6 +132,7 @@
                         <segue destination="3HD-M4-quB" kind="show" identifier="WorkoutInfoSegue" id="48m-jd-s9J"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S6q-Hi-qEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1330.4000000000001" y="-1273.313343328336"/>
         </scene>
@@ -190,6 +200,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arB-Oy-fKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1330" y="-2016"/>
+        </scene>
+        <!--New Data Popup-->
+        <scene sceneID="pg9-tf-aHb">
+            <objects>
+                <viewController storyboardIdentifier="NewDataPopup" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="rTr-eY-lOT" customClass="NewDataPopup" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SPQ-hg-fy3"/>
+                        <viewControllerLayoutGuide type="bottom" id="bXF-09-VWf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nPX-dG-bCs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogY-uo-1cT">
+                                <rect key="frame" x="16" y="229" width="343" height="208"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Data" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZO-g0-0kC">
+                                        <rect key="frame" x="73" y="13" width="196" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdH-f1-inH">
+                                        <rect key="frame" x="72" y="122" width="48" height="30"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelAction:" destination="rTr-eY-lOT" eventType="touchUpInside" id="pbh-r4-EXt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0C-CA-VkH">
+                                        <rect key="frame" x="222" y="122" width="49" height="30"/>
+                                        <state key="normal" title="Submit"/>
+                                        <connections>
+                                            <action selector="submitAction:" destination="rTr-eY-lOT" eventType="touchUpInside" id="HpP-KK-PUs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="CZO-g0-0kC" firstAttribute="top" secondItem="ogY-uo-1cT" secondAttribute="top" constant="13" id="APm-T7-rbV"/>
+                                    <constraint firstItem="CZO-g0-0kC" firstAttribute="leading" secondItem="ogY-uo-1cT" secondAttribute="leading" constant="73" id="JAz-6P-afp"/>
+                                    <constraint firstItem="CZO-g0-0kC" firstAttribute="centerX" secondItem="ogY-uo-1cT" secondAttribute="centerX" id="Okv-Q6-PMS"/>
+                                    <constraint firstItem="sdH-f1-inH" firstAttribute="top" secondItem="CZO-g0-0kC" secondAttribute="bottom" constant="79" id="She-Yy-Fsn"/>
+                                    <constraint firstAttribute="trailing" secondItem="p0C-CA-VkH" secondAttribute="trailing" constant="72" id="Tnn-u1-JFw"/>
+                                    <constraint firstItem="sdH-f1-inH" firstAttribute="leading" secondItem="ogY-uo-1cT" secondAttribute="leading" constant="72" id="eT6-yG-Zab"/>
+                                    <constraint firstItem="sdH-f1-inH" firstAttribute="baseline" secondItem="p0C-CA-VkH" secondAttribute="baseline" id="qes-Tg-R3l"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ogY-uo-1cT" firstAttribute="leading" secondItem="nPX-dG-bCs" secondAttribute="leadingMargin" id="Q1P-MK-eZk"/>
+                            <constraint firstItem="ogY-uo-1cT" firstAttribute="top" secondItem="SPQ-hg-fy3" secondAttribute="bottom" constant="209" id="dlJ-ip-bov"/>
+                            <constraint firstItem="ogY-uo-1cT" firstAttribute="centerY" secondItem="nPX-dG-bCs" secondAttribute="centerY" id="faK-dU-Glg"/>
+                            <constraint firstItem="ogY-uo-1cT" firstAttribute="trailing" secondItem="nPX-dG-bCs" secondAttribute="trailingMargin" id="igZ-EJ-WIK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="newWorkoutData" destination="CZO-g0-0kC" id="6KP-v3-tVf"/>
+                        <outlet property="popupView" destination="ogY-uo-1cT" id="dhn-KE-OQR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mnS-vt-EzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2191" y="-2016"/>
         </scene>
         <!--Workout Details-->
         <scene sceneID="4Zd-bZ-1bl">
