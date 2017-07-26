@@ -13,15 +13,18 @@ import DZNEmptyDataSet
 class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProtocol, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     var workouts:[Workout] = []
-    var databaseContext:NSManagedObjectContext! //initialize database context so it can be reused throughout file
     
     @IBOutlet var workoutsTable: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
+    var filePath: String {
+        return "/Users/antoinesaliba/Programs/Swift/Peak/Peak/Data"
+    }
+    
     @IBAction func addWorkoutData(_ sender: UIButton) {
         let popup = self.storyboard?.instantiateViewController(withIdentifier: "NewDataPopup") as! NewDataPopup
         popup.newDataProtocol = self
-        popup.workoutName = workouts[sender.tag].workoutname!
+        popup.workoutName = workouts[sender.tag].workoutName
         
         self.present(popup, animated: true, completion: nil)
     }
@@ -43,49 +46,48 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     //if the workout name entered is already in the table it will not add it again
     func createNewWorkout(name: String){
         if noDuplicateWorkout(newWorkout: name) {
-            let newWorkout = Workout(context: databaseContext)
-            newWorkout.workoutname = name
-            saveData(workout: newWorkout, plainData: [10,12,15])
+            let newWorkout = Workout(name: name, data: [])
             workouts.append(newWorkout)
+            NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
             workoutsTable.reloadData()
         }
     }
     
     func findWorkoutElement(name: String) -> Workout {
-        let i = workouts.index(where: { $0.workoutname == name })
+        let i = workouts.index(where: { $0.workoutName == name })
         return workouts[i!]
     }
     
     func addData(name: String, newData: String) {
-        print("HELLO")
         let workout = findWorkoutElement(name: name)
-        var workoutData = getData(binaryData: workout.data!)
+        var workoutData = workout.workoutData
+        let currentTime = getTime()
         let input = Int(newData)
-        workoutData.append(input!)
+        let newWorkoutData = WorkoutData(date: currentTime, stat: input!)
+        workoutData.append(newWorkoutData)
         saveData(workout: workout, plainData: workoutData)
     }
     
-    func getData(binaryData: NSData) -> [Int] {
-        return NSKeyedUnarchiver.unarchiveObject(with: binaryData as Data) as! [Int]
-    }
-    
-    func saveData(workout: Workout, plainData: [Int]) {
-        let binaryData = NSKeyedArchiver.archivedData(withRootObject: plainData)
-        workout.setValue(binaryData, forKey: "data")
-        do {
-            try databaseContext.save()
-        }catch{
-            print ("Error saving new workout data to database.")
-        }
+    func saveData(workout: Workout, plainData: [WorkoutData]) {
+        workout.workoutData = plainData
+        NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
     }
     
     func noDuplicateWorkout(newWorkout: String) -> Bool{
         for workout in workouts{
-            if workout.value(forKey: "workoutname") as! String == newWorkout {
+            if workout.value(forKey: "workoutName") as! String == newWorkout {
                 return false
             }
         }
         return true
+    }
+    
+    func getTime() -> Int {
+        let date = NSDate()
+        let formatter = DateFormatter()
+        //MM-dd-yyyy-hh-mm-ss also available
+        formatter.dateFormat = "yyyyMMddhhmmss"
+        return Int(formatter.string(from: date as Date))!
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
@@ -113,23 +115,8 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
         self.workoutsTable.contentInset = UIEdgeInsetsMake(15,0,0,0); //adds space between navigation bar and main workouts table
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Atami", size: 25)!] //set font and size of navigation bar title
         
-        databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Workout")
-        request.returnsObjectsAsFaults = false
-        
-        let date = NSDate()
-        let formatter = DateFormatter()
-        //MM-dd-yyyy-hh-mm-ss also available
-        formatter.dateFormat = "yyyyMMddhhmmss"
-        let result = formatter.string(from: date as Date)
-        print(result)
-        
-        
-        do{
-            let results = try databaseContext.fetch(request)
-            workouts = results as! [Workout]
-        }catch{
-            print ("Error loading workouts from database.")
+        if let loadedData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [Workout] {
+            workouts = loadedData
         }
 
     }
@@ -145,7 +132,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     //code to set custom properties for all table cells
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewWorkoutCell
-        cell.workoutName.text = workouts[indexPath.row].value(forKey: "workoutname") as? String
+        cell.workoutName.text = workouts[indexPath.row].value(forKey: "workoutName") as? String
         cell.workoutContainer.layer.cornerRadius = 30.0
         cell.newDataButton.tag = indexPath.row
         
@@ -165,14 +152,8 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
-            databaseContext.delete(workouts[indexPath.row])
-            do{
-                try databaseContext.save()
-            }catch{
-                print("Failed to save deleted workout to database.")
-            }
-
             workouts.remove(at: indexPath.row)
+            NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
             tableView.reloadData()
         }
     }
@@ -185,12 +166,12 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let infoview = segue.destination as! WorkoutInfoViewController
         let selectedWorkout = sender as! Workout
-        let selectedWorkoutData = getData(binaryData: selectedWorkout.data!)
-        infoview.workoutName = selectedWorkout.workoutname!
+        let selectedWorkoutData = selectedWorkout.workoutData
+        infoview.workoutName = selectedWorkout.workoutName
         if selectedWorkoutData.count > 0 {
             let stringArray = selectedWorkoutData.map
             {
-                String($0)
+                String($0.workoutStat)
             }
             infoview.workoutData = stringArray.joined(separator: " ")
         }

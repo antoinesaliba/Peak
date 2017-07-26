@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		20128CCC1F1DA8E80035EEF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20128CCB1F1DA8E80035EEF1 /* ViewController.swift */; };
 		201518361EFE29A3001D30AD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201518351EFE29A3001D30AD /* MainViewController.swift */; };
-		203877881F0B4F08008321C2 /* WorkoutsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 203877861F0B4F08008321C2 /* WorkoutsData.xcdatamodeld */; };
 		208BFD571EEB699300B1E881 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208BFD561EEB699300B1E881 /* AppDelegate.swift */; };
 		208BFD5C1EEB699300B1E881 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208BFD5A1EEB699300B1E881 /* Main.storyboard */; };
 		208BFD5E1EEB699300B1E881 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 208BFD5D1EEB699300B1E881 /* Assets.xcassets */; };
 		208BFD611EEB699300B1E881 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208BFD5F1EEB699300B1E881 /* LaunchScreen.storyboard */; };
 		209051B41EEC7A94000AEFCA /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209051B31EEC7A94000AEFCA /* GraphViewController.swift */; };
 		20ACE7271F22B44500A1A227 /* NewDataPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ACE7261F22B44500A1A227 /* NewDataPopup.swift */; };
+		20CB04A51F2459A400CF2319 /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CB04A41F2459A400CF2319 /* WorkoutData.swift */; };
+		20CB04A71F26F94900CF2319 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CB04A61F26F94900CF2319 /* Workout.swift */; };
 		20E15BB61EFED73E00920F52 /* TableViewWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BB51EFED73E00920F52 /* TableViewWorkoutCell.swift */; };
 		20E15BB91F05FD8D00920F52 /* NewWorkoutPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */; };
 		20E15BC41F08484800920F52 /* Atami-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20E15BC31F08484800920F52 /* Atami-Regular.otf */; };
@@ -39,7 +40,6 @@
 /* Begin PBXFileReference section */
 		20128CCB1F1DA8E80035EEF1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		201518351EFE29A3001D30AD /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		203877871F0B4F08008321C2 /* WorkoutsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorkoutsData.xcdatamodel; sourceTree = "<group>"; };
 		208BFD531EEB699300B1E881 /* Peak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		208BFD561EEB699300B1E881 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		208BFD5B1EEB699300B1E881 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,6 +48,8 @@
 		208BFD621EEB699300B1E881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		209051B31EEC7A94000AEFCA /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		20ACE7261F22B44500A1A227 /* NewDataPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDataPopup.swift; sourceTree = "<group>"; };
+		20CB04A41F2459A400CF2319 /* WorkoutData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
+		20CB04A61F26F94900CF2319 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		20E15BB51EFED73E00920F52 /* TableViewWorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewWorkoutCell.swift; sourceTree = "<group>"; };
 		20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWorkoutPopup.swift; sourceTree = "<group>"; };
 		20E15BC31F08484800920F52 /* Atami-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Atami-Regular.otf"; sourceTree = "<group>"; };
@@ -108,10 +110,11 @@
 				201518351EFE29A3001D30AD /* MainViewController.swift */,
 				209051B31EEC7A94000AEFCA /* GraphViewController.swift */,
 				20E15BC91F09FFDB00920F52 /* WorkoutInfoViewController.swift */,
-				203877861F0B4F08008321C2 /* WorkoutsData.xcdatamodeld */,
 				208BFD5D1EEB699300B1E881 /* Assets.xcassets */,
 				208BFD5F1EEB699300B1E881 /* LaunchScreen.storyboard */,
 				208BFD621EEB699300B1E881 /* Info.plist */,
+				20CB04A41F2459A400CF2319 /* WorkoutData.swift */,
+				20CB04A61F26F94900CF2319 /* Workout.swift */,
 			);
 			path = Peak;
 			sourceTree = "<group>";
@@ -261,10 +264,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				209051B41EEC7A94000AEFCA /* GraphViewController.swift in Sources */,
-				203877881F0B4F08008321C2 /* WorkoutsData.xcdatamodeld in Sources */,
 				20E15BB61EFED73E00920F52 /* TableViewWorkoutCell.swift in Sources */,
 				20E15BB91F05FD8D00920F52 /* NewWorkoutPopup.swift in Sources */,
 				20E15BCA1F09FFDB00920F52 /* WorkoutInfoViewController.swift in Sources */,
+				20CB04A51F2459A400CF2319 /* WorkoutData.swift in Sources */,
+				20CB04A71F26F94900CF2319 /* Workout.swift in Sources */,
 				201518361EFE29A3001D30AD /* MainViewController.swift in Sources */,
 				20128CCC1F1DA8E80035EEF1 /* ViewController.swift in Sources */,
 				20ACE7271F22B44500A1A227 /* NewDataPopup.swift in Sources */,
@@ -444,19 +448,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		203877861F0B4F08008321C2 /* WorkoutsData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				203877871F0B4F08008321C2 /* WorkoutsData.xcdatamodel */,
-			);
-			currentVersion = 203877871F0B4F08008321C2 /* WorkoutsData.xcdatamodel */;
-			path = WorkoutsData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 208BFD4B1EEB699300B1E881 /* Project object */;
 }
