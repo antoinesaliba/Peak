@@ -17,90 +17,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     @IBOutlet var workoutsTable: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
-    var filePath: String {
-        return "/Users/antoinesaliba/Programs/Swift/Peak/Peak/Data"
-    }
-    
-    @IBAction func addWorkoutData(_ sender: UIButton) {
-        let popup = self.storyboard?.instantiateViewController(withIdentifier: "NewDataPopup") as! NewDataPopup
-        popup.newDataProtocol = self
-        popup.workoutName = workouts[sender.tag].workoutName
-        
-        self.present(popup, animated: true, completion: nil)
-    }
-    //move and delete specific workouts in main workouts table
-    @IBAction func editWorkouts(_ sender: Any) {
-        workoutsTable.isEditing = !workoutsTable.isEditing
-        editButton.title = (workoutsTable.isEditing) ? "Done" : "Edit"
-    }
-    
-    //opens the new workout popup
-    @IBAction func addWorkout(_ sender: Any) {
-        let popup = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
-        popup.newWorkoutProtocol = self
-
-        self.present(popup, animated: true, completion: nil)
-    }
-    
-    //adds user inputed workout in popup to the workouts array and updates the main workouts table
-    //if the workout name entered is already in the table it will not add it again
-    func createNewWorkout(name: String){
-        if noDuplicateWorkout(newWorkout: name) {
-            let newWorkout = Workout(name: name, data: [])
-            workouts.append(newWorkout)
-            NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
-            workoutsTable.reloadData()
-        }
-    }
-    
-    func findWorkoutElement(name: String) -> Workout {
-        let i = workouts.index(where: { $0.workoutName == name })
-        return workouts[i!]
-    }
-    
-    func addData(name: String, newData: String) {
-        let workout = findWorkoutElement(name: name)
-        var workoutData = workout.workoutData
-        let currentTime = getTime()
-        let input = Int(newData)
-        let newWorkoutData = WorkoutData(date: currentTime, stat: input!)
-        workoutData.append(newWorkoutData)
-        saveData(workout: workout, plainData: workoutData)
-    }
-    
-    func saveData(workout: Workout, plainData: [WorkoutData]) {
-        workout.workoutData = plainData
-        NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
-    }
-    
-    func noDuplicateWorkout(newWorkout: String) -> Bool{
-        for workout in workouts{
-            if workout.value(forKey: "workoutName") as! String == newWorkout {
-                return false
-            }
-        }
-        return true
-    }
-    
-    func getTime() -> Int {
-        let date = NSDate()
-        let formatter = DateFormatter()
-        //MM-dd-yyyy-hh-mm-ss also available
-        formatter.dateFormat = "yyyyMMddhhmmss"
-        return Int(formatter.string(from: date as Date))!
-    }
-    
-    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let str = "No Workouts"
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
-        return NSAttributedString(string: str, attributes: attrs)
-    }
-    
-    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let str = "Tap the + button to add workouts"
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
-        return NSAttributedString(string: str, attributes: attrs)
-    }
+    let filePath = "/Users/antoinesaliba/Programs/Swift/Peak/Peak/Data"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,12 +35,102 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
         if let loadedData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [Workout] {
             workouts = loadedData
         }
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    //move and delete specific workouts in main workouts table
+    @IBAction func editWorkouts(_ sender: Any) {
+        workoutsTable.isEditing = !workoutsTable.isEditing
+        editButton.title = (workoutsTable.isEditing) ? "Done" : "Edit"
+    }
+    
+    //opens the new workout popup
+    @IBAction func addWorkout(_ sender: Any) {
+        let popup = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
+        popup.newWorkoutProtocol = self
+
+        self.present(popup, animated: true, completion: nil)
+    }
+    
+    //opens new data popup
+    @IBAction func addWorkoutData(_ sender: UIButton) {
+        let popup = self.storyboard?.instantiateViewController(withIdentifier: "NewDataPopup") as! NewDataPopup
+        popup.newDataProtocol = self
+        popup.workoutName = workouts[sender.tag].workoutName
+        
+        self.present(popup, animated: true, completion: nil)
+    }
+    
+    //checks to make sure no workout with the same title exist
+    func noDuplicateWorkout(newWorkout: String) -> Bool{
+        for workout in workouts{
+            if workout.value(forKey: "workoutName") as! String == newWorkout {
+                return false
+            }
+        }
+        return true
+    }
+    
+    //retrieve workout element based on name
+    func findWorkoutElement(name: String) -> Workout {
+        let i = workouts.index(where: { $0.workoutName == name })
+        return workouts[i!]
+    }
+    
+    //adds user inputed workout in popup to the workouts array and updates the main workouts table
+    //if the workout name entered is already in the table it will not add it again
+    func createNewWorkout(name: String){
+        if noDuplicateWorkout(newWorkout: name) {
+            let newWorkout = Workout(name: name, data: [])
+            workouts.append(newWorkout)
+            NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
+            workoutsTable.reloadData()
+        }
+    }
+    
+    func addData(name: String, newData: String) {
+        let workout = findWorkoutElement(name: name)
+        var workoutData = workout.workoutData
+        let currentTime = getTime()
+        let input = Int(newData)
+        let newWorkoutData = WorkoutData(date: currentTime, stat: input!)
+        workoutData.append(newWorkoutData)
+        saveData(workout: workout, plainData: workoutData)
+    }
+    
+    func saveData(workout: Workout, plainData: [WorkoutData]) {
+        workout.workoutData = plainData
+        NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
+    }
+    
+    //returns time as an Integer in yyyyMMddhhmmss format so it can be compared as an Integer
+    func getTime() -> Int {
+        let date = NSDate()
+        let formatter = DateFormatter()
+        //MM-dd-yyyy-hh-mm-ss also available
+        formatter.dateFormat = "yyyyMMddhhmmss"
+        return Int(formatter.string(from: date as Date))!
+    }
+    
+    /* Next two methods are to set the title and text of the tableView when there are no workouts */
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "No Workouts"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "Tap the + button to add workouts"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    /* all remaining functions all involve doing dynamic actions for all table rows (aka workouts) */
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (workouts.count)

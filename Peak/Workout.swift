@@ -36,18 +36,4 @@ class Workout: NSObject, NSCoding {
         coder.encode(workoutName, forKey: Keys.workoutName)
         coder.encode(workoutData, forKey: Keys.workoutData)
     }
-    
-    func substring(start: Int, offset: Int, input: String) -> String {
-        if start == 0{
-            let index = input.index(input.startIndex, offsetBy: offset)
-            return input.substring(to: index)
-            
-        }else{
-            let start = input.index(input.startIndex, offsetBy: start)
-            let end = input.index(input.endIndex, offsetBy: offset)
-            let range = start..<end
-            
-            return input.substring(with: range)
-        }
-    }
 }

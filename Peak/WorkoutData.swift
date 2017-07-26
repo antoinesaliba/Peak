@@ -40,7 +40,7 @@ class WorkoutData: NSObject, NSCoding {
     }
     
     func printDate() -> String {
-        let dateAsString = "hello"
+        let dateAsString = String(workoutDate)
         let year = substring(start: 0, offset: 5, input: dateAsString)
         let month = substring(start: 4, offset: -3, input: dateAsString)
         let day = substring(start: 6, offset: -5, input: dateAsString)
