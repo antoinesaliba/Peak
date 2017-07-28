@@ -9,15 +9,28 @@
 import UIKit
 import CoreData
 import DZNEmptyDataSet
+import FoldingCell
 
 class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProtocol, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    fileprivate struct C {
+        struct CellHeight {
+            //close needs to be bigger than height of foreground cell height
+            static let close: CGFloat = 140  // space between closed rows in workout table
+            //open needs to be bigger than height of container cell height
+            static let open: CGFloat = 200  // size of open rows in workout table
+        }
+    }
     
     var workouts:[Workout] = []
     
     @IBOutlet var workoutsTable: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
+    var cellHeights = [CGFloat]()
     
     let filePath = "/Users/antoinesaliba/Programs/Swift/Peak/Peak/Data"
+    
+    //var cellHeights:
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +48,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
         if let loadedData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [Workout] {
             workouts = loadedData
         }
+        cellHeights = (0..<workouts.count).map { _ in C.CellHeight.close }
         
     }
     
@@ -88,6 +102,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
             let newWorkout = Workout(name: name, data: [])
             workouts.append(newWorkout)
             NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
+            cellHeights = (0..<workouts.count).map { _ in C.CellHeight.close }
             workoutsTable.reloadData()
         }
     }
@@ -141,7 +156,6 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewWorkoutCell
         cell.workoutName.text = workouts[indexPath.row].value(forKey: "workoutName") as? String
         cell.workoutContainer.layer.cornerRadius = 30.0
-        cell.newDataButton.tag = indexPath.row
         
         return (cell)
     }
@@ -165,23 +179,39 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
         }
     }
     
-    //two functions below set up links for each workout cell to open workout detail page for specific workout
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "WorkoutInfoSegue", sender: workouts[indexPath.row])
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeights[indexPath.row]
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let infoview = segue.destination as! WorkoutInfoViewController
-        let selectedWorkout = sender as! Workout
-        let selectedWorkoutData = selectedWorkout.workoutData
-        infoview.workoutName = selectedWorkout.workoutName
-        if selectedWorkoutData.count > 0 {
-            let stringArray = selectedWorkoutData.map
-            {
-                String($0.workoutStat)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard case let cell as FoldingCell = tableView.cellForRow(at: indexPath as IndexPath) else {
+            return
+        }
+        
+        var duration = 0.0
+        if cellHeights[indexPath.row] == C.CellHeight.close { // open cell
+            cellHeights[indexPath.row] = C.CellHeight.open
+            cell.selectedAnimation(true, animated: true, completion: nil)
+            duration = 0.5
+        } else {// close cell
+            cellHeights[indexPath.row] = C.CellHeight.close
+            cell.selectedAnimation(false, animated: true, completion: nil)
+            duration = 1.1
+        }
+        
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { _ in
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if case let cell as FoldingCell = cell {
+            if cellHeights[indexPath.row] == C.CellHeight.close {
+                cell.selectedAnimation(false, animated: false, completion:nil)
+            } else {
+                cell.selectedAnimation(true, animated: false, completion: nil)
             }
-            infoview.workoutData = stringArray.joined(separator: " ")
         }
     }
-    
 }

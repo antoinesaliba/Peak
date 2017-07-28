@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import FoldingCell
 
-class TableViewWorkoutCell: UITableViewCell {
+class TableViewWorkoutCell: FoldingCell {
 
     @IBOutlet weak var workoutName: UILabel!
     @IBOutlet weak var workoutContainer: UIView!
     @IBOutlet weak var newDataButton: UIButton!
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -23,6 +25,11 @@ class TableViewWorkoutCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func animationDuration(_ itemIndex:NSInteger, type:AnimationType)-> TimeInterval {
+        let durations = [0.33, 0.26, 0.26] // timing animation for each view
+        return durations[itemIndex]
     }
 
 }

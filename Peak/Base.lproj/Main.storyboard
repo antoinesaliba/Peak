@@ -53,20 +53,20 @@
         <scene sceneID="VnB-ON-tQ6">
             <objects>
                 <tableViewController modalTransitionStyle="crossDissolve" id="3u2-El-hjH" customClass="MainViewController" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" id="9VJ-fI-lmC">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="341" sectionHeaderHeight="28" sectionFooterHeight="28" id="9VJ-fI-lmC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.75302922729999999" green="0.72657406329999996" blue="0.86734050510000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.75302922729999999" green="0.72657406329999996" blue="0.86734050510000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="130" id="ssC-zb-kzs" customClass="TableViewWorkoutCell" customModule="Peak" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="130"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="341" id="ssC-zb-kzs" customClass="TableViewWorkoutCell" customModule="Peak" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="341"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ssC-zb-kzs" id="0ng-TK-IsD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="341"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYQ-EU-LfB">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYQ-EU-LfB" customClass="RotatedView" customModule="FoldingCell">
                                             <rect key="frame" x="15" y="5" width="345" height="120"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORH-mk-9RN">
@@ -86,23 +86,44 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="120" id="0nz-yL-WfG"/>
                                                 <constraint firstItem="ORH-mk-9RN" firstAttribute="top" secondItem="NYQ-EU-LfB" secondAttribute="top" constant="38" id="2jq-Pd-M6h"/>
                                                 <constraint firstAttribute="trailing" secondItem="ORH-mk-9RN" secondAttribute="trailing" constant="-6" id="3Js-fz-WmX"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="VeY-Sl-9NS"/>
                                                 <constraint firstItem="ORH-mk-9RN" firstAttribute="leading" secondItem="NYQ-EU-LfB" secondAttribute="leadingMargin" id="oSr-6b-xOz"/>
                                                 <constraint firstAttribute="bottom" secondItem="ORH-mk-9RN" secondAttribute="bottom" constant="40" id="qIJ-Ps-rpn"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgC-Fw-PgC">
+                                            <rect key="frame" x="15" y="145" width="345" height="180"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="NYQ-EU-LfB" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leading" constant="15" id="1hw-cD-pwN"/>
-                                        <constraint firstAttribute="bottom" secondItem="NYQ-EU-LfB" secondAttribute="bottom" constant="5" id="CZW-uC-joh"/>
-                                        <constraint firstItem="NYQ-EU-LfB" firstAttribute="top" secondItem="0ng-TK-IsD" secondAttribute="top" constant="5" id="ROO-Xg-eja"/>
+                                        <constraint firstItem="zgC-Fw-PgC" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leading" constant="15" id="6Hw-lV-RkJ"/>
+                                        <constraint firstItem="NYQ-EU-LfB" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leading" constant="15" id="7ln-v9-kDu"/>
+                                        <constraint firstAttribute="trailing" secondItem="zgC-Fw-PgC" secondAttribute="trailing" constant="15" id="JGD-V6-NYq"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="zgC-Fw-PgC" secondAttribute="bottom" constant="8" id="LDn-GH-Nqd"/>
+                                        <constraint firstItem="NYQ-EU-LfB" firstAttribute="top" secondItem="0ng-TK-IsD" secondAttribute="top" constant="5" identifier="ForegroundViewTop" id="Osm-Pf-k4a"/>
+                                        <constraint firstItem="zgC-Fw-PgC" firstAttribute="top" secondItem="0ng-TK-IsD" secondAttribute="top" constant="145" identifier="ContainerViewTop" id="YpT-VA-NPR"/>
+                                        <constraint firstItem="zgC-Fw-PgC" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leading" constant="15" id="gnW-82-DHA"/>
                                         <constraint firstAttribute="trailing" secondItem="NYQ-EU-LfB" secondAttribute="trailing" constant="15" id="j0e-qN-4cV"/>
+                                        <constraint firstAttribute="trailing" secondItem="NYQ-EU-LfB" secondAttribute="trailing" constant="15" id="krj-oA-N3X"/>
+                                        <constraint firstAttribute="trailing" secondItem="zgC-Fw-PgC" secondAttribute="trailing" constant="15" id="qbZ-cP-Yub"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.75302922729999999" green="0.72657406329999996" blue="0.86734050510000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="itemCount">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="newDataButton" destination="OoD-TR-dPm" id="Wnb-4V-eBt"/>
+                                    <outlet property="containerView" destination="zgC-Fw-PgC" id="JTe-Aj-VRk"/>
+                                    <outlet property="containerViewTop" destination="YpT-VA-NPR" id="64t-kt-kHF"/>
+                                    <outlet property="foregroundView" destination="NYQ-EU-LfB" id="pUu-k0-rv7"/>
+                                    <outlet property="foregroundViewTop" destination="Osm-Pf-k4a" id="Rwm-5k-fH8"/>
                                     <outlet property="workoutContainer" destination="NYQ-EU-LfB" id="eof-rW-3MC"/>
                                     <outlet property="workoutName" destination="ORH-mk-9RN" id="mb8-50-jpA"/>
                                 </connections>
