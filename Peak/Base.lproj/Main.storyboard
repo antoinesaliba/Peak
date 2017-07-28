@@ -95,7 +95,16 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgC-Fw-PgC">
-                                            <rect key="frame" x="15" y="145" width="345" height="180"/>
+                                            <rect key="frame" x="15" y="153" width="345" height="180"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Open" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MEi-E4-6IO">
+                                                    <rect key="frame" x="124" y="75" width="97" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                     </subviews>
@@ -103,20 +112,25 @@
                                         <constraint firstItem="NYQ-EU-LfB" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leading" constant="15" id="1hw-cD-pwN"/>
                                         <constraint firstItem="zgC-Fw-PgC" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leading" constant="15" id="6Hw-lV-RkJ"/>
                                         <constraint firstItem="NYQ-EU-LfB" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leading" constant="15" id="7ln-v9-kDu"/>
+                                        <constraint firstItem="zgC-Fw-PgC" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leadingMargin" constant="7" id="9iF-QE-Sh3"/>
                                         <constraint firstAttribute="trailing" secondItem="zgC-Fw-PgC" secondAttribute="trailing" constant="15" id="JGD-V6-NYq"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="zgC-Fw-PgC" secondAttribute="bottom" constant="8" id="LDn-GH-Nqd"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="zgC-Fw-PgC" secondAttribute="bottom" id="LDn-GH-Nqd"/>
                                         <constraint firstItem="NYQ-EU-LfB" firstAttribute="top" secondItem="0ng-TK-IsD" secondAttribute="top" constant="5" identifier="ForegroundViewTop" id="Osm-Pf-k4a"/>
-                                        <constraint firstItem="zgC-Fw-PgC" firstAttribute="top" secondItem="0ng-TK-IsD" secondAttribute="top" constant="145" identifier="ContainerViewTop" id="YpT-VA-NPR"/>
+                                        <constraint firstItem="zgC-Fw-PgC" firstAttribute="top" secondItem="0ng-TK-IsD" secondAttribute="top" constant="153" identifier="ContainerViewTop" id="YpT-VA-NPR"/>
                                         <constraint firstItem="zgC-Fw-PgC" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leading" constant="15" id="gnW-82-DHA"/>
                                         <constraint firstAttribute="trailing" secondItem="NYQ-EU-LfB" secondAttribute="trailing" constant="15" id="j0e-qN-4cV"/>
                                         <constraint firstAttribute="trailing" secondItem="NYQ-EU-LfB" secondAttribute="trailing" constant="15" id="krj-oA-N3X"/>
                                         <constraint firstAttribute="trailing" secondItem="zgC-Fw-PgC" secondAttribute="trailing" constant="15" id="qbZ-cP-Yub"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zgC-Fw-PgC" secondAttribute="trailing" constant="7" id="vOx-Yg-E9k"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.75302922729999999" green="0.72657406329999996" blue="0.86734050510000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="itemCount">
-                                        <integer key="value" value="1"/>
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backViewColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>

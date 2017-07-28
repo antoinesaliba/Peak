@@ -25,6 +25,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     var workouts:[Workout] = []
     
     @IBOutlet var workoutsTable: UITableView!
+    @IBOutlet weak var detailedView: UIView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     var cellHeights = [CGFloat]()
     
@@ -156,6 +157,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewWorkoutCell
         cell.workoutName.text = workouts[indexPath.row].value(forKey: "workoutName") as? String
         cell.workoutContainer.layer.cornerRadius = 30.0
+        cell.detailedWorkoutContainer?.layer.cornerRadius = 300.0
         
         return (cell)
     }
@@ -184,7 +186,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard case let cell as FoldingCell = tableView.cellForRow(at: indexPath as IndexPath) else {
+        guard case let cell as TableViewWorkoutCell = tableView.cellForRow(at: indexPath as IndexPath) else {
             return
         }
         
@@ -203,12 +205,14 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
             tableView.beginUpdates()
             tableView.endUpdates()
         }, completion: nil)
+        
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if case let cell as FoldingCell = cell {
+        if case let cell as TableViewWorkoutCell = cell {
             if cellHeights[indexPath.row] == C.CellHeight.close {
                 cell.selectedAnimation(false, animated: false, completion:nil)
+                cell.detailedWorkoutContainer?.layer.cornerRadius = 300.0
             } else {
                 cell.selectedAnimation(true, animated: false, completion: nil)
             }

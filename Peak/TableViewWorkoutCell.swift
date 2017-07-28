@@ -14,6 +14,7 @@ class TableViewWorkoutCell: FoldingCell {
     @IBOutlet weak var workoutName: UILabel!
     @IBOutlet weak var workoutContainer: UIView!
     @IBOutlet weak var newDataButton: UIButton!
+    @IBOutlet weak var detailedWorkoutContainer: UIView!
     
     override func awakeFromNib() {
         
