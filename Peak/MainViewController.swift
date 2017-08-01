@@ -15,9 +15,8 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     
     fileprivate struct C {
         struct CellHeight {
-            //close needs to be bigger than height of foreground cell height
+            //both open and close need to be either the height of the containers or bigger
             static let close: CGFloat = 140  // space between closed rows in workout table
-            //open needs to be bigger than height of container cell height
             static let open: CGFloat = 260  // space between open rows in workout table
         }
     }
@@ -30,8 +29,6 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     var cellHeights = [CGFloat]()
     
     let filePath = "/Users/antoinesaliba/Programs/Swift/Peak/Peak/Data"
-    
-    //var cellHeights:
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,8 +153,8 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewWorkoutCell
         cell.workoutName.text = workouts[indexPath.row].value(forKey: "workoutName") as? String
-        cell.workoutContainer.layer.cornerRadius = 30.0
-        cell.detailedWorkoutContainer?.layer.cornerRadius = 300.0
+        cell.foregroundView.layer.cornerRadius = 30.0
+        cell.containerView.layer.cornerRadius = 30.0
         
         return (cell)
     }
@@ -198,7 +195,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
         } else {// close cell
             cellHeights[indexPath.row] = C.CellHeight.close
             cell.selectedAnimation(false, animated: true, completion: nil)
-            duration = 1.1
+            duration = 0.25
         }
         
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { _ in
