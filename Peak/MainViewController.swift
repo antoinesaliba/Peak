@@ -18,7 +18,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
             //close needs to be bigger than height of foreground cell height
             static let close: CGFloat = 140  // space between closed rows in workout table
             //open needs to be bigger than height of container cell height
-            static let open: CGFloat = 200  // size of open rows in workout table
+            static let open: CGFloat = 260  // space between open rows in workout table
         }
     }
     
@@ -194,7 +194,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
         if cellHeights[indexPath.row] == C.CellHeight.close { // open cell
             cellHeights[indexPath.row] = C.CellHeight.open
             cell.selectedAnimation(true, animated: true, completion: nil)
-            duration = 0.5
+            duration = 0.0
         } else {// close cell
             cellHeights[indexPath.row] = C.CellHeight.close
             cell.selectedAnimation(false, animated: true, completion: nil)
@@ -212,7 +212,6 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
         if case let cell as TableViewWorkoutCell = cell {
             if cellHeights[indexPath.row] == C.CellHeight.close {
                 cell.selectedAnimation(false, animated: false, completion:nil)
-                cell.detailedWorkoutContainer?.layer.cornerRadius = 300.0
             } else {
                 cell.selectedAnimation(true, animated: false, completion: nil)
             }
