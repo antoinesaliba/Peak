@@ -203,6 +203,9 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
             tableView.endUpdates()
         }, completion: nil)
         
+        //enables automatic scrolling to center that workout in view when workout is expanded
+        tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+        
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
