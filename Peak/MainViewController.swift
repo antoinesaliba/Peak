@@ -25,7 +25,9 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     
     @IBOutlet var workoutsTable: UITableView!
     @IBOutlet weak var detailedView: UIView!
-    @IBOutlet weak var editButton: UIBarButtonItem!
+    
+    var dragInitialIndexPath: IndexPath?
+    var popoutCell: UIView?
     var cellHeights = [CGFloat]()
     
     let filePath = "/Users/antoinesaliba/Programs/Swift/Peak/Peak/Data"
@@ -48,16 +50,14 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
         }
         cellHeights = (0..<workouts.count).map { _ in C.CellHeight.close }
         
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressGesture(sender:)))
+        longPress.minimumPressDuration = 0.2
+        tableView.addGestureRecognizer(longPress)
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    //move and delete specific workouts in main workouts table
-    @IBAction func editWorkouts(_ sender: Any) {
-        workoutsTable.isEditing = !workoutsTable.isEditing
-        editButton.title = (workoutsTable.isEditing) ? "Done" : "Edit"
     }
     
     //opens the new workout popup
@@ -216,5 +216,81 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
                 cell.selectedAnimation(true, animated: false, completion: nil)
             }
         }
+    }
+    
+    func onLongPressGesture(sender: UILongPressGestureRecognizer) {
+        let locationInView = sender.location(in: tableView) //where on the screen was long pressed
+        let indexPath = tableView.indexPathForRow(at: locationInView)
+        
+        if sender.state == .began { //if long pressed
+            if indexPath != nil {
+                dragInitialIndexPath = indexPath
+                let selectedCell = tableView.cellForRow(at: indexPath!) //get cell user long pressed
+                popoutCell = snapshotOfCell(inputView: selectedCell!) //create popout cell
+                var center = selectedCell?.center
+                popoutCell?.center = center! //centers popout cell to where user long pressed
+                popoutCell?.alpha = 0.0 //hidden at first
+                tableView.addSubview(popoutCell!)
+                
+                //gives popout cell an animation
+                UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                    center?.y = locationInView.y
+                    self.popoutCell?.center = center!
+                    self.popoutCell?.transform = (self.popoutCell?.transform.scaledBy(x: 1.05, y: 1.05))!
+                    self.popoutCell?.alpha = 0.99
+                    selectedCell?.alpha = 0.0
+                }, completion: { (finished) -> Void in
+                    if finished {
+                        selectedCell?.isHidden = true //hides non-popout cell that is behind popout cell
+                    }
+                })
+            }
+        } else if sender.state == .changed && dragInitialIndexPath != nil { //if released long press
+            var center = popoutCell?.center
+            center?.y = locationInView.y
+            popoutCell?.center = center!
+            
+            if indexPath != nil && indexPath != dragInitialIndexPath { //if longpress not in same position
+                let dataToMove = workouts[dragInitialIndexPath!.row]
+                workouts.remove(at: dragInitialIndexPath!.row)
+                workouts.insert(dataToMove, at: indexPath!.row)
+                NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
+                
+                tableView.moveRow(at: dragInitialIndexPath!, to: indexPath!)
+                dragInitialIndexPath = indexPath
+            }
+        } else if sender.state == .ended && dragInitialIndexPath != nil { //if done, make cell reappear
+            let cell = tableView.cellForRow(at: dragInitialIndexPath!)
+            cell?.isHidden = false
+            cell?.alpha = 0.0
+            UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                self.popoutCell?.center = (cell?.center)!
+                self.popoutCell?.transform = CGAffineTransform.identity
+                self.popoutCell?.alpha = 0.0
+                cell?.alpha = 1.0
+            }, completion: { (finished) -> Void in
+                if finished { //get rid of popout cell
+                    self.dragInitialIndexPath = nil
+                    self.popoutCell?.removeFromSuperview()
+                    self.popoutCell = nil
+                }
+            })
+        }
+    }
+    
+    //creates pop-out effect when cell is long pressed
+    func snapshotOfCell(inputView: UIView) -> UIView {
+        UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0.0)
+        inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        let cellSnapshot = UIImageView(image: image)
+        cellSnapshot.layer.masksToBounds = false
+        cellSnapshot.layer.cornerRadius = 0.0
+        cellSnapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
+        cellSnapshot.layer.shadowRadius = 5.0
+        cellSnapshot.layer.shadowOpacity = 0.4
+        return cellSnapshot
     }
 }

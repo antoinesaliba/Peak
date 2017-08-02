@@ -153,11 +153,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Peak" id="3bs-tX-VjZ">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="Qq9-Fg-KID">
-                            <connections>
-                                <action selector="editWorkouts:" destination="3u2-El-hjH" id="DOE-kV-L3i"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="40S-c3-VqB">
                             <connections>
                                 <action selector="addWorkout:" destination="3u2-El-hjH" id="gON-JO-7TG"/>
@@ -165,7 +160,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="editButton" destination="Qq9-Fg-KID" id="fm7-j7-qWs"/>
                         <outlet property="workoutsTable" destination="9VJ-fI-lmC" id="AO2-Sc-KNZ"/>
                         <segue destination="3HD-M4-quB" kind="show" identifier="WorkoutInfoSegue" id="48m-jd-s9J"/>
                     </connections>
