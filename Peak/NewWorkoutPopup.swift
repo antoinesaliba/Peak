@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PopupDialog
 
 protocol NewWorkoutProtocol {
     func createNewWorkout(name: String)
@@ -16,6 +17,8 @@ class NewWorkoutPopup: UIViewController {
     
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var newWorkoutName: UITextField!
+    
+    public weak var popup: PopupDialog?
     
     var newWorkoutProtocol:NewWorkoutProtocol?
     
@@ -30,9 +33,8 @@ class NewWorkoutPopup: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        popupView.layer.cornerRadius = 30.0
-        popupView.layer.masksToBounds = true
+        //popupView.layer.cornerRadius = 30.0
+        //popupView.layer.masksToBounds = true
     }
 
 }

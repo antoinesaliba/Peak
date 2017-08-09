@@ -5,4 +5,5 @@ target 'Peak' do
   pod 'DZNEmptyDataSet'
   pod 'Charts'
   pod 'FoldingCell', '~> 2.0.3' 
+  pod 'PopupDialog', '~> 0.5'
 end

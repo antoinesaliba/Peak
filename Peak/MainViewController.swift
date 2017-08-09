@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import DZNEmptyDataSet
 import FoldingCell
+import PopupDialog
 
 class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProtocol, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
@@ -62,10 +63,30 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     
     //opens the new workout popup
     @IBAction func addWorkout(_ sender: Any) {
-        let popup = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
-        popup.newWorkoutProtocol = self
+        //let popup = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
+        //popup.newWorkoutProtocol = self
 
-        self.present(popup, animated: true, completion: nil)
+        //self.present(popup, animated: true, completion: nil)
+        showPopup()
+    }
+    
+    func showPopup(animated: Bool = true) {
+        let newWorkoutPopup = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
+        newWorkoutPopup.newWorkoutProtocol = self
+
+        // Create the dialog
+        let popup = PopupDialog(viewController: newWorkoutPopup, buttonAlignment: .horizontal)
+        
+        // Create first button
+        let buttonOne = CancelButton(title: "Cancel", height: 60) {}
+        
+        // Create second button
+        let buttonTwo = DefaultButton(title: "Submit", height: 60) {}
+        
+        popup.addButtons([buttonOne, buttonTwo])
+        
+        // Present dialog
+        self.present(popup, animated: animated, completion: nil)
     }
     
     //opens new data popup
@@ -218,6 +239,7 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
         }
     }
     
+    //functionality to move cell by long pressing
     func onLongPressGesture(sender: UILongPressGestureRecognizer) {
         let locationInView = sender.location(in: tableView) //where on the screen was long pressed
         let indexPath = tableView.indexPathForRow(at: locationInView)

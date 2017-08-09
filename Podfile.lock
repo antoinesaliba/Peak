@@ -4,17 +4,20 @@ PODS:
   - Charts/Core (3.0.2)
   - DZNEmptyDataSet (1.8.1)
   - FoldingCell (2.0.5)
+  - PopupDialog (0.5.4)
 
 DEPENDENCIES:
   - Charts
   - DZNEmptyDataSet
   - FoldingCell (~> 2.0.3)
+  - PopupDialog (~> 0.5)
 
 SPEC CHECKSUMS:
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FoldingCell: fb189fc746e95b722a1debf8ef455006b70cae2e
+  PopupDialog: 75cf955693590b0cb2fdde00223fb65d99c57247
 
-PODFILE CHECKSUM: f4570d3b2911b3dea23e1d728d85497b08f15687
+PODFILE CHECKSUM: 6f41f31073111d802dcf8104c52d198f93ad7d9c
 
 COCOAPODS: 1.2.1
