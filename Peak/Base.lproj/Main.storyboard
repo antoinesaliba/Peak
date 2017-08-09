@@ -183,14 +183,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Xx0-ka-nYI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OsW-BR-FiC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="132"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odz-9G-VIf">
-                                <rect key="frame" x="16" y="0.0" width="343" height="132"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="132"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Workout Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="byP-Br-KO8">
-                                        <rect key="frame" x="73" y="13" width="197" height="30"/>
+                                        <rect key="frame" x="89" y="8" width="165" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -200,21 +200,22 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="132" id="2SQ-bO-7fZ"/>
                                     <constraint firstItem="byP-Br-KO8" firstAttribute="centerX" secondItem="odz-9G-VIf" secondAttribute="centerX" id="4OU-zS-Rcx"/>
-                                    <constraint firstItem="byP-Br-KO8" firstAttribute="leading" secondItem="odz-9G-VIf" secondAttribute="leading" constant="73" id="Dhz-ed-j6q"/>
-                                    <constraint firstItem="byP-Br-KO8" firstAttribute="top" secondItem="odz-9G-VIf" secondAttribute="top" constant="13" id="fqz-GB-nUW"/>
+                                    <constraint firstItem="byP-Br-KO8" firstAttribute="leading" secondItem="odz-9G-VIf" secondAttribute="leading" constant="89" id="Dhz-ed-j6q"/>
+                                    <constraint firstItem="byP-Br-KO8" firstAttribute="top" secondItem="odz-9G-VIf" secondAttribute="top" constant="8" id="fqz-GB-nUW"/>
+                                    <constraint firstItem="byP-Br-KO8" firstAttribute="centerX" secondItem="odz-9G-VIf" secondAttribute="centerX" id="gOF-48-x8t"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="odz-9G-VIf" firstAttribute="leading" secondItem="OsW-BR-FiC" secondAttribute="leadingMargin" id="3DG-vd-hbr"/>
+                            <constraint firstItem="odz-9G-VIf" firstAttribute="leading" secondItem="OsW-BR-FiC" secondAttribute="leadingMargin" constant="-16" id="3DG-vd-hbr"/>
                             <constraint firstItem="odz-9G-VIf" firstAttribute="top" secondItem="OsW-BR-FiC" secondAttribute="topMargin" id="5N7-Ec-Kg8"/>
                             <constraint firstItem="Xx0-ka-nYI" firstAttribute="top" secondItem="odz-9G-VIf" secondAttribute="bottom" id="LcV-Z3-k2c"/>
-                            <constraint firstItem="odz-9G-VIf" firstAttribute="trailing" secondItem="OsW-BR-FiC" secondAttribute="trailingMargin" id="jvc-lD-aRt"/>
+                            <constraint firstItem="odz-9G-VIf" firstAttribute="trailing" secondItem="OsW-BR-FiC" secondAttribute="trailingMargin" constant="16" id="jvc-lD-aRt"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="132"/>
+                    <size key="freeformSize" width="343" height="132"/>
                     <connections>
                         <outlet property="newWorkoutName" destination="byP-Br-KO8" id="XYs-JT-sfO"/>
                         <outlet property="popupView" destination="odz-9G-VIf" id="uqS-Kc-AZ4"/>
@@ -222,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arB-Oy-fKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1328.8" y="-2016.3418290854574"/>
+            <point key="canvasLocation" x="1328.8" y="-2016.7916041979013"/>
         </scene>
         <!--New Data Popup-->
         <scene sceneID="pg9-tf-aHb">
@@ -233,53 +234,38 @@
                         <viewControllerLayoutGuide type="bottom" id="bXF-09-VWf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nPX-dG-bCs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="132"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogY-uo-1cT">
-                                <rect key="frame" x="16" y="229" width="343" height="208"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="132"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Data" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZO-g0-0kC">
-                                        <rect key="frame" x="73" y="13" width="196" height="30"/>
+                                        <rect key="frame" x="73" y="13" width="197" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdH-f1-inH">
-                                        <rect key="frame" x="72" y="122" width="48" height="30"/>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="cancelAction:" destination="rTr-eY-lOT" eventType="touchUpInside" id="pbh-r4-EXt"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0C-CA-VkH">
-                                        <rect key="frame" x="222" y="122" width="49" height="30"/>
-                                        <state key="normal" title="Submit"/>
-                                        <connections>
-                                            <action selector="submitAction:" destination="rTr-eY-lOT" eventType="touchUpInside" id="HpP-KK-PUs"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="208" id="848-vr-0lJ"/>
-                                    <constraint firstItem="CZO-g0-0kC" firstAttribute="top" secondItem="ogY-uo-1cT" secondAttribute="top" constant="13" id="APm-T7-rbV"/>
-                                    <constraint firstItem="CZO-g0-0kC" firstAttribute="leading" secondItem="ogY-uo-1cT" secondAttribute="leading" constant="73" id="JAz-6P-afp"/>
-                                    <constraint firstItem="CZO-g0-0kC" firstAttribute="centerX" secondItem="ogY-uo-1cT" secondAttribute="centerX" id="Okv-Q6-PMS"/>
-                                    <constraint firstItem="sdH-f1-inH" firstAttribute="top" secondItem="CZO-g0-0kC" secondAttribute="bottom" constant="79" id="She-Yy-Fsn"/>
-                                    <constraint firstAttribute="trailing" secondItem="p0C-CA-VkH" secondAttribute="trailing" constant="72" id="Tnn-u1-JFw"/>
-                                    <constraint firstItem="sdH-f1-inH" firstAttribute="leading" secondItem="ogY-uo-1cT" secondAttribute="leading" constant="72" id="eT6-yG-Zab"/>
-                                    <constraint firstItem="sdH-f1-inH" firstAttribute="baseline" secondItem="p0C-CA-VkH" secondAttribute="baseline" id="qes-Tg-R3l"/>
+                                    <constraint firstItem="CZO-g0-0kC" firstAttribute="centerX" secondItem="ogY-uo-1cT" secondAttribute="centerX" id="6ct-Nw-YJb"/>
+                                    <constraint firstItem="CZO-g0-0kC" firstAttribute="top" secondItem="ogY-uo-1cT" secondAttribute="top" constant="13" id="9ab-O7-x2N"/>
+                                    <constraint firstItem="CZO-g0-0kC" firstAttribute="leading" secondItem="ogY-uo-1cT" secondAttribute="leading" constant="73" id="AcH-Ns-dxS"/>
+                                    <constraint firstAttribute="height" constant="132" id="vFi-EK-yaX"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ogY-uo-1cT" firstAttribute="leading" secondItem="nPX-dG-bCs" secondAttribute="leadingMargin" id="Q1P-MK-eZk"/>
-                            <constraint firstItem="ogY-uo-1cT" firstAttribute="centerY" secondItem="nPX-dG-bCs" secondAttribute="centerY" id="faK-dU-Glg"/>
-                            <constraint firstItem="ogY-uo-1cT" firstAttribute="trailing" secondItem="nPX-dG-bCs" secondAttribute="trailingMargin" id="igZ-EJ-WIK"/>
+                            <constraint firstItem="bXF-09-VWf" firstAttribute="top" secondItem="ogY-uo-1cT" secondAttribute="bottom" id="5k9-1b-7VG"/>
+                            <constraint firstAttribute="trailing" secondItem="ogY-uo-1cT" secondAttribute="trailing" id="EJ2-mh-ABk"/>
+                            <constraint firstItem="ogY-uo-1cT" firstAttribute="leading" secondItem="nPX-dG-bCs" secondAttribute="leading" id="nht-U3-OwH"/>
+                            <constraint firstItem="ogY-uo-1cT" firstAttribute="top" secondItem="nPX-dG-bCs" secondAttribute="top" id="pIf-qc-Va7"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="343" height="132"/>
                     <connections>
                         <outlet property="newWorkoutData" destination="CZO-g0-0kC" id="6KP-v3-tVf"/>
                         <outlet property="popupView" destination="ogY-uo-1cT" id="dhn-KE-OQR"/>

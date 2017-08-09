@@ -12,7 +12,7 @@ import DZNEmptyDataSet
 import FoldingCell
 import PopupDialog
 
-class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProtocol, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     fileprivate struct C {
         struct CellHeight {
@@ -63,17 +63,8 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
     
     //opens the new workout popup
     @IBAction func addWorkout(_ sender: Any) {
-        //let popup = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
-        //popup.newWorkoutProtocol = self
-
-        //self.present(popup, animated: true, completion: nil)
-        showPopup()
-    }
-    
-    func showPopup(animated: Bool = true) {
         let newWorkoutPopup = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
-        newWorkoutPopup.newWorkoutProtocol = self
-
+        
         // Create the dialog
         let popup = PopupDialog(viewController: newWorkoutPopup, buttonAlignment: .horizontal)
         
@@ -81,20 +72,37 @@ class MainViewController: UITableViewController, NewWorkoutProtocol, NewDataProt
         let buttonOne = CancelButton(title: "Cancel", height: 60) {}
         
         // Create second button
-        let buttonTwo = DefaultButton(title: "Submit", height: 60) {}
+        let buttonTwo = DefaultButton(title: "Submit", height: 60) {
+            self.createNewWorkout(name: newWorkoutPopup.newWorkoutName.text!)
+        }
         
         popup.addButtons([buttonOne, buttonTwo])
         
         // Present dialog
-        self.present(popup, animated: animated, completion: nil)
+        self.present(popup, animated: true, completion: nil)
     }
     
     //opens new data popup
     @IBAction func addWorkoutData(_ sender: UIButton) {
-        let popup = self.storyboard?.instantiateViewController(withIdentifier: "NewDataPopup") as! NewDataPopup
-        popup.newDataProtocol = self
-        popup.workoutName = workouts[sender.tag].workoutName
+        let newDataPopup = self.storyboard?.instantiateViewController(withIdentifier: "NewDataPopup") as! NewDataPopup
+        newDataPopup.workoutName = workouts[sender.tag].workoutName
         
+        let newWorkoutPopup = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
+        
+        // Create the dialog
+        let popup = PopupDialog(viewController: newDataPopup, buttonAlignment: .horizontal)
+        
+        // Create first button
+        let buttonOne = CancelButton(title: "Cancel", height: 60) {}
+        
+        // Create second button
+        let buttonTwo = DefaultButton(title: "Submit", height: 60) {
+            self.createNewWorkout(name: newWorkoutPopup.newWorkoutName.text!)
+        }
+        
+        popup.addButtons([buttonOne, buttonTwo])
+        
+        // Present dialog
         self.present(popup, animated: true, completion: nil)
     }
     
