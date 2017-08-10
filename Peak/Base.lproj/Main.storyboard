@@ -70,7 +70,7 @@
                                             <rect key="frame" x="15" y="5" width="345" height="120"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORH-mk-9RN">
-                                                    <rect key="frame" x="8" y="38" width="343" height="42"/>
+                                                    <rect key="frame" x="16" y="22" width="343" height="42"/>
                                                     <fontDescription key="fontDescription" name="Atami-Regular" family="Atami" pointSize="40"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -82,18 +82,25 @@
                                                         <action selector="addWorkoutData:" destination="3u2-El-hjH" eventType="touchUpInside" id="aae-RV-n9u"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9E-bW-r8n">
+                                                    <rect key="frame" x="16" y="81" width="321" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="120" id="0nz-yL-WfG"/>
-                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="top" secondItem="NYQ-EU-LfB" secondAttribute="top" constant="38" id="2jq-Pd-M6h"/>
-                                                <constraint firstAttribute="trailing" secondItem="ORH-mk-9RN" secondAttribute="trailing" constant="-6" id="3Js-fz-WmX"/>
+                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="top" secondItem="NYQ-EU-LfB" secondAttribute="top" constant="22" id="2jq-Pd-M6h"/>
+                                                <constraint firstAttribute="trailing" secondItem="ORH-mk-9RN" secondAttribute="trailing" constant="-14" id="3Js-fz-WmX"/>
                                                 <constraint firstItem="OoD-TR-dPm" firstAttribute="top" secondItem="NYQ-EU-LfB" secondAttribute="top" constant="45" id="AQK-Em-nq2"/>
                                                 <constraint firstItem="OoD-TR-dPm" firstAttribute="centerY" secondItem="NYQ-EU-LfB" secondAttribute="centerY" id="Nzn-d7-B1h"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="VeY-Sl-9NS"/>
-                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="leading" secondItem="NYQ-EU-LfB" secondAttribute="leadingMargin" id="oSr-6b-xOz"/>
+                                                <constraint firstItem="ORH-mk-9RN" firstAttribute="leading" secondItem="NYQ-EU-LfB" secondAttribute="leadingMargin" constant="8" id="oSr-6b-xOz"/>
                                                 <constraint firstItem="OoD-TR-dPm" firstAttribute="trailing" secondItem="NYQ-EU-LfB" secondAttribute="trailingMargin" id="peW-SS-ZRl"/>
-                                                <constraint firstAttribute="bottom" secondItem="ORH-mk-9RN" secondAttribute="bottom" constant="40" id="qIJ-Ps-rpn"/>
+                                                <constraint firstAttribute="bottom" secondItem="ORH-mk-9RN" secondAttribute="bottom" constant="56" id="qIJ-Ps-rpn"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgC-Fw-PgC">
@@ -148,6 +155,7 @@
                                     <outlet property="containerViewTop" destination="YpT-VA-NPR" id="64t-kt-kHF"/>
                                     <outlet property="foregroundView" destination="NYQ-EU-LfB" id="pUu-k0-rv7"/>
                                     <outlet property="foregroundViewTop" destination="Osm-Pf-k4a" id="Rwm-5k-fH8"/>
+                                    <outlet property="lastData" destination="Q9E-bW-r8n" id="lvS-Aq-VEK"/>
                                     <outlet property="workoutName" destination="ORH-mk-9RN" id="mb8-50-jpA"/>
                                 </connections>
                             </tableViewCell>
@@ -167,7 +175,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="workoutsTable" destination="9VJ-fI-lmC" id="AO2-Sc-KNZ"/>
-                        <segue destination="3HD-M4-quB" kind="show" identifier="WorkoutInfoSegue" id="48m-jd-s9J"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6q-Hi-qEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -274,49 +281,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mnS-vt-EzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2191" y="-2016"/>
-        </scene>
-        <!--Workout Details-->
-        <scene sceneID="4Zd-bZ-1bl">
-            <objects>
-                <viewController title="Workout Details" id="3HD-M4-quB" customClass="WorkoutInfoViewController" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tlh-si-rtt"/>
-                        <viewControllerLayoutGuide type="bottom" id="HgW-7q-LGS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cFy-qY-iv7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kei-tk-W02">
-                                <rect key="frame" x="16" y="110" width="343" height="81"/>
-                                <fontDescription key="fontDescription" name="Atami-Regular" family="Atami" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgO-7Y-rL6">
-                                <rect key="frame" x="16" y="230" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="kei-tk-W02" firstAttribute="trailing" secondItem="cFy-qY-iv7" secondAttribute="trailingMargin" id="9FO-XO-rhB"/>
-                            <constraint firstItem="kei-tk-W02" firstAttribute="leading" secondItem="cFy-qY-iv7" secondAttribute="leadingMargin" id="PDr-Ku-fdT"/>
-                            <constraint firstItem="HgW-7q-LGS" firstAttribute="top" secondItem="kei-tk-W02" secondAttribute="bottom" constant="476" id="avC-bT-TX6"/>
-                            <constraint firstItem="kei-tk-W02" firstAttribute="top" secondItem="tlh-si-rtt" secondAttribute="bottom" constant="46" id="uZM-ET-fl0"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="data" destination="AgO-7Y-rL6" id="ELM-ge-dCL"/>
-                        <outlet property="name" destination="kei-tk-W02" id="0UD-jy-6bs"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8j2-th-VnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2144.8000000000002" y="-1273.313343328336"/>
         </scene>
         <!--Graph View Controller-->
         <scene sceneID="HQK-tG-6tg">

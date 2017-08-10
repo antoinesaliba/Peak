@@ -87,8 +87,6 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         let newDataPopup = self.storyboard?.instantiateViewController(withIdentifier: "NewDataPopup") as! NewDataPopup
         newDataPopup.workoutName = workouts[sender.tag].workoutName
         
-        let newWorkoutPopup = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
-        
         // Create the dialog
         let popup = PopupDialog(viewController: newDataPopup, buttonAlignment: .horizontal)
         
@@ -97,7 +95,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         
         // Create second button
         let buttonTwo = DefaultButton(title: "Submit", height: 60) {
-            self.createNewWorkout(name: newWorkoutPopup.newWorkoutName.text!)
+            self.addData(name: newDataPopup.workoutName, newData: newDataPopup.newWorkoutData.text!)
         }
         
         popup.addButtons([buttonOne, buttonTwo])
@@ -142,6 +140,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         let newWorkoutData = WorkoutData(date: currentTime, stat: input!)
         workoutData.append(newWorkoutData)
         saveData(workout: workout, plainData: workoutData)
+        workoutsTable.reloadData()
     }
     
     func saveData(workout: Workout, plainData: [WorkoutData]) {
@@ -182,6 +181,11 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewWorkoutCell
         cell.workoutName.text = workouts[indexPath.row].value(forKey: "workoutName") as? String
+        if workouts[indexPath.row].workoutData.count > 0 {
+            cell.lastData.text = "Last workout: "+String(describing: workouts[indexPath.row].workoutData.last!.workoutStat)+"lb"
+        } else {
+            cell.lastData.isHidden = true
+        }
         cell.foregroundView.layer.cornerRadius = 30.0
         cell.containerView.layer.cornerRadius = 30.0
         
