@@ -181,10 +181,11 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewWorkoutCell
         cell.workoutName.text = workouts[indexPath.row].value(forKey: "workoutName") as? String
+        cell.newDataButton.tag = indexPath.row
         if workouts[indexPath.row].workoutData.count > 0 {
             cell.lastData.text = "Last workout: "+String(describing: workouts[indexPath.row].workoutData.last!.workoutStat)+"lb"
         } else {
-            cell.lastData.isHidden = true
+            cell.lastData.text = ""
         }
         cell.foregroundView.layer.cornerRadius = 30.0
         cell.containerView.layer.cornerRadius = 30.0
@@ -307,6 +308,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
                     self.dragInitialIndexPath = nil
                     self.popoutCell?.removeFromSuperview()
                     self.popoutCell = nil
+                    self.workoutsTable.reloadData()
                 }
             })
         }

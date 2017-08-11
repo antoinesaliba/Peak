@@ -156,6 +156,7 @@
                                     <outlet property="foregroundView" destination="NYQ-EU-LfB" id="pUu-k0-rv7"/>
                                     <outlet property="foregroundViewTop" destination="Osm-Pf-k4a" id="Rwm-5k-fH8"/>
                                     <outlet property="lastData" destination="Q9E-bW-r8n" id="lvS-Aq-VEK"/>
+                                    <outlet property="newDataButton" destination="OoD-TR-dPm" id="kI9-3h-xaD"/>
                                     <outlet property="workoutName" destination="ORH-mk-9RN" id="mb8-50-jpA"/>
                                 </connections>
                             </tableViewCell>
