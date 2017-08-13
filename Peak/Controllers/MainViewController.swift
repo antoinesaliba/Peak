@@ -11,6 +11,7 @@ import CoreData
 import DZNEmptyDataSet
 import FoldingCell
 import PopupDialog
+import Charts
 
 class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
@@ -148,6 +149,30 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
     }
     
+    func createChart(selectedCell: TableViewWorkoutCell, dataPoints: [Int], values: [Int]) {
+        var dataEntries: [ChartDataEntry] = []
+            
+        for i in 0..<dataPoints.count {
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(values[i]))
+            dataEntries.append(dataEntry)
+        }
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Pounds")
+        let chartData = LineChartData(dataSet: chartDataSet)
+        selectedCell.workoutChart.data = chartData
+        selectedCell.workoutChart.backgroundColor = UIColor.white
+    }
+    
+    func splitData(data: [WorkoutData]) -> ([Int], [Int]){
+        var dates: [Int] = []
+        var stats: [Int] = []
+        for index in 0...data.count-1{
+            let element = data[index]
+            dates.append(element.workoutDate)
+            stats.append(element.workoutStat)
+        }
+        return (dates, stats)
+    }
+    
     //returns time as an Integer in yyyyMMddhhmmss format so it can be compared as an Integer
     func getTime() -> Int {
         let date = NSDate()
@@ -189,6 +214,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         }
         cell.foregroundView.layer.cornerRadius = 30.0
         cell.containerView.layer.cornerRadius = 30.0
+        cell.workoutChart.isUserInteractionEnabled = false //enables cell closing when graph clicked
         
         return (cell)
     }
@@ -219,6 +245,12 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard case let cell as TableViewWorkoutCell = tableView.cellForRow(at: indexPath as IndexPath) else {
             return
+        }
+        
+        let data = findWorkoutElement(name: cell.workoutName.text!).workoutData
+        if data.count > 0 {
+            let (dates, stats) = splitData(data: data)
+            createChart(selectedCell: cell, dataPoints: dates, values: stats)
         }
         
         var duration = 0.0

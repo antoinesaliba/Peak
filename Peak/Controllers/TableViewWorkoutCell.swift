@@ -8,12 +8,14 @@
 
 import UIKit
 import FoldingCell
+import Charts
 
-class TableViewWorkoutCell: FoldingCell {
+class TableViewWorkoutCell: FoldingCell{
 
     @IBOutlet weak var workoutName: UILabel!
     @IBOutlet weak var newDataButton: UIButton!
     @IBOutlet weak var lastData: UILabel!
+    @IBOutlet weak var workoutChart: BarChartView!
     
     override func awakeFromNib() {
         
