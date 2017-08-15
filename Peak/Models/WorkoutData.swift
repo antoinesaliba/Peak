@@ -40,26 +40,10 @@ class WorkoutData: NSObject, NSCoding {
     }
     
     func printDate() -> String {
-        let dateAsString = String(workoutDate)
-        let year = substring(start: 0, offset: 5, input: dateAsString)
-        let month = substring(start: 4, offset: -3, input: dateAsString)
-        let day = substring(start: 6, offset: -5, input: dateAsString)
-        
-        return month+"/"+day+"/"+year
-        
-    }
-    
-    func substring(start: Int, offset: Int, input: String) -> String {
-        if start == 0{
-            let index = input.index(input.startIndex, offsetBy: offset)
-            return input.substring(to: index)
-            
-        }else{
-            let start = input.index(input.startIndex, offsetBy: start)
-            let end = input.index(input.endIndex, offsetBy: offset)
-            let range = start..<end
-        
-            return input.substring(with: range)
-        }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMddHHmmss"
+        let date = String(describing: formatter.date(from: String(self.workoutDate))!)
+        let index = date.index(date.startIndex, offsetBy: 5)
+        return date.substring(to: index)
     }
 }

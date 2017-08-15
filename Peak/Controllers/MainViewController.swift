@@ -149,28 +149,19 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
     }
     
-    func createChart(selectedCell: TableViewWorkoutCell, dataPoints: [Int], values: [Int]) {
-        var dataEntries: [ChartDataEntry] = []
-            
+    func createChart(selectedCell: TableViewWorkoutCell, dataPoints: [WorkoutData]) {
+        var dates: [String] = []
+        var stats: [Double] = []
         for i in 0..<dataPoints.count {
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(values[i]))
-            dataEntries.append(dataEntry)
+            dates.append(dataPoints[i].printDate())
+            stats.append(Double(dataPoints[i].workoutStat))
         }
-        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Pounds")
-        let chartData = LineChartData(dataSet: chartDataSet)
-        selectedCell.workoutChart.data = chartData
-        selectedCell.workoutChart.backgroundColor = UIColor.white
-    }
-    
-    func splitData(data: [WorkoutData]) -> ([Int], [Int]){
-        var dates: [Int] = []
-        var stats: [Int] = []
-        for index in 0...data.count-1{
-            let element = data[index]
-            dates.append(element.workoutDate)
-            stats.append(element.workoutStat)
-        }
-        return (dates, stats)
+        selectedCell.workoutChart.setLineChartData(xValues: dates, yValues: stats, label: "Pounds")
+        
+        selectedCell.workoutChart.xAxis.labelPosition = .bottom
+        selectedCell.workoutChart.xAxis.avoidFirstLastClippingEnabled = true
+        selectedCell.workoutChart.chartDescription?.enabled = false
+        selectedCell.workoutChart.rightAxis.enabled = false
     }
     
     //returns time as an Integer in yyyyMMddhhmmss format so it can be compared as an Integer
@@ -248,13 +239,12 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         }
         
         let data = findWorkoutElement(name: cell.workoutName.text!).workoutData
-        if data.count > 0 {
-            let (dates, stats) = splitData(data: data)
-            createChart(selectedCell: cell, dataPoints: dates, values: stats)
-        }
         
         var duration = 0.0
         if cellHeights[indexPath.row] == C.CellHeight.close { // open cell
+            if data.count > 0 {
+                createChart(selectedCell: cell, dataPoints: data)
+            }
             cellHeights[indexPath.row] = C.CellHeight.open
             cell.selectedAnimation(true, animated: true, completion: nil)
             duration = 0.0

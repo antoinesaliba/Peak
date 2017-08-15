@@ -15,7 +15,7 @@ class TableViewWorkoutCell: FoldingCell{
     @IBOutlet weak var workoutName: UILabel!
     @IBOutlet weak var newDataButton: UIButton!
     @IBOutlet weak var lastData: UILabel!
-    @IBOutlet weak var workoutChart: BarChartView!
+    @IBOutlet weak var workoutChart: LineChartView!
     
     override func awakeFromNib() {
         
