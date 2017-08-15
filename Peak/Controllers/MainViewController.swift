@@ -162,6 +162,9 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         selectedCell.workoutChart.xAxis.avoidFirstLastClippingEnabled = true
         selectedCell.workoutChart.chartDescription?.enabled = false
         selectedCell.workoutChart.rightAxis.enabled = false
+        selectedCell.workoutChart.xAxis.granularityEnabled = true
+        selectedCell.workoutChart.xAxis.granularity = 1.0
+        
     }
     
     //returns time as an Integer in yyyyMMddhhmmss format so it can be compared as an Integer

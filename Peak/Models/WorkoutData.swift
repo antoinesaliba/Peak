@@ -43,7 +43,9 @@ class WorkoutData: NSObject, NSCoding {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMddHHmmss"
         let date = String(describing: formatter.date(from: String(self.workoutDate))!)
-        let index = date.index(date.startIndex, offsetBy: 5)
-        return date.substring(to: index)
+        let start = date.index(date.startIndex, offsetBy: 5)
+        let end = date.index(date.endIndex, offsetBy: -15)
+        let range = start..<end
+        return date.substring(with: range)
     }
 }

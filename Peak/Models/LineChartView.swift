@@ -42,10 +42,10 @@ extension LineChartView {
         chartData.setDrawValues(true)
         
         
-        let chartFormatter = LineChartFormatter(labels: xValues)
-        let xAxis = XAxis()
-        xAxis.valueFormatter = chartFormatter
-        self.xAxis.valueFormatter = xAxis.valueFormatter
+        //let chartFormatter = LineChartFormatter(labels: xValues)
+        //let xAxis = XAxis()
+        //xAxis.valueFormatter = chartFormatter
+        //self.xAxis.valueFormatter = xAxis.valueFormatter
         
         self.data = chartData
     }
