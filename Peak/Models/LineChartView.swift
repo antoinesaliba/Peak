@@ -16,7 +16,8 @@ extension LineChartView {
         var labels: [String] = []
         
         func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-            return labels[Int(value)]
+            print(value)
+            return ""
         }
         
         init(labels: [String]) {
@@ -25,28 +26,11 @@ extension LineChartView {
         }
     }
     
-    func setLineChartData(xValues: [String], yValues: [Double], label: String) {
+    func setLineChartData(xValues: [String]) {
         
-        var dataEntries: [ChartDataEntry] = []
-        
-        for i in 0..<yValues.count {
-            let dataEntry = ChartDataEntry(x: Double(i), y: yValues[i])
-            dataEntries.append(dataEntry)
-        }
-        
-        let chartDataSet = LineChartDataSet(values: dataEntries, label: label)
-        chartDataSet.colors = [UIColor.blue]
-        chartDataSet.circleRadius = 4.0
-        
-        let chartData = LineChartData(dataSet: chartDataSet)
-        chartData.setDrawValues(true)
-        
-        
-        //let chartFormatter = LineChartFormatter(labels: xValues)
-        //let xAxis = XAxis()
-        //xAxis.valueFormatter = chartFormatter
-        //self.xAxis.valueFormatter = xAxis.valueFormatter
-        
-        self.data = chartData
+        let chartFormatter = LineChartFormatter(labels: xValues)
+        let xAxis = XAxis()
+        xAxis.valueFormatter = chartFormatter
+        self.xAxis.valueFormatter = xAxis.valueFormatter
     }
 }

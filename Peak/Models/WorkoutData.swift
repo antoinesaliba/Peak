@@ -40,12 +40,14 @@ class WorkoutData: NSObject, NSCoding {
     }
     
     func printDate() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyyMMddHHmmss"
-        let date = String(describing: formatter.date(from: String(self.workoutDate))!)
-        let start = date.index(date.startIndex, offsetBy: 5)
-        let end = date.index(date.endIndex, offsetBy: -15)
-        let range = start..<end
-        return date.substring(with: range)
+        let getFormatter = DateFormatter()
+        getFormatter.dateFormat = "yyyyMMddHHmmss"
+        let date = getFormatter.date(from: String(self.workoutDate))!
+        
+        let printFormatter = DateFormatter()
+        printFormatter.dateFormat = "MM-dd"
+        let printDate = printFormatter.string(from: date)
+        
+        return printDate
     }
 }

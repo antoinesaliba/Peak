@@ -150,20 +150,44 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     }
     
     func createChart(selectedCell: TableViewWorkoutCell, dataPoints: [WorkoutData]) {
-        var dates: [String] = []
-        var stats: [Double] = []
+        var displayDates: [String] = []
+        var dataEntries: [ChartDataEntry] = []
+        var position = 0
+        
         for i in 0..<dataPoints.count {
-            dates.append(dataPoints[i].printDate())
-            stats.append(Double(dataPoints[i].workoutStat))
+            let workoutD = dataPoints[i]
+            var dataEntry:ChartDataEntry? = nil
+            let displayD = workoutD.printDate()
+            if !displayDates.isEmpty && displayD == displayDates.last {
+                if (dataEntries.last?.y)! < Double(workoutD.workoutStat) {
+                    position -= 1
+                    dataEntries.removeLast()
+                    displayDates.removeLast()
+                } else {
+                    continue
+                }
+            }
+            dataEntry = ChartDataEntry(x: Double(position), y: Double(workoutD.workoutStat))
+            position += 1
+            displayDates.append(displayD)
+            dataEntries.append(dataEntry!)
         }
-        selectedCell.workoutChart.setLineChartData(xValues: dates, yValues: stats, label: "Pounds")
+        
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: "")
+        chartDataSet.colors = [UIColor.blue]
+        chartDataSet.circleRadius = 4.0
+        
+        let chartData = LineChartData(dataSet: chartDataSet)
+        chartData.setDrawValues(true)
         
         selectedCell.workoutChart.xAxis.labelPosition = .bottom
         selectedCell.workoutChart.xAxis.avoidFirstLastClippingEnabled = true
         selectedCell.workoutChart.chartDescription?.enabled = false
         selectedCell.workoutChart.rightAxis.enabled = false
-        selectedCell.workoutChart.xAxis.granularityEnabled = true
-        selectedCell.workoutChart.xAxis.granularity = 1.0
+        selectedCell.workoutChart.xAxis.drawLabelsEnabled = false
+        selectedCell.workoutChart.xAxis.drawGridLinesEnabled = false
+
+        selectedCell.workoutChart.data = chartData
         
     }
     
