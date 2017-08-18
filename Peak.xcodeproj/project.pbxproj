@@ -11,7 +11,6 @@
 		201518361EFE29A3001D30AD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201518351EFE29A3001D30AD /* MainViewController.swift */; };
 		202D937A1F3FF3B800B57133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202D93791F3FF3B800B57133 /* Main.storyboard */; };
 		202D937C1F3FF68A00B57133 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202D937B1F3FF68A00B57133 /* LaunchScreen.storyboard */; };
-		202D937E1F4270FA00B57133 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202D937D1F4270FA00B57133 /* LineChartView.swift */; };
 		208BFD571EEB699300B1E881 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208BFD561EEB699300B1E881 /* AppDelegate.swift */; };
 		208BFD5E1EEB699300B1E881 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 208BFD5D1EEB699300B1E881 /* Assets.xcassets */; };
 		209051B41EEC7A94000AEFCA /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209051B31EEC7A94000AEFCA /* GraphViewController.swift */; };
@@ -43,7 +42,6 @@
 		201518351EFE29A3001D30AD /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		202D93791F3FF3B800B57133 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		202D937B1F3FF68A00B57133 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		202D937D1F4270FA00B57133 /* LineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		208BFD531EEB699300B1E881 /* Peak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		208BFD561EEB699300B1E881 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		208BFD5D1EEB699300B1E881 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				20CB04A41F2459A400CF2319 /* WorkoutData.swift */,
-				202D937D1F4270FA00B57133 /* LineChartView.swift */,
 				20CB04A61F26F94900CF2319 /* Workout.swift */,
 			);
 			path = Models;
@@ -292,7 +289,6 @@
 			files = (
 				209051B41EEC7A94000AEFCA /* GraphViewController.swift in Sources */,
 				20E15BB61EFED73E00920F52 /* TableViewWorkoutCell.swift in Sources */,
-				202D937E1F4270FA00B57133 /* LineChartView.swift in Sources */,
 				20E15BB91F05FD8D00920F52 /* NewWorkoutPopup.swift in Sources */,
 				20E15BCA1F09FFDB00920F52 /* WorkoutInfoViewController.swift in Sources */,
 				20CB04A51F2459A400CF2319 /* WorkoutData.swift in Sources */,
