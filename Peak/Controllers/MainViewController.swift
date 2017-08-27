@@ -12,6 +12,7 @@ import DZNEmptyDataSet
 import FoldingCell
 import PopupDialog
 import Charts
+import Persei
 
 class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
@@ -55,6 +56,17 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressGesture(sender:)))
         longPress.minimumPressDuration = 0.2
         tableView.addGestureRecognizer(longPress)
+        
+        //let menu = MenuView()
+        //tableView.addSubview(menu)
+        
+        //let items = feedModes.map { mode: SomeYourCustomFeedMode -> MenuItem in
+            //return MenuItem(image: mode.image)
+        //}
+        
+        //menu.items = items
+        
+        //menu.setRevealed(true, animated: true)
         
     }
     
@@ -154,12 +166,11 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         var dataEntries: [ChartDataEntry] = []
         var position = 0
         
-        for i in 0..<dataPoints.count {
-            let workoutD = dataPoints[i]
+        for element in dataPoints {
             var dataEntry:ChartDataEntry? = nil
-            let displayD = workoutD.printDate()
+            let displayD = element.printDate()
             if !displayDates.isEmpty && displayD == displayDates.last {
-                if (dataEntries.last?.y)! < Double(workoutD.workoutStat) {
+                if (dataEntries.last?.y)! < Double(element.workoutStat) {
                     position -= 1
                     dataEntries.removeLast()
                     displayDates.removeLast()
@@ -167,10 +178,10 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
                     continue
                 }
             }
-            dataEntry = ChartDataEntry(x: Double(position), y: Double(workoutD.workoutStat))
-            position += 1
+            dataEntry = ChartDataEntry(x: Double(position), y: Double(element.workoutStat))
             displayDates.append(displayD)
             dataEntries.append(dataEntry!)
+            position += 1
         }
         
         let chartDataSet = LineChartDataSet(values: dataEntries, label: "")
@@ -229,6 +240,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
             cell.lastData.text = "Last workout: "+String(describing: workouts[indexPath.row].workoutData.last!.workoutStat)+"lb"
         } else {
             cell.lastData.text = ""
+            cell.workoutChart.clear()
         }
         cell.foregroundView.layer.cornerRadius = 30.0
         cell.containerView.layer.cornerRadius = 30.0
@@ -247,10 +259,21 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         workouts.insert(item, at: destinationIndexPath.row)
     }
     
+    //disables swipe to delete when cell is opened
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if cellHeights[indexPath.row] == C.CellHeight.close {
+            return UITableViewCellEditingStyle.delete
+        }else{
+            return UITableViewCellEditingStyle.none
+            
+        }
+    }
     
+    //actions taken when user swipes to delete workout
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
             workouts.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
             NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
             tableView.reloadData()
         }
@@ -273,6 +296,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
                 createChart(selectedCell: cell, dataPoints: data)
             }
             cellHeights[indexPath.row] = C.CellHeight.open
+            //cell.setEditingStyle(UITableViewCellEditingStyle.none
             cell.selectedAnimation(true, animated: true, completion: nil)
             duration = 0.0
         } else {// close cell
