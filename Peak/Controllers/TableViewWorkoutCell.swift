@@ -17,9 +17,12 @@ class TableViewWorkoutCell: FoldingCell{
     @IBOutlet weak var lastData: UILabel!
     @IBOutlet weak var workoutChart: LineChartView!
     
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
+        
         // Initialization code
     }
 

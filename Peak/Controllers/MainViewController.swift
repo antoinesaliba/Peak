@@ -57,17 +57,6 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         longPress.minimumPressDuration = 0.2
         tableView.addGestureRecognizer(longPress)
         
-        //let menu = MenuView()
-        //tableView.addSubview(menu)
-        
-        //let items = feedModes.map { mode: SomeYourCustomFeedMode -> MenuItem in
-            //return MenuItem(image: mode.image)
-        //}
-        
-        //menu.items = items
-        
-        //menu.setRevealed(true, animated: true)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,14 +71,14 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         let popup = PopupDialog(viewController: newWorkoutPopup, buttonAlignment: .horizontal)
         
         // Create first button
-        let buttonOne = CancelButton(title: "Cancel", height: 60) {}
+        let cancelButton = CancelButton(title: "Cancel", height: 60) {}
         
         // Create second button
-        let buttonTwo = DefaultButton(title: "Submit", height: 60) {
+        let submitButton = DefaultButton(title: "Submit", height: 60) {
             self.createNewWorkout(name: newWorkoutPopup.newWorkoutName.text!)
         }
         
-        popup.addButtons([buttonOne, buttonTwo])
+        popup.addButtons([cancelButton, submitButton])
         
         // Present dialog
         self.present(popup, animated: true, completion: nil)
@@ -273,7 +262,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
             workouts.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            //tableView.deleteRows(at: [indexPath], with: .automatic)
             NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
             tableView.reloadData()
         }
@@ -296,7 +285,6 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
                 createChart(selectedCell: cell, dataPoints: data)
             }
             cellHeights[indexPath.row] = C.CellHeight.open
-            //cell.setEditingStyle(UITableViewCellEditingStyle.none
             cell.selectedAnimation(true, animated: true, completion: nil)
             duration = 0.0
         } else {// close cell
