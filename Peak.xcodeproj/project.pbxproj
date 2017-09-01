@@ -19,6 +19,10 @@
 		20E15BB91F05FD8D00920F52 /* NewWorkoutPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */; };
 		20E15BC41F08484800920F52 /* Atami-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20E15BC31F08484800920F52 /* Atami-Regular.otf */; };
 		20E15BCA1F09FFDB00920F52 /* WorkoutInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E15BC91F09FFDB00920F52 /* WorkoutInfoViewController.swift */; };
+		20E5CEDF1F59E18000720BAB /* Chart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E5CEDE1F59E18000720BAB /* Chart.xib */; };
+		20E5CEE11F59E1B100720BAB /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E5CEE01F59E1B100720BAB /* Chart.swift */; };
+		20E5CEE31F59E8DB00720BAB /* Table.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E5CEE21F59E8DB00720BAB /* Table.xib */; };
+		20E5CEE51F59E8ED00720BAB /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E5CEE41F59E8ED00720BAB /* Table.swift */; };
 		4DC03AF9A437B41FA658E596 /* Pods_Peak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6A49167B017D079D310383 /* Pods_Peak.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +54,10 @@
 		20E15BB81F05FD8D00920F52 /* NewWorkoutPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWorkoutPopup.swift; sourceTree = "<group>"; };
 		20E15BC31F08484800920F52 /* Atami-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Atami-Regular.otf"; sourceTree = "<group>"; };
 		20E15BC91F09FFDB00920F52 /* WorkoutInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInfoViewController.swift; sourceTree = "<group>"; };
+		20E5CEDE1F59E18000720BAB /* Chart.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Chart.xib; sourceTree = "<group>"; };
+		20E5CEE01F59E1B100720BAB /* Chart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
+		20E5CEE21F59E8DB00720BAB /* Table.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Table.xib; sourceTree = "<group>"; };
+		20E5CEE41F59E8ED00720BAB /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		327751DF1CDDB9D7A8C6F1B1 /* Pods-Peak.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peak.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peak/Pods-Peak.release.xcconfig"; sourceTree = "<group>"; };
 		6B6A49167B017D079D310383 /* Pods_Peak.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peak.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77D93C688DF3993BC3A61AF /* Pods-Peak.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peak.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Peak/Pods-Peak.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +97,10 @@
 			children = (
 				202D93791F3FF3B800B57133 /* Main.storyboard */,
 				202D937B1F3FF68A00B57133 /* LaunchScreen.storyboard */,
+				20E5CEDE1F59E18000720BAB /* Chart.xib */,
+				20E5CEE01F59E1B100720BAB /* Chart.swift */,
+				20E5CEE21F59E8DB00720BAB /* Table.xib */,
+				20E5CEE41F59E8ED00720BAB /* Table.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,7 +231,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20E5CEE31F59E8DB00720BAB /* Table.xib in Resources */,
 				202D937A1F3FF3B800B57133 /* Main.storyboard in Resources */,
+				20E5CEDF1F59E18000720BAB /* Chart.xib in Resources */,
 				202D937C1F3FF68A00B57133 /* LaunchScreen.storyboard in Resources */,
 				208BFD5E1EEB699300B1E881 /* Assets.xcassets in Resources */,
 				20E15BC41F08484800920F52 /* Atami-Regular.otf in Resources */,
@@ -286,6 +300,8 @@
 				20E15BCA1F09FFDB00920F52 /* WorkoutInfoViewController.swift in Sources */,
 				20CB04A51F2459A400CF2319 /* WorkoutData.swift in Sources */,
 				20CB04A71F26F94900CF2319 /* Workout.swift in Sources */,
+				20E5CEE11F59E1B100720BAB /* Chart.swift in Sources */,
+				20E5CEE51F59E8ED00720BAB /* Table.swift in Sources */,
 				201518361EFE29A3001D30AD /* MainViewController.swift in Sources */,
 				20ACE7271F22B44500A1A227 /* NewDataPopup.swift in Sources */,
 				208BFD571EEB699300B1E881 /* AppDelegate.swift in Sources */,

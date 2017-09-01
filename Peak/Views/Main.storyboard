@@ -72,15 +72,25 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgC-Fw-PgC">
                                             <rect key="frame" x="15" y="133" width="345" height="240"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GZo-qH-W8N" customClass="LineChartView" customModule="Charts">
+                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9T3-LY-DxR">
                                                     <rect key="frame" x="8" y="8" width="329" height="194"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </view>
+                                                </scrollView>
+                                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="zjl-km-7gu">
+                                                    <rect key="frame" x="142" y="210" width="60" height="37"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="DF3-H9-THI"/>
+                                                    </constraints>
+                                                </pageControl>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="zjl-km-7gu" firstAttribute="centerX" secondItem="9T3-LY-DxR" secondAttribute="centerX" id="8z5-ME-PxO"/>
+                                                <constraint firstItem="zjl-km-7gu" firstAttribute="top" secondItem="9T3-LY-DxR" secondAttribute="bottom" constant="8" symbolic="YES" id="Arc-jG-HgA"/>
+                                                <constraint firstAttribute="bottom" secondItem="9T3-LY-DxR" secondAttribute="bottom" constant="38" id="Jra-d5-V5C"/>
+                                                <constraint firstItem="9T3-LY-DxR" firstAttribute="leading" secondItem="zgC-Fw-PgC" secondAttribute="leadingMargin" id="Lvj-J3-RQa"/>
                                                 <constraint firstAttribute="height" constant="240" id="UPm-l2-9v2"/>
+                                                <constraint firstItem="9T3-LY-DxR" firstAttribute="trailing" secondItem="zgC-Fw-PgC" secondAttribute="trailingMargin" id="ujr-k5-NPQ"/>
+                                                <constraint firstItem="9T3-LY-DxR" firstAttribute="top" secondItem="zgC-Fw-PgC" secondAttribute="topMargin" id="voh-Kd-U4C"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -117,7 +127,8 @@
                                     <outlet property="foregroundViewTop" destination="Osm-Pf-k4a" id="Rwm-5k-fH8"/>
                                     <outlet property="lastData" destination="Q9E-bW-r8n" id="lvS-Aq-VEK"/>
                                     <outlet property="newDataButton" destination="OoD-TR-dPm" id="kI9-3h-xaD"/>
-                                    <outlet property="workoutChart" destination="GZo-qH-W8N" id="Tp2-GQ-UhO"/>
+                                    <outlet property="pagesController" destination="9T3-LY-DxR" id="3YU-00-vQq"/>
+                                    <outlet property="pagesIndicator" destination="zjl-km-7gu" id="1l4-in-EBM"/>
                                     <outlet property="workoutName" destination="ORH-mk-9RN" id="mb8-50-jpA"/>
                                 </connections>
                             </tableViewCell>

@@ -229,11 +229,13 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
             cell.lastData.text = "Last workout: "+String(describing: workouts[indexPath.row].workoutData.last!.workoutStat)+"lb"
         } else {
             cell.lastData.text = ""
-            cell.workoutChart.clear()
+            //cell.workoutChart.clear()
         }
         cell.foregroundView.layer.cornerRadius = 30.0
         cell.containerView.layer.cornerRadius = 30.0
-        cell.workoutChart.isUserInteractionEnabled = false //enables cell closing when graph clicked
+        //cell.workoutChart.isUserInteractionEnabled = false //enables cell closing when graph clicked
+        
+        cell.createPages()
         
         return (cell)
     }
@@ -282,7 +284,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         var duration = 0.0
         if cellHeights[indexPath.row] == C.CellHeight.close { // open cell
             if data.count > 0 {
-                createChart(selectedCell: cell, dataPoints: data)
+                //createChart(selectedCell: cell, dataPoints: data)
             }
             cellHeights[indexPath.row] = C.CellHeight.open
             cell.selectedAnimation(true, animated: true, completion: nil)
