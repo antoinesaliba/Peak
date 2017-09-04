@@ -9,6 +9,7 @@
 import UIKit
 
 class Table: UIView {
+    @IBOutlet weak var workoutTable: UIView!
 
     /*
     // Only override draw() if you perform custom drawing.

@@ -233,7 +233,6 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         }
         cell.foregroundView.layer.cornerRadius = 30.0
         cell.containerView.layer.cornerRadius = 30.0
-        //cell.workoutChart.isUserInteractionEnabled = false //enables cell closing when graph clicked
         if cell.pagesController.gestureRecognizers?.count == 3 {
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
             tap.delegate = cell
@@ -295,29 +294,31 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard case let cell as TableViewWorkoutCell = tableView.cellForRow(at: indexPath as IndexPath) else {
-            return
-        }
-        
-        let data = findWorkoutElement(name: cell.workoutName.text!).workoutData
-        
-        var duration = 0.0
         if cellHeights[indexPath.row] == C.CellHeight.close { // open cell
-            if data.count > 0 {
-                //createChart(selectedCell: cell, dataPoints: data)
-            }
-            cellHeights[indexPath.row] = C.CellHeight.open
-            cell.selectedAnimation(true, animated: true, completion: nil)
-            duration = 0.0
+            switchWorkoutState(indexPath: indexPath, newState: C.CellHeight.open, makeChart: true)
         } else {// close cell
-            cellHeights[indexPath.row] = C.CellHeight.close
-            cell.selectedAnimation(false, animated: true, completion: nil)
-            duration = 0.25
+            switchWorkoutState(indexPath: indexPath, newState: C.CellHeight.close, makeChart: false)
         }
+        
+    }
+    
+    func switchWorkoutState(indexPath: IndexPath, newState: CGFloat, makeChart: Bool){
+        let cell = tableView.cellForRow(at: indexPath as IndexPath) as! TableViewWorkoutCell
+        cellHeights[indexPath.row] = newState
+        
+        if makeChart{
+            let data = workouts[indexPath.row].workoutData
+            if data.count > 0 {
+                createChart(selectedCell: cell, dataPoints: data)
+            }
+        }
+        
+        cell.selectedAnimation(true, animated: true, completion: nil)
+        let duration = 0.0
         
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { _ in
-            tableView.beginUpdates()
-            tableView.endUpdates()
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
         }, completion: nil)
         
         //enables automatic scrolling to center that workout in view when workout is expanded

@@ -34,13 +34,12 @@ class TableViewWorkoutCell: FoldingCell, UIScrollViewDelegate{
     }
     
     override func animationDuration(_ itemIndex:NSInteger, type:AnimationType)-> TimeInterval {
-        let durations = [0.33, 0.26, 0.26] // timing animation for each view
+        let durations = [0.23, 0.26, 0.26] // timing animation for each view
         return durations[itemIndex]
     }
     
     
     func createPages() {
-        print("START")
         let chart:Chart = Bundle.main.loadNibNamed("Chart", owner: self, options: nil)?.first as! Chart
         let table:Table = Bundle.main.loadNibNamed("Table", owner: self, options: nil)?.first as! Table
         
@@ -55,7 +54,6 @@ class TableViewWorkoutCell: FoldingCell, UIScrollViewDelegate{
         pagesController.addSubview(chart)
         pagesController.addSubview(table)
         pagesController.showsHorizontalScrollIndicator = false
-        print("END")
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
