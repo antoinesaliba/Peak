@@ -40,6 +40,7 @@ class TableViewWorkoutCell: FoldingCell, UIScrollViewDelegate{
     
     
     func createPages() {
+        print("START")
         let chart:Chart = Bundle.main.loadNibNamed("Chart", owner: self, options: nil)?.first as! Chart
         let table:Table = Bundle.main.loadNibNamed("Table", owner: self, options: nil)?.first as! Table
         
@@ -47,13 +48,14 @@ class TableViewWorkoutCell: FoldingCell, UIScrollViewDelegate{
         table.isUserInteractionEnabled = false
         //pagesController.isUserInteractionEnabled = false
         
-        pagesController.frame = CGRect(x: 0, y: 0, width: pagesController.frame.width, height: pagesController.frame.width)
-        pagesController.contentSize = CGSize(width: pagesController.frame.width * CGFloat(2), height: 194)
-        chart.frame = CGRect(x: pagesController.frame.width * CGFloat(0), y: 0, width: pagesController.frame.width, height: pagesController.frame.width)
-        table.frame = CGRect(x: pagesController.frame.width * CGFloat(1), y: 0, width: pagesController.frame.width, height: pagesController.frame.width)
+        pagesController.frame = CGRect(x: 0, y: 0, width: pagesController.frame.width, height: pagesController.frame.height)
+        pagesController.contentSize = CGSize(width: pagesController.frame.width * CGFloat(2), height: pagesController.frame.height)
+        chart.frame = CGRect(x: pagesController.frame.width * CGFloat(0), y: 0, width: pagesController.frame.width, height: pagesController.frame.height)
+        table.frame = CGRect(x: pagesController.frame.width * CGFloat(1), y: 0, width: pagesController.frame.width, height: pagesController.frame.height)
         pagesController.addSubview(chart)
         pagesController.addSubview(table)
         pagesController.showsHorizontalScrollIndicator = false
+        print("END")
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
