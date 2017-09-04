@@ -234,12 +234,31 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         cell.foregroundView.layer.cornerRadius = 30.0
         cell.containerView.layer.cornerRadius = 30.0
         //cell.workoutChart.isUserInteractionEnabled = false //enables cell closing when graph clicked
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        tap.delegate = cell
+        cell.pagesController.addGestureRecognizer(tap)
+        cell.pagesController.tag = indexPath.row
         cell.createPages()
         
         return (cell)
     }
     
+    func handleTap(_ sender:UITapGestureRecognizer){
+        let index = sender.view?.tag
+        let indexPath = IndexPath(row: index!, section: 0)
+        cellHeights[indexPath.row] = C.CellHeight.close
+        let cell = tableView.cellForRow(at: indexPath as IndexPath) as! TableViewWorkoutCell
+        cell.selectedAnimation(false, animated: true, completion: nil)
+        let duration = 0.25
+    
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { _ in
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }, completion: nil)
+        //enables automatic scrolling to center that workout in view when workout is expanded
+        //tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+    }
+
     public override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -306,6 +325,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("DISPLAY")
         if case let cell as TableViewWorkoutCell = cell {
             if cellHeights[indexPath.row] == C.CellHeight.close {
                 cell.selectedAnimation(false, animated: false, completion:nil)

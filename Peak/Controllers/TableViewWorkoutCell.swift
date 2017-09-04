@@ -38,16 +38,16 @@ class TableViewWorkoutCell: FoldingCell, UIScrollViewDelegate{
         return durations[itemIndex]
     }
     
+    
     func createPages() {
         let chart:Chart = Bundle.main.loadNibNamed("Chart", owner: self, options: nil)?.first as! Chart
         let table:Table = Bundle.main.loadNibNamed("Table", owner: self, options: nil)?.first as! Table
         
         chart.isUserInteractionEnabled = false
         table.isUserInteractionEnabled = false
-        pagesController.isUserInteractionEnabled = false
+        //pagesController.isUserInteractionEnabled = false
         
         pagesController.frame = CGRect(x: 0, y: 0, width: pagesController.frame.width, height: pagesController.frame.width)
-        print(pagesController.frame.width)
         pagesController.contentSize = CGSize(width: pagesController.frame.width * CGFloat(2), height: 194)
         chart.frame = CGRect(x: pagesController.frame.width * CGFloat(0), y: 0, width: pagesController.frame.width, height: pagesController.frame.width)
         table.frame = CGRect(x: pagesController.frame.width * CGFloat(1), y: 0, width: pagesController.frame.width, height: pagesController.frame.width)
