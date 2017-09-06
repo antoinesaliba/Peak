@@ -233,7 +233,8 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         }
         cell.foregroundView.layer.cornerRadius = 30.0
         cell.containerView.layer.cornerRadius = 30.0
-        if cell.pagesController.gestureRecognizers?.count == 3 {
+        
+        if !(cell.pagesController.gestureRecognizers?.last is UITapGestureRecognizer) {
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
             tap.delegate = cell
             cell.pagesController.addGestureRecognizer(tap)
@@ -248,15 +249,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     func handleTap(_ sender:UITapGestureRecognizer){
         let index = sender.view?.tag
         let indexPath = IndexPath(row: index!, section: 0)
-        cellHeights[indexPath.row] = C.CellHeight.close
-        let cell = tableView.cellForRow(at: indexPath as IndexPath) as! TableViewWorkoutCell
-        cell.selectedAnimation(false, animated: true, completion: nil)
-        let duration = 0.25
-    
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { _ in
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
-        }, completion: nil)
+        switchWorkoutState(indexPath: indexPath, newState: C.CellHeight.close, makeChart: false)
     }
 
     public override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
