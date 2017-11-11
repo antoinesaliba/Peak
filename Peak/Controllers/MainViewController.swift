@@ -46,7 +46,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         workoutsTable.dataSource = self
         
         self.workoutsTable.contentInset = UIEdgeInsetsMake(15,0,0,0); //adds space between navigation bar and main workouts table
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Atami", size: 25)!] //set font and size of navigation bar title
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Atami", size: 25)!] //set font and size of navigation bar title
         
         if let loadedData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [Workout] {
             workouts = loadedData
@@ -204,13 +204,13 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let str = "No Workouts"
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let str = "Tap the + button to add workouts"
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
@@ -233,7 +233,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         }
         cell.foregroundView.layer.cornerRadius = 30.0
         cell.containerView.layer.cornerRadius = 30.0
-        
+        print(cell.pagesController.gestureRecognizers?.count)
         if !(cell.pagesController.gestureRecognizers?.last is UITapGestureRecognizer) {
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
             tap.delegate = cell
@@ -246,7 +246,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         return (cell)
     }
     
-    func handleTap(_ sender:UITapGestureRecognizer){
+    @objc func handleTap(_ sender:UITapGestureRecognizer){
         let index = sender.view?.tag
         let indexPath = IndexPath(row: index!, section: 0)
         switchWorkoutState(indexPath: indexPath, newState: C.CellHeight.close, makeChart: false)
@@ -309,7 +309,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         cell.selectedAnimation(true, animated: true, completion: nil)
         let duration = 0.0
         
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { _ in
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { 
             self.tableView.beginUpdates()
             self.tableView.endUpdates()
         }, completion: nil)
@@ -330,7 +330,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     }
     
     //functionality to move cell by long pressing
-    func onLongPressGesture(sender: UILongPressGestureRecognizer) {
+    @objc func onLongPressGesture(sender: UILongPressGestureRecognizer) {
         let locationInView = sender.location(in: tableView) //where on the screen was long pressed
         let indexPath = tableView.indexPathForRow(at: locationInView)
         
