@@ -11,13 +11,13 @@ import FoldingCell
 import Charts
 
 class TableViewWorkoutCell: FoldingCell, UIScrollViewDelegate{
-
+    
     @IBOutlet weak var workoutName: UILabel!
     @IBOutlet weak var newDataButton: UIButton!
     @IBOutlet weak var lastData: UILabel!
-    @IBOutlet weak var workoutChart: LineChartView!
     @IBOutlet weak var pagesController: UIScrollView!
     @IBOutlet weak var pagesIndicator: UIPageControl!
+    var workoutChart: LineChartView!
     
     
     override func awakeFromNib() {
@@ -34,7 +34,7 @@ class TableViewWorkoutCell: FoldingCell, UIScrollViewDelegate{
     }
     
     override func animationDuration(_ itemIndex:NSInteger, type:AnimationType)-> TimeInterval {
-        let durations = [0.23, 0.26, 0.26] // timing animation for each view
+        let durations = [0.08, 0.0, 0.0] // timing animation for each view
         return durations[itemIndex]
     }
     
@@ -54,6 +54,7 @@ class TableViewWorkoutCell: FoldingCell, UIScrollViewDelegate{
         pagesController.addSubview(chart)
         pagesController.addSubview(table)
         pagesController.showsHorizontalScrollIndicator = false
+        workoutChart = chart.workoutChart
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

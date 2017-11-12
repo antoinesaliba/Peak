@@ -109,7 +109,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     //checks to make sure no workout with the same title exist
     func noDuplicateWorkout(newWorkout: String) -> Bool{
         for workout in workouts{
-            if workout.value(forKey: "workoutName") as! String == newWorkout {
+            if workout.workoutName == newWorkout {
                 return false
             }
         }
@@ -186,6 +186,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         selectedCell.workoutChart.rightAxis.enabled = false
         selectedCell.workoutChart.xAxis.drawLabelsEnabled = false
         selectedCell.workoutChart.xAxis.drawGridLinesEnabled = false
+        selectedCell.workoutChart.backgroundColor = UIColor.lightGray
 
         selectedCell.workoutChart.data = chartData
         
@@ -223,7 +224,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     //code to set custom properties for all table cells
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewWorkoutCell
-        cell.workoutName.text = workouts[indexPath.row].value(forKey: "workoutName") as? String
+        cell.workoutName.text = workouts[indexPath.row].workoutName
         cell.newDataButton.tag = indexPath.row
         if workouts[indexPath.row].workoutData.count > 0 {
             cell.lastData.text = "Last workout: "+String(describing: workouts[indexPath.row].workoutData.last!.workoutStat)+"lb"
@@ -233,15 +234,13 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         }
         cell.foregroundView.layer.cornerRadius = 30.0
         cell.containerView.layer.cornerRadius = 30.0
-        print(cell.pagesController.gestureRecognizers?.count)
         if !(cell.pagesController.gestureRecognizers?.last is UITapGestureRecognizer) {
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
             tap.delegate = cell
             cell.pagesController.addGestureRecognizer(tap)
-            cell.pagesController.tag = indexPath.row
             cell.createPages()
         }
-        
+        cell.pagesController.tag = indexPath.row
         
         return (cell)
     }
@@ -304,12 +303,13 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
             if data.count > 0 {
                 createChart(selectedCell: cell, dataPoints: data)
             }
+            cell.unfold(true, animated: true, completion: nil)
+        }else{
+            cell.unfold(false, animated: true, completion: nil)
         }
-        
-        cell.selectedAnimation(true, animated: true, completion: nil)
         let duration = 0.0
         
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { 
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
             self.tableView.beginUpdates()
             self.tableView.endUpdates()
         }, completion: nil)
@@ -322,9 +322,9 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if case let cell as TableViewWorkoutCell = cell {
             if cellHeights[indexPath.row] == C.CellHeight.close {
-                cell.selectedAnimation(false, animated: false, completion:nil)
+                cell.unfold(false, animated: false, completion:nil)
             } else {
-                cell.selectedAnimation(true, animated: false, completion: nil)
+                cell.unfold(true, animated: false, completion:nil)
             }
         }
     }
@@ -364,22 +364,26 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
             
             if indexPath != nil && indexPath != dragInitialIndexPath { //if longpress not in same position
                 let dataToMove = workouts[dragInitialIndexPath!.row]
+                let propertiesToMove = cellHeights[dragInitialIndexPath!.row]
                 workouts.remove(at: dragInitialIndexPath!.row)
+                cellHeights.remove(at: dragInitialIndexPath!.row)
                 workouts.insert(dataToMove, at: indexPath!.row)
+                cellHeights.insert(propertiesToMove, at: indexPath!.row)
                 NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
                 
                 tableView.moveRow(at: dragInitialIndexPath!, to: indexPath!)
                 dragInitialIndexPath = indexPath
             }
         } else if sender.state == .ended && dragInitialIndexPath != nil { //if done, make cell reappear
-            let cell = tableView.cellForRow(at: dragInitialIndexPath!)
-            cell?.isHidden = false
-            cell?.alpha = 0.0
+            let cell = tableView.cellForRow(at: dragInitialIndexPath!) as! TableViewWorkoutCell
+            //cell.pagesController.tag = indexPath!.row
+            cell.isHidden = false
+            cell.alpha = 0.0
             UIView.animate(withDuration: 0.25, animations: { () -> Void in
-                self.popoutCell?.center = (cell?.center)!
+                self.popoutCell?.center = (cell.center)
                 self.popoutCell?.transform = CGAffineTransform.identity
                 self.popoutCell?.alpha = 0.0
-                cell?.alpha = 1.0
+                cell.alpha = 1.0
             }, completion: { (finished) -> Void in
                 if finished { //get rid of popout cell
                     self.dragInitialIndexPath = nil
