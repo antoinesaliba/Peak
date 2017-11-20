@@ -172,7 +172,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.9138217568397522" green="0.90583425760269165" blue="0.9097636342048645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="132" id="2SQ-bO-7fZ"/>
                                     <constraint firstItem="byP-Br-KO8" firstAttribute="centerX" secondItem="odz-9G-VIf" secondAttribute="centerX" id="4OU-zS-Rcx"/>
@@ -223,7 +223,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.23121023178100586" green="0.23058775067329407" blue="0.27202767133712769" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="CZO-g0-0kC" firstAttribute="centerX" secondItem="ogY-uo-1cT" secondAttribute="centerX" id="6ct-Nw-YJb"/>
                                     <constraint firstItem="CZO-g0-0kC" firstAttribute="top" secondItem="ogY-uo-1cT" secondAttribute="top" constant="13" id="9ab-O7-x2N"/>

@@ -90,6 +90,13 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         let submitButton = DefaultButton(title: "Submit", height: 60) {
             self.addData(name: newDataPopup.workoutName, newData: newDataPopup.newWorkoutData.text!)
         }
+        cancelButton.buttonColor = UIColor(red:0.25, green:0.25, blue:0.29, alpha:1.00)
+        cancelButton.titleColor = UIColor.white
+        cancelButton.separatorColor = UIColor(red:0.20, green:0.20, blue:0.25, alpha:1.00)
+        
+        submitButton.buttonColor = UIColor(red:0.25, green:0.25, blue:0.29, alpha:1.00)
+        submitButton.titleColor = UIColor.white
+        submitButton.separatorColor = UIColor(red:0.20, green:0.20, blue:0.25, alpha:1.00)
         
         popup.addButtons([cancelButton, submitButton])
         
