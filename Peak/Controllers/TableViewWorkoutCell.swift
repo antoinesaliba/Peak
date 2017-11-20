@@ -34,7 +34,7 @@ class TableViewWorkoutCell: FoldingCell, UIScrollViewDelegate{
     }
     
     override func animationDuration(_ itemIndex:NSInteger, type:AnimationType)-> TimeInterval {
-        let durations = [0.08, 0.0, 0.0] // timing animation for each view
+        let durations = [0.13, 0.26, 0.26] // timing animation for each view
         return durations[itemIndex]
     }
     

@@ -20,4 +20,8 @@ class NewDataPopup: UIViewController {
         super.viewDidLoad()
         popupView.layer.masksToBounds = true
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.newWorkoutData.becomeFirstResponder()
+    }
 }

@@ -17,5 +17,9 @@ class NewWorkoutPopup: UIViewController {
         super.viewDidLoad()
         popupView.layer.masksToBounds = true
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        newWorkoutName.becomeFirstResponder()
+    }
 
 }

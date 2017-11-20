@@ -67,20 +67,15 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     @IBAction func addWorkout(_ sender: Any) {
         let newWorkoutPopup = self.storyboard?.instantiateViewController(withIdentifier: "NewWorkoutPopup") as! NewWorkoutPopup
         
-        // Create the dialog
-        let popup = PopupDialog(viewController: newWorkoutPopup, buttonAlignment: .horizontal)
+        let popup = PopupDialog(viewController: newWorkoutPopup, buttonAlignment: .horizontal, transitionStyle: .bounceUp)
         
-        // Create first button
         let cancelButton = CancelButton(title: "Cancel", height: 60) {}
-        
-        // Create second button
         let submitButton = DefaultButton(title: "Submit", height: 60) {
             self.createNewWorkout(name: newWorkoutPopup.newWorkoutName.text!)
         }
         
         popup.addButtons([cancelButton, submitButton])
         
-        // Present dialog
         self.present(popup, animated: true, completion: nil)
     }
     
@@ -89,18 +84,14 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         let newDataPopup = self.storyboard?.instantiateViewController(withIdentifier: "NewDataPopup") as! NewDataPopup
         newDataPopup.workoutName = workouts[sender.tag].workoutName
         
-        // Create the dialog
         let popup = PopupDialog(viewController: newDataPopup, buttonAlignment: .horizontal)
         
-        // Create first button
-        let buttonOne = CancelButton(title: "Cancel", height: 60) {}
-        
-        // Create second button
-        let buttonTwo = DefaultButton(title: "Submit", height: 60) {
+        let cancelButton = CancelButton(title: "Cancel", height: 60) {}
+        let submitButton = DefaultButton(title: "Submit", height: 60) {
             self.addData(name: newDataPopup.workoutName, newData: newDataPopup.newWorkoutData.text!)
         }
         
-        popup.addButtons([buttonOne, buttonTwo])
+        popup.addButtons([cancelButton, submitButton])
         
         // Present dialog
         self.present(popup, animated: true, completion: nil)
@@ -134,6 +125,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         }
     }
     
+    //adds workout data to a specific workout
     func addData(name: String, newData: String) {
         let workout = findWorkoutElement(name: name)
         var workoutData = workout.workoutData
@@ -145,11 +137,13 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         workoutsTable.reloadData()
     }
     
+    //stores workout data into file
     func saveData(workout: Workout, plainData: [WorkoutData]) {
         workout.workoutData = plainData
         NSKeyedArchiver.archiveRootObject(workouts, toFile: filePath)
     }
     
+    //creates workout chart based on workout data points
     func createChart(selectedCell: TableViewWorkoutCell, dataPoints: [WorkoutData]) {
         var displayDates: [String] = []
         var dataEntries: [ChartDataEntry] = []
@@ -185,8 +179,11 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         selectedCell.workoutChart.chartDescription?.enabled = false
         selectedCell.workoutChart.rightAxis.enabled = false
         selectedCell.workoutChart.xAxis.drawLabelsEnabled = false
+        selectedCell.workoutChart.leftAxis.drawLabelsEnabled = false
+        selectedCell.workoutChart.leftAxis.drawGridLinesEnabled = false
         selectedCell.workoutChart.xAxis.drawGridLinesEnabled = false
         selectedCell.workoutChart.backgroundColor = UIColor.lightGray
+        selectedCell.workoutChart.legend.enabled = false
 
         selectedCell.workoutChart.data = chartData
         
@@ -196,7 +193,6 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     func getTime() -> Int {
         let date = NSDate()
         let formatter = DateFormatter()
-        //MM-dd-yyyy-hh-mm-ss also available
         formatter.dateFormat = "yyyyMMddhhmmss"
         return Int(formatter.string(from: date as Date))!
     }
@@ -232,8 +228,8 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
             cell.lastData.text = ""
             //cell.workoutChart.clear()
         }
-        cell.foregroundView.layer.cornerRadius = 30.0
-        cell.containerView.layer.cornerRadius = 30.0
+        cell.foregroundView.layer.cornerRadius = 10.0
+        cell.containerView.layer.cornerRadius = 10.0
         if !(cell.pagesController.gestureRecognizers?.last is UITapGestureRecognizer) {
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
             tap.delegate = cell
@@ -298,16 +294,18 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         let cell = tableView.cellForRow(at: indexPath as IndexPath) as! TableViewWorkoutCell
         cellHeights[indexPath.row] = newState
         
+        var duration = 0.0
         if makeChart{
             let data = workouts[indexPath.row].workoutData
             if data.count > 0 {
                 createChart(selectedCell: cell, dataPoints: data)
             }
+            duration = 0.1
             cell.unfold(true, animated: true, completion: nil)
         }else{
+            duration = 0.2
             cell.unfold(false, animated: true, completion: nil)
         }
-        let duration = 0.0
         
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
             self.tableView.beginUpdates()
