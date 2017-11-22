@@ -159,39 +159,62 @@
                         <viewControllerLayoutGuide type="bottom" id="Xx0-ka-nYI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OsW-BR-FiC">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="132"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="259"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odz-9G-VIf">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="132"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="259"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Workout Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="byP-Br-KO8">
-                                        <rect key="frame" x="89" y="8" width="165" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Workout Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="byP-Br-KO8">
+                                        <rect key="frame" x="8" y="114" width="327" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ftR-xa-kiU" customClass="WorkoutTypePicker" customModule="Peak" customModuleProvider="target">
+                                        <rect key="frame" x="26" y="8" width="290" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="0.9138217568" green="0.90583425760000003" blue="0.90976363419999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="commaSeparatedWorkoutChoices" value="Weights,Body,Cardio"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectortTextColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectortColor">
+                                                <color key="value" red="0.75302922729999999" green="0.72657406329999996" blue="0.86734050510000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="workoutTypePicked:" destination="3EQ-yg-2XZ" eventType="valueChanged" id="ZVy-3J-jxG"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.9138217568397522" green="0.90583425760269165" blue="0.9097636342048645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="132" id="2SQ-bO-7fZ"/>
-                                    <constraint firstItem="byP-Br-KO8" firstAttribute="centerX" secondItem="odz-9G-VIf" secondAttribute="centerX" id="4OU-zS-Rcx"/>
-                                    <constraint firstItem="byP-Br-KO8" firstAttribute="leading" secondItem="odz-9G-VIf" secondAttribute="leading" constant="89" id="Dhz-ed-j6q"/>
-                                    <constraint firstItem="byP-Br-KO8" firstAttribute="top" secondItem="odz-9G-VIf" secondAttribute="top" constant="8" id="fqz-GB-nUW"/>
-                                    <constraint firstItem="byP-Br-KO8" firstAttribute="centerX" secondItem="odz-9G-VIf" secondAttribute="centerX" id="gOF-48-x8t"/>
+                                    <constraint firstAttribute="height" constant="259" id="VIq-nr-0s1"/>
+                                    <constraint firstAttribute="width" constant="343" id="g5J-aI-WwT"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="odz-9G-VIf" firstAttribute="leading" secondItem="OsW-BR-FiC" secondAttribute="leadingMargin" constant="-16" id="3DG-vd-hbr"/>
-                            <constraint firstItem="odz-9G-VIf" firstAttribute="top" secondItem="OsW-BR-FiC" secondAttribute="topMargin" id="5N7-Ec-Kg8"/>
-                            <constraint firstItem="Xx0-ka-nYI" firstAttribute="top" secondItem="odz-9G-VIf" secondAttribute="bottom" id="LcV-Z3-k2c"/>
-                            <constraint firstItem="odz-9G-VIf" firstAttribute="trailing" secondItem="OsW-BR-FiC" secondAttribute="trailingMargin" constant="16" id="jvc-lD-aRt"/>
+                            <constraint firstItem="Xx0-ka-nYI" firstAttribute="top" secondItem="odz-9G-VIf" secondAttribute="bottom" id="CBf-9o-kzj"/>
+                            <constraint firstItem="odz-9G-VIf" firstAttribute="top" secondItem="c7r-gk-TWX" secondAttribute="bottom" id="r0y-Wr-swZ"/>
+                            <constraint firstAttribute="trailing" secondItem="odz-9G-VIf" secondAttribute="trailing" id="sMU-UX-Ibf"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="343" height="132"/>
+                    <size key="freeformSize" width="343" height="259"/>
                     <connections>
                         <outlet property="newWorkoutName" destination="byP-Br-KO8" id="XYs-JT-sfO"/>
                         <outlet property="popupView" destination="odz-9G-VIf" id="uqS-Kc-AZ4"/>
@@ -199,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arB-Oy-fKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="-1772"/>
+            <point key="canvasLocation" x="1044" y="-2109.8950524737634"/>
         </scene>
         <!--New Data Popup-->
         <scene sceneID="pg9-tf-aHb">

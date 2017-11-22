@@ -12,6 +12,7 @@
 		202D937C1F3FF68A00B57133 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202D937B1F3FF68A00B57133 /* LaunchScreen.storyboard */; };
 		208BFD571EEB699300B1E881 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208BFD561EEB699300B1E881 /* AppDelegate.swift */; };
 		208BFD5E1EEB699300B1E881 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 208BFD5D1EEB699300B1E881 /* Assets.xcassets */; };
+		209724EE1FC39A9C00F9F5BB /* WorkoutTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209724ED1FC39A9C00F9F5BB /* WorkoutTypePicker.swift */; };
 		20ACE7271F22B44500A1A227 /* NewDataPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ACE7261F22B44500A1A227 /* NewDataPopup.swift */; };
 		20CB04A51F2459A400CF2319 /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CB04A41F2459A400CF2319 /* WorkoutData.swift */; };
 		20CB04A71F26F94900CF2319 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CB04A61F26F94900CF2319 /* Workout.swift */; };
@@ -49,6 +50,7 @@
 		208BFD621EEB699300B1E881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		209724EA1FB7599800F9F5BB /* FoldingCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FoldingCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		209724EC1FB759DB00F9F5BB /* FoldingCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FoldingCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		209724ED1FC39A9C00F9F5BB /* WorkoutTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTypePicker.swift; sourceTree = "<group>"; };
 		20ACE7261F22B44500A1A227 /* NewDataPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDataPopup.swift; sourceTree = "<group>"; };
 		20CB04A41F2459A400CF2319 /* WorkoutData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		20CB04A61F26F94900CF2319 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				20E15BB51EFED73E00920F52 /* TableViewWorkoutCell.swift */,
 				201518351EFE29A3001D30AD /* MainViewController.swift */,
 				20E15BC91F09FFDB00920F52 /* WorkoutInfoViewController.swift */,
+				209724ED1FC39A9C00F9F5BB /* WorkoutTypePicker.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				20E5CEE51F59E8ED00720BAB /* Table.swift in Sources */,
 				201518361EFE29A3001D30AD /* MainViewController.swift in Sources */,
 				20ACE7271F22B44500A1A227 /* NewDataPopup.swift in Sources */,
+				209724EE1FC39A9C00F9F5BB /* WorkoutTypePicker.swift in Sources */,
 				208BFD571EEB699300B1E881 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,5 +21,8 @@ class NewWorkoutPopup: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         newWorkoutName.becomeFirstResponder()
     }
-
+    
+    @IBAction func workoutTypePicked(_ sender: WorkoutTypePicker) {
+    }
+    
 }
