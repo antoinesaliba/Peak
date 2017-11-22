@@ -172,7 +172,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ftR-xa-kiU" customClass="WorkoutTypePicker" customModule="Peak" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ftR-xa-kiU" customClass="WorkoutTypeSelector" customModule="Peak" customModuleProvider="target">
                                         <rect key="frame" x="26" y="8" width="290" height="49"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="0.9138217568" green="0.90583425760000003" blue="0.90976363419999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -194,9 +194,6 @@
                                                 <color key="value" red="0.75302922729999999" green="0.72657406329999996" blue="0.86734050510000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="workoutTypePicked:" destination="3EQ-yg-2XZ" eventType="valueChanged" id="ZVy-3J-jxG"/>
-                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.9138217568397522" green="0.90583425760269165" blue="0.9097636342048645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

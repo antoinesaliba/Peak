@@ -1,5 +1,5 @@
 //
-//  workoutTypePicker.swift
+//  WorkoutTypeSelector.swift
 //  Peak
 //
 //  Created by Antoine Saliba on 11/20/17.
@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class WorkoutTypePicker: UIControl {
+class WorkoutTypeSelector: UIControl {
     
     var workoutTypeChoices = [UIButton]()
     var selectedWorkoutType: UIView!
