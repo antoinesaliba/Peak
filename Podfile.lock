@@ -5,7 +5,8 @@ PODS:
   - DZNEmptyDataSet (1.8.1)
   - FoldingCell (3.0.0)
   - Persei (3.1.1)
-  - PopupDialog (0.6.0)
+  - PopupDialog (0.6.2)
+  - SkyFloatingLabelTextField (3.4.0)
 
 DEPENDENCIES:
   - Charts
@@ -13,14 +14,16 @@ DEPENDENCIES:
   - FoldingCell
   - Persei (~> 3.0)
   - PopupDialog (~> 0.5)
+  - SkyFloatingLabelTextField
 
 SPEC CHECKSUMS:
   Charts: 0705898046257443f0afbbc3179f4b67507b6e48
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FoldingCell: 55e9fcac546acc2c8f110f210af892aa90032160
   Persei: 6d36b54e40eccd437211548d3f897269c85d3a13
-  PopupDialog: 687af43af0f7b89948cd411ac701865f931bd6dc
+  PopupDialog: d4336d7274a6aa3af4cb26d8b6691510eba90cc3
+  SkyFloatingLabelTextField: 703aa1420b697392b1e7dba25571180dde018477
 
-PODFILE CHECKSUM: 003c2384914178c57cd9198903355947c1064198
+PODFILE CHECKSUM: b2decf76eca22390129e4cf82b13d85a152ebc00
 
 COCOAPODS: 1.2.1
