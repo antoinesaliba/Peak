@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment version="4352" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -71,45 +71,48 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgC-Fw-PgC">
-                                            <rect key="frame" x="23" y="133" width="329" height="240"/>
+                                            <rect key="frame" x="15" y="133" width="345" height="360"/>
                                             <subviews>
-                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9T3-LY-DxR">
-                                                    <rect key="frame" x="8" y="8" width="313" height="194"/>
-                                                </scrollView>
-                                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="zjl-km-7gu">
-                                                    <rect key="frame" x="134" y="210" width="60" height="37"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ct-fQ-cod">
+                                                    <rect key="frame" x="8" y="8" width="329" height="236"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fey-dv-hjq" customClass="LineChartView" customModule="Charts">
+                                                            <rect key="frame" x="0.0" y="-2" width="329" height="240"/>
+                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="DF3-H9-THI"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Fey-dv-hjq" secondAttribute="trailing" id="Fmf-8A-JgU"/>
+                                                        <constraint firstItem="Fey-dv-hjq" firstAttribute="leading" secondItem="6Ct-fQ-cod" secondAttribute="leading" id="N58-9w-4a2"/>
+                                                        <constraint firstItem="Fey-dv-hjq" firstAttribute="centerY" secondItem="6Ct-fQ-cod" secondAttribute="centerY" id="OJj-6S-ptA"/>
+                                                        <constraint firstItem="Fey-dv-hjq" firstAttribute="top" secondItem="6Ct-fQ-cod" secondAttribute="top" constant="-2" id="hEe-Br-jE9"/>
                                                     </constraints>
-                                                </pageControl>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.99826520679999997" green="0.37158596519999998" blue="0.33452975750000002" alpha="0.69785423800000002" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstItem="zjl-km-7gu" firstAttribute="centerX" secondItem="9T3-LY-DxR" secondAttribute="centerX" id="8z5-ME-PxO"/>
-                                                <constraint firstItem="zjl-km-7gu" firstAttribute="top" secondItem="9T3-LY-DxR" secondAttribute="bottom" constant="8" symbolic="YES" id="Arc-jG-HgA"/>
-                                                <constraint firstAttribute="bottom" secondItem="9T3-LY-DxR" secondAttribute="bottom" constant="38" id="Jra-d5-V5C"/>
-                                                <constraint firstItem="9T3-LY-DxR" firstAttribute="leading" secondItem="zgC-Fw-PgC" secondAttribute="leadingMargin" id="Lvj-J3-RQa"/>
-                                                <constraint firstAttribute="height" constant="240" id="UPm-l2-9v2"/>
-                                                <constraint firstItem="9T3-LY-DxR" firstAttribute="trailing" secondItem="zgC-Fw-PgC" secondAttribute="trailingMargin" id="ujr-k5-NPQ"/>
-                                                <constraint firstItem="9T3-LY-DxR" firstAttribute="top" secondItem="zgC-Fw-PgC" secondAttribute="topMargin" id="voh-Kd-U4C"/>
+                                                <constraint firstItem="6Ct-fQ-cod" firstAttribute="trailing" secondItem="zgC-Fw-PgC" secondAttribute="trailingMargin" id="RWi-Pz-vDr"/>
+                                                <constraint firstItem="6Ct-fQ-cod" firstAttribute="leading" secondItem="zgC-Fw-PgC" secondAttribute="leadingMargin" id="ST5-vH-h9N"/>
+                                                <constraint firstAttribute="bottom" secondItem="6Ct-fQ-cod" secondAttribute="bottom" constant="116" id="SWS-qv-hGb"/>
+                                                <constraint firstAttribute="height" constant="360" id="UPm-l2-9v2"/>
+                                                <constraint firstItem="6Ct-fQ-cod" firstAttribute="top" secondItem="zgC-Fw-PgC" secondAttribute="topMargin" id="raU-6J-dXS"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="NYQ-EU-LfB" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leading" constant="15" id="1hw-cD-pwN"/>
-                                        <constraint firstItem="NYQ-EU-LfB" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leading" constant="15" id="7ln-v9-kDu"/>
+                                        <constraint firstItem="zgC-Fw-PgC" firstAttribute="trailing" secondItem="NYQ-EU-LfB" secondAttribute="trailing" id="2mH-YV-SyQ"/>
                                         <constraint firstItem="NYQ-EU-LfB" firstAttribute="top" secondItem="0ng-TK-IsD" secondAttribute="top" constant="5" identifier="ForegroundViewTop" id="Osm-Pf-k4a"/>
                                         <constraint firstItem="zgC-Fw-PgC" firstAttribute="top" secondItem="0ng-TK-IsD" secondAttribute="top" constant="133" identifier="ContainerViewTop" id="YpT-VA-NPR"/>
-                                        <constraint firstItem="zgC-Fw-PgC" firstAttribute="leading" secondItem="0ng-TK-IsD" secondAttribute="leadingMargin" constant="7" id="bAd-Xg-6Kp"/>
                                         <constraint firstAttribute="trailing" secondItem="NYQ-EU-LfB" secondAttribute="trailing" constant="15" id="j0e-qN-4cV"/>
-                                        <constraint firstAttribute="trailing" secondItem="NYQ-EU-LfB" secondAttribute="trailing" constant="15" id="krj-oA-N3X"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="zgC-Fw-PgC" secondAttribute="trailing" constant="7" id="vOx-Yg-E9k"/>
+                                        <constraint firstItem="zgC-Fw-PgC" firstAttribute="centerX" secondItem="NYQ-EU-LfB" secondAttribute="centerX" id="zgl-w1-fSW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.9722896218" green="0.97625249619999999" blue="0.99272269010000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="itemCount">
-                                        <integer key="value" value="2"/>
+                                        <integer key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backViewColor">
                                         <color key="value" red="0.97228962182998657" green="0.97625249624252319" blue="0.99272269010543823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -122,8 +125,7 @@
                                     <outlet property="foregroundViewTop" destination="Osm-Pf-k4a" id="Rwm-5k-fH8"/>
                                     <outlet property="lastData" destination="Q9E-bW-r8n" id="lvS-Aq-VEK"/>
                                     <outlet property="newDataButton" destination="OoD-TR-dPm" id="kI9-3h-xaD"/>
-                                    <outlet property="pagesController" destination="9T3-LY-DxR" id="3YU-00-vQq"/>
-                                    <outlet property="pagesIndicator" destination="zjl-km-7gu" id="1l4-in-EBM"/>
+                                    <outlet property="workoutChart" destination="Fey-dv-hjq" id="BxF-QJ-myT"/>
                                     <outlet property="workoutName" destination="ORH-mk-9RN" id="6Wx-DE-bpH"/>
                                 </connections>
                             </tableViewCell>

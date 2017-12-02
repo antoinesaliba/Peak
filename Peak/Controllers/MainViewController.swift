@@ -20,7 +20,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         struct CellHeight {
             //both open and close need to be either the height of the containers or bigger
             static let close: CGFloat = 140  // space between closed rows in workout table
-            static let open: CGFloat = 260  // space between open rows in workout table
+            static let open: CGFloat = 380  // space between open rows in workout table
         }
     }
     
@@ -191,6 +191,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         selectedCell.workoutChart.xAxis.drawGridLinesEnabled = false
         selectedCell.workoutChart.backgroundColor = UIColor.lightGray
         selectedCell.workoutChart.legend.enabled = false
+        selectedCell.workoutChart.isUserInteractionEnabled = false
 
         selectedCell.workoutChart.data = chartData
         
@@ -237,13 +238,13 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         }
         cell.foregroundView.layer.cornerRadius = 10.0
         cell.containerView.layer.cornerRadius = 10.0
-        if !(cell.pagesController.gestureRecognizers?.last is UITapGestureRecognizer) {
+        if !(cell.workoutChart.gestureRecognizers?.last is UITapGestureRecognizer) {
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
             tap.delegate = cell
-            cell.pagesController.addGestureRecognizer(tap)
-            cell.createPages()
+            cell.workoutChart.addGestureRecognizer(tap)
+            //cell.createPages()
         }
-        cell.pagesController.tag = indexPath.row
+        cell.workoutChart.tag = indexPath.row
         
         return (cell)
     }
