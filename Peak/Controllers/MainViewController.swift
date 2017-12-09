@@ -175,8 +175,16 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         }
         
         let chartDataSet = LineChartDataSet(values: dataEntries, label: "")
-        chartDataSet.colors = [UIColor.blue]
+        let lineColor = UIColor(red:1.00, green:0.90, blue:0.83, alpha:1.0)
+        let dotColor = UIColor(red:1.00, green:0.37, blue:0.33, alpha:1.0)
+        chartDataSet.colors = [lineColor]
         chartDataSet.circleRadius = 4.0
+        chartDataSet.lineWidth = 3.0
+        chartDataSet.drawFilledEnabled = true
+        chartDataSet.fillColor = lineColor
+        chartDataSet.setCircleColor(dotColor)
+        chartDataSet.circleHoleColor = dotColor
+        
         
         let chartData = LineChartData(dataSet: chartDataSet)
         chartData.setDrawValues(true)
@@ -189,7 +197,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         selectedCell.workoutChart.leftAxis.drawLabelsEnabled = false
         selectedCell.workoutChart.leftAxis.drawGridLinesEnabled = false
         selectedCell.workoutChart.xAxis.drawGridLinesEnabled = false
-        selectedCell.workoutChart.backgroundColor = UIColor.lightGray
+        selectedCell.workoutChart.backgroundColor = UIColor.white
         selectedCell.workoutChart.legend.enabled = false
         selectedCell.workoutChart.isUserInteractionEnabled = false
 
@@ -229,6 +237,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewWorkoutCell
         cell.workoutName.text = workouts[indexPath.row].workoutName
+        cell.openCellWorkoutName.text = cell.workoutName.text
         cell.newDataButton.tag = indexPath.row
         if workouts[indexPath.row].workoutData.count > 0 {
             cell.lastData.text = "Last workout: "+String(describing: workouts[indexPath.row].workoutData.last!.workoutStat)+"lb"

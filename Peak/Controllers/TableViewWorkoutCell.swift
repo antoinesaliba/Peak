@@ -13,6 +13,7 @@ import Charts
 class TableViewWorkoutCell: FoldingCell, UIScrollViewDelegate{
     
     @IBOutlet weak var workoutName: UILabel!
+    @IBOutlet weak var openCellWorkoutName: UILabel!
     @IBOutlet weak var newDataButton: UIButton!
     @IBOutlet weak var lastData: UILabel!
     @IBOutlet weak var workoutChart: LineChartView!

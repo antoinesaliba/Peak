@@ -74,10 +74,10 @@
                                             <rect key="frame" x="15" y="133" width="345" height="360"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ct-fQ-cod">
-                                                    <rect key="frame" x="8" y="8" width="329" height="236"/>
+                                                    <rect key="frame" x="8" y="149" width="329" height="203"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fey-dv-hjq" customClass="LineChartView" customModule="Charts">
-                                                            <rect key="frame" x="0.0" y="-2" width="329" height="240"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="329" height="203"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
                                                     </subviews>
@@ -86,17 +86,24 @@
                                                         <constraint firstAttribute="trailing" secondItem="Fey-dv-hjq" secondAttribute="trailing" id="Fmf-8A-JgU"/>
                                                         <constraint firstItem="Fey-dv-hjq" firstAttribute="leading" secondItem="6Ct-fQ-cod" secondAttribute="leading" id="N58-9w-4a2"/>
                                                         <constraint firstItem="Fey-dv-hjq" firstAttribute="centerY" secondItem="6Ct-fQ-cod" secondAttribute="centerY" id="OJj-6S-ptA"/>
-                                                        <constraint firstItem="Fey-dv-hjq" firstAttribute="top" secondItem="6Ct-fQ-cod" secondAttribute="top" constant="-2" id="hEe-Br-jE9"/>
+                                                        <constraint firstItem="Fey-dv-hjq" firstAttribute="top" secondItem="6Ct-fQ-cod" secondAttribute="top" id="hEe-Br-jE9"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ul-I7-a9Z">
+                                                    <rect key="frame" x="8" y="21" width="329" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.99826520679999997" green="0.37158596519999998" blue="0.33452975750000002" alpha="0.69785423800000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.99826520679999997" green="0.37158596519999998" blue="0.33452975750000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="6Ct-fQ-cod" firstAttribute="trailing" secondItem="zgC-Fw-PgC" secondAttribute="trailingMargin" id="RWi-Pz-vDr"/>
                                                 <constraint firstItem="6Ct-fQ-cod" firstAttribute="leading" secondItem="zgC-Fw-PgC" secondAttribute="leadingMargin" id="ST5-vH-h9N"/>
-                                                <constraint firstAttribute="bottom" secondItem="6Ct-fQ-cod" secondAttribute="bottom" constant="116" id="SWS-qv-hGb"/>
+                                                <constraint firstAttribute="bottom" secondItem="6Ct-fQ-cod" secondAttribute="bottom" constant="8" id="SWS-qv-hGb"/>
                                                 <constraint firstAttribute="height" constant="360" id="UPm-l2-9v2"/>
-                                                <constraint firstItem="6Ct-fQ-cod" firstAttribute="top" secondItem="zgC-Fw-PgC" secondAttribute="topMargin" id="raU-6J-dXS"/>
+                                                <constraint firstItem="6Ct-fQ-cod" firstAttribute="top" secondItem="zgC-Fw-PgC" secondAttribute="topMargin" constant="141" id="raU-6J-dXS"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -125,6 +132,7 @@
                                     <outlet property="foregroundViewTop" destination="Osm-Pf-k4a" id="Rwm-5k-fH8"/>
                                     <outlet property="lastData" destination="Q9E-bW-r8n" id="lvS-Aq-VEK"/>
                                     <outlet property="newDataButton" destination="OoD-TR-dPm" id="kI9-3h-xaD"/>
+                                    <outlet property="openCellWorkoutName" destination="5ul-I7-a9Z" id="Wld-bc-Qr8"/>
                                     <outlet property="workoutChart" destination="Fey-dv-hjq" id="BxF-QJ-myT"/>
                                     <outlet property="workoutName" destination="ORH-mk-9RN" id="6Wx-DE-bpH"/>
                                 </connections>
