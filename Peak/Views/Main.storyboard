@@ -96,6 +96,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8e-Kn-wOY">
+                                                    <rect key="frame" x="219" y="16" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.99826520679999997" green="0.37158596519999998" blue="0.33452975750000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -126,6 +131,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <outlet property="allDataButton" destination="f8e-Kn-wOY" id="blg-Ea-UzU"/>
                                     <outlet property="containerView" destination="zgC-Fw-PgC" id="JTe-Aj-VRk"/>
                                     <outlet property="containerViewTop" destination="YpT-VA-NPR" id="64t-kt-kHF"/>
                                     <outlet property="foregroundView" destination="NYQ-EU-LfB" id="pUu-k0-rv7"/>
@@ -159,6 +165,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6q-Hi-qEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1330.4000000000001" y="-1273.313343328336"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="VgH-PJ-pSb">
+            <objects>
+                <tableViewController storyboardIdentifier="DetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mae-Kc-Oeh" customClass="DetailsViewController" customModule="Peak" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6Pa-4D-7vT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Vr9-is-B0m">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vr9-is-B0m" id="LbB-IG-yfl">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEh-m0-X5F">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.75302922729999999" green="0.72657406329999996" blue="0.86734050510000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mae-Kc-Oeh" id="ToI-6e-wJA"/>
+                            <outlet property="delegate" destination="mae-Kc-Oeh" id="eVU-Yq-2SU"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="allDataTable" destination="6Pa-4D-7vT" id="ASf-b3-Hzx"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rXM-hW-PlX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2287.1999999999998" y="-1266.1169415292354"/>
         </scene>
         <!--New Workout Popup-->
         <scene sceneID="dk1-wo-D8a">

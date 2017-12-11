@@ -17,6 +17,7 @@ class TableViewWorkoutCell: FoldingCell, UIScrollViewDelegate{
     @IBOutlet weak var newDataButton: UIButton!
     @IBOutlet weak var lastData: UILabel!
     @IBOutlet weak var workoutChart: LineChartView!
+    @IBOutlet weak var allDataButton: UIButton!
     
     
     override func awakeFromNib() {

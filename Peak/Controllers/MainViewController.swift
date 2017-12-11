@@ -28,6 +28,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     
     @IBOutlet var workoutsTable: UITableView!
     @IBOutlet weak var detailedView: UIView!
+    @IBOutlet weak var viewAllDataButton: UIButton!
     
     var dragInitialIndexPath: IndexPath?
     var popoutCell: UIView?
@@ -239,6 +240,8 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         cell.workoutName.text = workouts[indexPath.row].workoutName
         cell.openCellWorkoutName.text = cell.workoutName.text
         cell.newDataButton.tag = indexPath.row
+        cell.allDataButton.tag = indexPath.row
+        cell.allDataButton.addTarget(self, action: #selector(self.viewAllData(_:)), for: .touchUpInside)
         if workouts[indexPath.row].workoutData.count > 0 {
             cell.lastData.text = "Last workout: "+String(describing: workouts[indexPath.row].workoutData.last!.workoutStat)+"lb"
         } else {
@@ -256,6 +259,13 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
         cell.workoutChart.tag = indexPath.row
         
         return (cell)
+    }
+    
+    @objc func viewAllData(_ sender:UIButton) {
+        let retrievedData = workouts[sender.tag].workoutData
+        let detailedView = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        detailedView.allData = retrievedData
+        self.navigationController?.pushViewController(detailedView, animated: true)
     }
     
     @objc func handleTap(_ sender:UITapGestureRecognizer){
