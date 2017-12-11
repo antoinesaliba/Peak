@@ -39,13 +39,17 @@ class WorkoutData: NSObject, NSCoding {
         coder.encode(encStat, forKey: Keys.workoutStat)
     }
     
-    func printDate() -> String {
+    func printDate(includeYear: Bool = false) -> String {
         let getFormatter = DateFormatter()
-        getFormatter.dateFormat = "yyyyMMddHHmmss"
+        getFormatter.dateFormat = "yyyyMMdd"
         let date = getFormatter.date(from: String(self.workoutDate))!
         
         let printFormatter = DateFormatter()
-        printFormatter.dateFormat = "MM-dd"
+        if (includeYear){
+            printFormatter.dateFormat = "MM/dd/YYYY"
+        }else{
+            printFormatter.dateFormat = "MM/dd"
+        }
         let printDate = printFormatter.string(from: date)
         
         return printDate

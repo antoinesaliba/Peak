@@ -210,7 +210,7 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
     func getTime() -> Int {
         let date = NSDate()
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyyMMddhhmmss"
+        formatter.dateFormat = "yyyyMMdd"
         return Int(formatter.string(from: date as Date))!
     }
     
@@ -326,6 +326,9 @@ class MainViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmpty
             let data = workouts[indexPath.row].workoutData
             if data.count > 0 {
                 createChart(selectedCell: cell, dataPoints: data)
+            }else{
+                print(data.count)
+                cell.allDataButton.isHidden = true
             }
             duration = 0.1
             cell.unfold(true, animated: true, completion: nil)

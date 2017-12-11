@@ -12,7 +12,7 @@ class DetailsViewController: UITableViewController {
 
     @IBOutlet var allDataTable: UITableView!
     var allData: [WorkoutData] = []
-    var separateDatePoints = 0
+    var separateDatePoints: [String] = []
     
     
     override func viewDidLoad() {
@@ -28,20 +28,30 @@ class DetailsViewController: UITableViewController {
     
     func findSeparteDataPoints(){
         var currentDate = -1
-        for dataPoint in allData{
+        for dataPoint in allData.reversed(){
+            let formattedDate = dataPoint.printDate(includeYear: true)
             if (dataPoint.workoutDate != currentDate){
-                separateDatePoints+=1;
+                let newPoint = String(formattedDate)+": "+String(dataPoint.workoutStat)
+                separateDatePoints.append(newPoint)
                 currentDate = dataPoint.workoutDate
+            }else{
+                let date = String(separateDatePoints.last!.prefix(12))
+                let index = separateDatePoints.last!.index(separateDatePoints.last!.startIndex, offsetBy: 12)
+                let previousData = separateDatePoints.last![index...]
+                let moreData = date+String(dataPoint.workoutStat)+", "+previousData
+                separateDatePoints.removeLast()
+                separateDatePoints.append(moreData)
             }
         }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (separateDatePoints)
+        return (separateDatePoints.count)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentTableCell = tableView.dequeueReusableCell(withIdentifier: "datapoint", for: indexPath) as! DataPointTableCell
+        currentTableCell.dataForDate.text = separateDatePoints[indexPath.row]
         return (currentTableCell)
     }
 }
