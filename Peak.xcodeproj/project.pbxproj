@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		200624AA1FDC9CC500F699FD /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200624A91FDC9CC500F699FD /* DetailsViewController.swift */; };
+		200624AC1FDE4EF200F699FD /* DataPointTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200624AB1FDE4EF200F699FD /* DataPointTableCell.swift */; };
 		201518361EFE29A3001D30AD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201518351EFE29A3001D30AD /* MainViewController.swift */; };
 		202D937A1F3FF3B800B57133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202D93791F3FF3B800B57133 /* Main.storyboard */; };
 		202D937C1F3FF68A00B57133 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 202D937B1F3FF68A00B57133 /* LaunchScreen.storyboard */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		1334532967252FB600CD10CB /* Pods-Peak.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peak.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peak/Pods-Peak.release.xcconfig"; sourceTree = "<group>"; };
 		200624A91FDC9CC500F699FD /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		200624AB1FDE4EF200F699FD /* DataPointTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPointTableCell.swift; sourceTree = "<group>"; };
 		201518351EFE29A3001D30AD /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		202D93791F3FF3B800B57133 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		202D937B1F3FF68A00B57133 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				200624A91FDC9CC500F699FD /* DetailsViewController.swift */,
 				20E15BC91F09FFDB00920F52 /* WorkoutInfoViewController.swift */,
 				209724ED1FC39A9C00F9F5BB /* WorkoutTypeSelector.swift */,
+				200624AB1FDE4EF200F699FD /* DataPointTableCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				20ACE7271F22B44500A1A227 /* NewDataPopup.swift in Sources */,
 				209724EE1FC39A9C00F9F5BB /* WorkoutTypeSelector.swift in Sources */,
 				200624AA1FDC9CC500F699FD /* DetailsViewController.swift in Sources */,
+				200624AC1FDE4EF200F699FD /* DataPointTableCell.swift in Sources */,
 				208BFD571EEB699300B1E881 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
