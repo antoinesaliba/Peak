@@ -1,7 +1,7 @@
 # Peak
 
 ## Overview
-Peak is an iOS application meant to act as a fitness journal. Instead of bringing a journal with you to the gym to keep track of what you do, Peak willkeep track of all the data you input, make graphs to display your performance and allow you to see your growth.
+Peak is an iOS fitness journal application meant to track your workouts and progress. Instead of bringing a journal with you to the gym to keep track of what you do, Peak will keep track of the data you input, make graphs to display your performance and allow you to see your growth.
 
 ## Development
 To setup your environment to enable you to contribute, do the following:
